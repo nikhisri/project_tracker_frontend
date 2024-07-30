@@ -54,6 +54,8 @@ export class DashboardComponent {
     navigateURL(path : string) {
       this.router.navigate([path]);
     }
+
+    //
   }
 export interface projectData{
   project_id:String;

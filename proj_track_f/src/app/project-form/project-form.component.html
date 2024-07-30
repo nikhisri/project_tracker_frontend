@@ -1,28 +1,53 @@
 <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="project_id">Project ID:</label>
-      <input id="project_id" formControlName="project_id">
-      <div *ngIf="projectForm.get('project_id')?.invalid && projectForm.get('project_id')?.touched">
-        Project ID is required.
+    
+    <div class="formDiv">
+      <div>
+        <label for="project_id">Project ID:</label>
+        <input id="project_id" type="text" formControlName="project_id">
+        <div *ngIf="projectForm.get('project_id')?.invalid && projectForm.get('project_id')?.touched">
+          Project ID is required.
+        </div>
+      </div>
+    
+      <div>
+        <label for="project_name">Project Name:</label>
+        <input id="project_name" type="text" formControlName="project_name">
+        <div *ngIf="projectForm.get('project_name')?.invalid && projectForm.get('project_name')?.touched">
+          Project Name is required.
+        </div>
       </div>
     </div>
   
+    
+    
     <div>
-      <label for="project_name">Project Name:</label>
-      <input id="project_name" formControlName="project_name">
-      <div *ngIf="projectForm.get('project_name')?.invalid && projectForm.get('project_name')?.touched">
-        Project Name is required.
+    <div>
+      <label for="action_owner">Action Owner:</label>
+      <input id="action_owner" type="text" formControlName="action_owner">
+      <div *ngIf="projectForm.get('action_owner')?.invalid && projectForm.get('action_owner')?.touched">
+        Action Owner is required.
       </div>
     </div>
-  
+
     <div>
-      <label for="project_desc">Project Description:</label>
-      <textarea id="project_desc" formControlName="project_desc"></textarea>
-      <div *ngIf="projectForm.get('project_desc')?.invalid && projectForm.get('project_desc')?.touched">
-        Project Description is required.
+      <label for="owner_Id">Owner ID:</label>
+      <input id="owner_Id" type="text" formControlName="owner_Id">
+      <div *ngIf="projectForm.get('owner_Id')?.invalid && 
+      projectForm.get('owner_Id')?.touched">
+        Owner ID is required.
       </div>
     </div>
-  
+    </div>
+
+    <div>
+    <div>
+      <label for="action_Owner_dept">Action Owner Department:</label>
+      <input id="action_Owner_dept" type="text" formControlName="action_Owner_dept">
+      <div *ngIf="projectForm.get('action_Owner_dept')?.invalid && projectForm.get('action_Owner_dept')?.touched">
+        Action Owner Department is required.
+      </div>
+    </div>
+
     <div>
       <label for="project_start_Date">Project Start Date:</label>
       <input id="project_start_Date" type="date" formControlName="project_start_Date">
@@ -30,7 +55,17 @@
         Project Start Date is required.
       </div>
     </div>
+  </div>
   
+  <div>
+    <label for="project_desc">Project Description:</label>
+    <textarea id="project_desc" formControlName="project_desc"></textarea>
+    <div *ngIf="projectForm.get('project_desc')?.invalid && projectForm.get('project_desc')?.touched">
+      Project Description is required.
+    </div>
+  </div>
+  
+  <div>
     <div>
       <label for="actual_start_Date">Actual Start Date:</label>
       <input id="actual_start_Date" type="date" formControlName="actual_start_Date">
@@ -46,7 +81,9 @@
         Planned End Date is required.
       </div>
     </div>
+  </div>
   
+  <div>
     <div>
       <label for="actual_end_Date">Actual End Date:</label>
       <input id="actual_end_Date" type="date" formControlName="actual_end_Date">
@@ -62,7 +99,9 @@
         Revised Completion Date 1 is required.
       </div>
     </div>
-  
+  </div>
+
+  <div>
     <div>
       <label for="revised_Completion_date_2">Revised Completion Date 2:</label>
       <input id="revised_Completion_date_2" type="date" formControlName="revised_Completion_date_2">
@@ -78,47 +117,25 @@
         Required No. of Days is required.
       </div>
     </div>
-  
-    <div>
-      <label for="action_owner">Action Owner:</label>
-      <input id="action_owner" formControlName="action_owner">
-      <div *ngIf="projectForm.get('action_owner')?.invalid && projectForm.get('action_owner')?.touched">
-        Action Owner is required.
-      </div>
-    </div>
-  
-    <div>
-      <label for="action_Owner_dept">Action Owner Department:</label>
-      <input id="action_Owner_dept" formControlName="action_Owner_dept">
-      <div *ngIf="projectForm.get('action_Owner_dept')?.invalid && projectForm.get('action_Owner_dept')?.touched">
-        Action Owner Department is required.
-      </div>
-    </div>
-  
+  </div>
     <div>
       <label for="project_Status">Project Status:</label>
-      <input id="project_Status" formControlName="project_Status">
+      <input id="project_Status" type="text" formControlName="project_Status">
       <div *ngIf="projectForm.get('project_Status')?.invalid && projectForm.get('project_Status')?.touched">
         Project Status is required.
       </div>
     </div>
   
-    <div>
-      <label for="owner_Id">Owner ID:</label>
-      <input id="owner_Id" formControlName="owner_Id">
-      <div *ngIf="projectForm.get('owner_Id')?.invalid && 
-      projectForm.get('owner_Id')?.touched">
-        Owner ID is required.
-      </div>
-    </div>
   
     <div>
       <label for="remarks">Remarks:</label>
-      <textarea id="remarks" formControlName="remarks"></textarea>
+      <textarea id="remarks"type="text" formControlName="remarks"></textarea>
     </div>
   
     <button type="submit" [disabled]="projectForm!.invalid">Submit</button>
 
    
   </form>
-  
+
+  <div>Hai</div>
+  <span>Hai</span>
