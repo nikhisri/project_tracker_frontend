@@ -1,6 +1,40 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+export interface projectData{
+  project_id:String;
+  project_name:String;
+  issue_desc:String;
+  issueRaiseddate:String;
+  targetDate:String;
+  action_owner:String;
+  issue_id:String;
+  issue_Status:String;
+  remarks:String;
+  
+}
+
+type SIDENAV_INTERFACE = {
+  label : string,
+  to : string
+}
+
+const SIDENAV_MENUS : Array<SIDENAV_INTERFACE>= [
+    {
+      label : "Dashboard",
+      to : "/dashboard"
+    },
+    {
+      label : "Key Issues",
+      to : "/issue"
+    },
+    {
+      label : "Required Actions",
+      to : "/actions"
+    }
+]
+
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -47,6 +81,7 @@ export class DashboardComponent {
     sidenavMenu : Array<SIDENAV_INTERFACE> = SIDENAV_MENUS;
   
     constructor(private router : Router) {}
+
     navigateToProjectForm(): void {
       this.router.navigate(['/project-form']);
     }
@@ -54,43 +89,5 @@ export class DashboardComponent {
     navigateURL(path : string) {
       this.router.navigate([path]);
     }
+    
   }
-export interface projectData{
-  project_id:String;
-  project_name:String;
-  issue_desc:String;
-  issueRaiseddate:String;
-  targetDate:String;
-
-  action_owner:String;
- 
-  issue_id:String;
-  issue_Status:String;
-  remarks:String;
-  
-}
-
-type SIDENAV_INTERFACE = {
-  label : string,
-  to : string
-}
-
-const SIDENAV_MENUS : Array<SIDENAV_INTERFACE>= [
-    {
-      label : "Dashboard",
-      to : "/dashboard"
-    },
-    {
-      label : "Key Issues",
-      to : "/issue"
-    },
-    {
-      label : "Required Actions",
-      to : "/actions"
-    }
-]
-
-
-
-
-
