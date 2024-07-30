@@ -26,6 +26,7 @@ export interface TableData {
 export class TableComponent {
   @Input() dataSource: TableData[] = [];
   displayedColumns: string[] = [];
+  
 
   ngOnInit(): void {
     this.determineDisplayedColumns();
@@ -35,15 +36,20 @@ export class TableComponent {
   determineDisplayedColumns(): void {
     if (this.dataSource.length > 0) {
       // Get all unique keys from the data
+      
       this.allKeys = this.dataSource.reduce((keys, item) => {
         return keys['concat'](Object.keys(item));
       }, []);
       this.displayedColumns = Array.from(new Set(this.allKeys));
     }
+ 
   }
 
+  
+  
   // Check if a value is a string
   isString(value: any): boolean {
     return typeof value === 'string';
   }
+  
 }
