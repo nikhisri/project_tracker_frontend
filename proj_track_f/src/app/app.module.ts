@@ -17,13 +17,15 @@ import { MatInputModule } from '@angular/material/input';
 import { ProjectFormComponent } from './project-form/project-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { IssueFormComponent } from './issue-form/issue-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableComponent,
     ProjectFormComponent,
-    DashboardComponent
+    DashboardComponent,
+    IssueFormComponent
   ],
   imports: [
     BrowserModule,
