@@ -1,14 +1,5 @@
 import { Component, Input } from '@angular/core';
-export interface PeriodicElement {
-  trcode: string;
-  name: string;
-  start_date: string;
-  end_date: string;
-  due_in: number;
-  budget_value: number;
-  status: string;
-  owner: string;
-}
+
 export interface DashboardElement{
   trcode: string;
   name: string;
@@ -45,8 +36,7 @@ export class TableComponent {
  
   }
 
-  
-  
+ 
   // Check if a value is a string
   isString(value: any): boolean {
     return typeof value === 'string';
