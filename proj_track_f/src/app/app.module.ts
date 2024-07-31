@@ -18,13 +18,15 @@ import { ProjectFormComponent } from './project-form/project-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { RegisterationComponent } from './registeration/registeration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableComponent,
     ProjectFormComponent,
-    DashboardComponent
+    DashboardComponent,
+    RegisterationComponent
   ],
   imports: [
     BrowserModule,

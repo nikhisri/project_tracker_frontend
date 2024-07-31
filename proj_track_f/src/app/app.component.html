@@ -3,6 +3,14 @@
  <nav>
   <a routerLink="/project-form">Project Form</a>
 </nav> -->
+<head>
+  <base href="/" />
+  <title>Angular 14 - User Registration and Login Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- bootstrap css -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
 <mat-toolbar style="background-color:#FFFFFF;">
   <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
@@ -18,19 +26,12 @@
 </mat-toolbar>
 
 <mat-drawer-container class="sidenav-container">
-      
   <!-- Side Menu -->
   <mat-drawer mode="side" opened>
-    
     <div *ngFor="let menu of sidenavMenu">
         <button mat-button color="primary" style="color: white;" (click)="navigateURL(menu.to)" >{{menu.label}}</button>
     </div>
   </mat-drawer>
-
-  
-  <mat-drawer-content>
-    <div style="display: flex;justify-content: space-between;margin: 20px;">
-     <p style="font-size: 29px;font-weight: 500;">Projects</p>
 
 <router-outlet></router-outlet>
 
