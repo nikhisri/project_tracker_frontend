@@ -19,11 +19,10 @@
       
       <!-- Side Menu -->
       <mat-drawer mode="side" opened>
-        
+
         <div *ngFor="let menu of sidenavMenu">
             <button mat-button color="primary" style="color: white;" (click)="navigateURL(menu.to)" >{{menu.label}}</button>
         </div>
-  
       </mat-drawer>
   
       
@@ -32,13 +31,13 @@
          <p style="font-size: 29px;font-weight: 500;">Projects</p>
           
           <!-- (click)="navigateURL(projectform)" -->
-          <button 
-          mat-raised-button color="primary" style="width:150px;background-color: #35535C;"> 
-            <mat-icon>add</mat-icon>New Project</button>
-  
+          <!-- <button   mat-raised-button color="primary" style="width:150px;background-color: #35535C;">  -->
+        <!-- ?    <mat-icon>add</mat-icon>New Project</button> -->
+            <button mat-raised-button (click)="openForm('3000ms', '1500ms')">+New Project</button>
         </div>
+
         <app-table [dataSource]="PROJECT_DATA"></app-table>
-        <app-table [dataSource]="PROJECT_DATA"></app-table>
+        <!-- <app-table [dataSource]="PROJECT_DATA"></app-table> -->
         <router-outlet></router-outlet>
   
       </mat-drawer-content>
