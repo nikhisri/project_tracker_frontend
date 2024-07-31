@@ -14,11 +14,17 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { ProjectFormComponent } from './components/project-form/project-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { IssueFormComponent } from './issue-form/issue-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TableComponent
+    TableComponent,
+    ProjectFormComponent,
+    IssueFormComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +38,9 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     MatInputModule,
     MatCardModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatDialogModule,
+    ReactiveFormsModule
     
   ],
   providers: [],

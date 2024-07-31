@@ -14,6 +14,8 @@ export interface projectData{
   
 }
 import { Router } from '@angular/router';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { ProjectFormComponent } from './components/project-form/project-form.component';
 
 
 type SIDENAV_INTERFACE = {
@@ -79,9 +81,18 @@ export class AppComponent {
   ]
   sidenavMenu : Array<SIDENAV_INTERFACE> = SIDENAV_MENUS;
 
-  constructor(private router : Router) {}
+  constructor(private router : Router,public dialog: MatDialog) {}
 
   navigateURL(path : string) {
     this.router.navigate([path]);
+  }
+ 
+
+  openDialog() {
+    const dialogRef = this.dialog.open(ProjectFormComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }
