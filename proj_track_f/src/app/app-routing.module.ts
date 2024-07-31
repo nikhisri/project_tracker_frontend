@@ -22,7 +22,7 @@ const routes: Routes = [
     path: 'table',component:TableComponent
   },
   {
-    path: 'dash',component:DashboardComponent
+    path: 'dashboard',component:DashboardComponent
   },
   {
     path: 'issue',component:IssueComponent
@@ -30,6 +30,7 @@ const routes: Routes = [
   {
     path: 'actions',component:ActionsComponent
   },
+  {
     path: 'issueform',component:IssueFormComponent
   },
 
