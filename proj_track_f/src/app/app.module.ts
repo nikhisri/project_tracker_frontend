@@ -17,6 +17,9 @@ import { MatInputModule } from '@angular/material/input';
 import { ProjectFormComponent } from './project-form/project-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { IssueComponent } from './issue/issue.component';
+import { ActionsComponent } from './actions/actions.component';
+import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 // import { RegisterationComponent } from './registeration/registeration.component';
 import { IssueFormComponent } from './components/issue-form/issue-form.component';
@@ -26,12 +29,15 @@ import {MatGridListModule} from '@angular/material/grid-list'
 import { HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './homepage/homepage.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     TableComponent,
     ProjectFormComponent,
     DashboardComponent,
+    IssueComponent,
+    ActionsComponent,
     // RegisterationComponent,
     IssueFormComponent,
     ActionFormComponent,
@@ -53,10 +59,10 @@ import { HomepageComponent } from './homepage/homepage.component';
     MatCardModule,
     MatSidenavModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MatDialogModule,
     MatGridListModule,
-    HttpClientModule,
-    // HomepageComponent
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,14 +1,5 @@
 import { Component, Input } from '@angular/core';
-export interface PeriodicElement {
-  trcode: string;
-  name: string;
-  start_date: string;
-  end_date: string;
-  due_in: number;
-  budget_value: number;
-  status: string;
-  owner: string;
-}
+
 export interface DashboardElement{
   trcode: string;
   name: string;
@@ -24,26 +15,37 @@ export interface TableData {
   styleUrls: ['./table.component.css']
 })
 export class TableComponent {
-  @Input() dataSource: TableData[] = [];
+  @Input() dataSource: any[] = [];
   displayedColumns: string[] = [];
+  
 
   ngOnInit(): void {
+    
+    console.log("data in table ", this.dataSource);
+  }
+  ngAfterContentChecked(){
+    console.log("data in table viewinit ", this.dataSource);
     this.determineDisplayedColumns();
   }
+  
  allKeys:any;
   // Determine displayed columns dynamically based on the structure of the data
   determineDisplayedColumns(): void {
     if (this.dataSource.length > 0) {
       // Get all unique keys from the data
+      
       this.allKeys = this.dataSource.reduce((keys, item) => {
         return keys['concat'](Object.keys(item));
       }, []);
       this.displayedColumns = Array.from(new Set(this.allKeys));
     }
+ 
   }
 
+ 
   // Check if a value is a string
   isString(value: any): boolean {
     return typeof value === 'string';
   }
+  
 }
