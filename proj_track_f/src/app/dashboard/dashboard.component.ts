@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ProjectFormComponent } from '../project-form/project-form.component';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -46,7 +49,7 @@ export class DashboardComponent {
     ]
     sidenavMenu : Array<SIDENAV_INTERFACE> = SIDENAV_MENUS;
   
-    constructor(private router : Router) {}
+    constructor(private router : Router,public dialog: MatDialog) {}
     navigateToProjectForm(): void {
       this.router.navigate(['/project-form']);
     }
@@ -54,7 +57,14 @@ export class DashboardComponent {
     navigateURL(path : string) {
       this.router.navigate([path]);
     }
-  }
+   openForm(enterAnimationDuration: string, exitAnimationDuration:string) : void{
+    this.dialog.open(ProjectFormComponent, {
+      width: '1100px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+});
+}
+}
 export interface projectData{
   project_id:String;
   project_name:String;
@@ -78,7 +88,7 @@ type SIDENAV_INTERFACE = {
 const SIDENAV_MENUS : Array<SIDENAV_INTERFACE>= [
     {
       label : "Dashboard",
-      to : "/dashboard"
+      to : "/dash"
     },
     {
       label : "Key Issues",
