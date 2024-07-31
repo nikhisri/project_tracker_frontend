@@ -19,6 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RegisterationComponent } from './registeration/registeration.component';
+import { IssueFormComponent } from './components/issue-form/issue-form.component';
+import { ActionFormComponent } from './components/action-form/action-form.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { RegisterationComponent } from './registeration/registeration.component'
     TableComponent,
     ProjectFormComponent,
     DashboardComponent,
-    RegisterationComponent
+    RegisterationComponent,
+    IssueFormComponent,
+    ActionFormComponent
   ],
   imports: [
     BrowserModule,
