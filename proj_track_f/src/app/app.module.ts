@@ -18,7 +18,11 @@ import { ProjectFormComponent } from './project-form/project-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { RegisterationComponent } from './registeration/registeration.component';
+// import { RegisterationComponent } from './registeration/registeration.component';
+import { LoginComponent } from './login/login.component';
+import {MatGridListModule} from '@angular/material/grid-list'
+import { HttpClientModule } from '@angular/common/http';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +30,15 @@ import { RegisterationComponent } from './registeration/registeration.component'
     TableComponent,
     ProjectFormComponent,
     DashboardComponent,
-    RegisterationComponent
+    // RegisterationComponent,
+    LoginComponent,
+    HomepageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    CommonModule,
     MatListModule,
     MatToolbarModule,
     MatIconModule,
@@ -42,7 +49,10 @@ import { RegisterationComponent } from './registeration/registeration.component'
     MatCardModule,
     MatSidenavModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatGridListModule,
+    HttpClientModule,
+    // HomepageComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

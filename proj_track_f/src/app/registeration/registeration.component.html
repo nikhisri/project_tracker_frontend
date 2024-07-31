@@ -1,1 +1,23 @@
-<p>registeration works!</p>
+<div class="mainDiv">
+    <mat-grid-list cols="2" rowHeight="1:1">
+    <mat-grid-tile>
+    <div class="left-side"></div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+    <div class="login-form">
+    <h2>Login to your account</h2>
+    <form (ngSubmit)="onLogin()" class="login-form">
+    <b>Email address</b>
+    <input type="text" name="username" placeholder="John@companyname.com" [(ngModel)]="username" required>
+    <b>Password</b>
+     
+                  <input type="password" name="password" placeholder="Password" [(ngModel)]="password" required>
+    <!-- <input type="checkbox" id="Remember me" name="remember-me"> -->
+    <button type="submit">Login</button><br><br>
+    <!-- New user? Register <a href="#" (click)="onRegister()">Register</a> -->
+    </form>
+    </div>
+    </mat-grid-tile>
+    </mat-grid-list>
+    </div>
+    
