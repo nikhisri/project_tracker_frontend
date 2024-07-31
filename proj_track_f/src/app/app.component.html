@@ -11,11 +11,12 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 
-<mat-toolbar style="background-color:#FFFFFF;">
+<!-- <app-login></app-login> -->
+<!-- <mat-toolbar style="background-color:#FFFFFF;"> -->
   <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
   </button> -->
-  <img src="assets/Digiverz.png" width="150" />
+  <!-- <img src="assets/Digiverz.png" width="150" />
   <span class="navbar-spacer"></span>
   <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
     <mat-icon>notifications</mat-icon>
@@ -23,15 +24,15 @@
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
     <div class="profile">RS</div>
   </button>
-</mat-toolbar>
+</mat-toolbar> -->
 
-<mat-drawer-container class="sidenav-container">
+<!-- <mat-drawer-container class="sidenav-container"> -->
   <!-- Side Menu -->
-  <mat-drawer mode="side" opened>
+  <!-- <mat-drawer mode="side" opened>
     <div *ngFor="let menu of sidenavMenu">
         <button mat-button color="primary" style="color: white;" (click)="navigateURL(menu.to)" >{{menu.label}}</button>
     </div>
-  </mat-drawer>
+  </mat-drawer> -->
 
 <router-outlet></router-outlet>
 

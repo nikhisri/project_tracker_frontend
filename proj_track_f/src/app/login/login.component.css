@@ -7,7 +7,7 @@
     overflow: hidden;
    }
   .left-side {
-    background-image: url('../../../../assets/cmslogin.png'); /* Replace 'background-image.jpg' with your image path */
+    background-image: url('../../assets/pmologinbg.png'); /* Replace 'background-image.jpg' with your image path */
     background-size: cover;
     background-position: center;
      width: 820px;

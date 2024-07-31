@@ -5,8 +5,13 @@ import { TableComponent } from './components/table/table.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { IssueFormComponent } from './components/issue-form/issue-form.component';
 import { ActionFormComponent } from './components/action-form/action-form.component';
+import { LoginComponent } from './login/login.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 const routes: Routes = [
+  // {
+    // path:'login',component: LoginComponent, loadChildren:() =>import('../../')
+  // }
   {
     path: 'projectform',component:ProjectFormComponent
   },
@@ -24,6 +29,12 @@ const routes: Routes = [
     path: 'actionform',component:ActionFormComponent
     
   },
+  {
+    path:'',component:LoginComponent
+  },
+  {
+    path:'home',component:HomepageComponent
+  }
 ];
 
 @NgModule({
