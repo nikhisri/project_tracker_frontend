@@ -19,6 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { IssueComponent } from './issue/issue.component';
 import { ActionsComponent } from './actions/actions.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { ActionsComponent } from './actions/actions.component';
     MatInputModule,
     MatCardModule,
     MatSidenavModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
     
   ],
   providers: [],

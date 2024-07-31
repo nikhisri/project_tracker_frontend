@@ -15,11 +15,16 @@ export interface TableData {
   styleUrls: ['./table.component.css']
 })
 export class TableComponent {
-  @Input() dataSource: TableData[] = [];
+  @Input() dataSource: any[] = [];
   displayedColumns: string[] = [];
   
 
   ngOnInit(): void {
+    
+    console.log("data in table ", this.dataSource);
+  }
+  ngAfterContentChecked(){
+    console.log("data in table viewinit ", this.dataSource);
     this.determineDisplayedColumns();
   }
   

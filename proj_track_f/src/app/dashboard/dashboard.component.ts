@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 export interface projData{
   project_id:String;
@@ -47,62 +48,35 @@ const SIDENAV_MENUS : Array<SIDENAV_INTERFACE>= [
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
+  data: any[]=[];
  
     title = 'proj_track_f';
-    PROJECT_DATA:projData[]=[
-      {
-        "project_id": "P001",
-        "project_name": "Project Alpha",
-        "project_desc": "This is a description of Project Alpha.",
-        "project_start_Date": "2024-01-15",
-        "actual_start_Date": "2024-01-20",
-        "planned_end_Date": "2024-12-31",
-        "actual_end_Date": "",
-        "revised_Completion_date_1": "2025-01-15",
-        "revised_Completion_date_2": "2025-02-15",
-        "action_owner": "John Doe",
-        "action_Owner_dept": "Development",
-        "project_Status": "In Progress",
-        "owner_Id": "E123",
-        "remarks": "Project is on track."
-      },
-      {
-        "project_id": "P002",
-        "project_name": "Project Beta",
-        "project_desc": "This is a description of Project Beta.",
-        "project_start_Date": "2024-02-01",
-        "actual_start_Date": "2024-02-05",
-        "planned_end_Date": "2024-11-30",
-        "actual_end_Date": "",
-        "revised_Completion_date_1": "2024-12-15",
-        "revised_Completion_date_2": "",
-        "action_owner": "Jane Smith",
-        "action_Owner_dept": "Marketing",
-        "project_Status": "Delayed",
-        "owner_Id": "E456",
-        "remarks": "Project is facing delays due to resource constraints."
-      },
-      {
-        "project_id": "P003",
-        "project_name": "Project Gamma",
-        "project_desc": "This is a description of Project Gamma.",
-        "project_start_Date": "2024-03-10",
-        "actual_start_Date": "2024-03-12",
-        "planned_end_Date": "2024-10-20",
-        "actual_end_Date": "",
-        "revised_Completion_date_1": "2024-11-15",
-        "revised_Completion_date_2": "",
-        "action_owner": "Alice Johnson",
-        "action_Owner_dept": "Finance",
-        "project_Status": "On Hold",
-        "owner_Id": "E789",
-        "remarks": "Project is on hold due to budget approval pending."
-      }
+    
+    PROJECT_DATA:projData[]=[];
+      // {
+      //   "project_id": "P001",
+      //   "project_name": "Project Alpha",
+      //   "project_desc": "This is a description of Project Alpha.",
+      //   "project_start_Date": "2024-01-15",
+      //   "actual_start_Date": "2024-01-20",
+      //   "planned_end_Date": "2024-12-31",
+      //   "actual_end_Date": "",
+      //   "revised_Completion_date_1": "2025-01-15",
+      //   "revised_Completion_date_2": "2025-02-15",
+      //   "action_owner": "John Doe",
+      //   "action_Owner_dept": "Development",
+      //   "project_Status": "In Progress",
+      //   "owner_Id": "E123",
+      //   "remarks": "Project is on track."
+      // },
+      
      
-    ]
+    
     sidenavMenu : Array<SIDENAV_INTERFACE> = SIDENAV_MENUS;
   
-    constructor(private router : Router) {}
+    constructor(private router : Router, 
+      public api: ApiService
+    ) {}
 
    
   
@@ -110,5 +84,22 @@ export class DashboardComponent {
       this.router.navigate([path]);
 
     }
+
+    ngOnInit(): void {
+      this.get();
+    }
+  
+    get() {
+      this.api.get('http://localhost:5000/v1/user/getAllProjects').then((data: any) => {
+        if (data) {
+          console.log(data);
+          this.PROJECT_DATA = data.data;
+          console.log(this.PROJECT_DATA);
+        } else {
+          console.log('Not Found');
+        }
+      });}
+      
+      
     
   }
