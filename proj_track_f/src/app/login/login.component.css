@@ -1,0 +1,82 @@
+/* .container {
+    display: flex;
+    height: 99vh;
+  } */
+  .mainDiv{
+    height: 100%;
+    overflow: hidden;
+   }
+  .left-side {
+    background-image: url('../../assets/pmologinbg.png'); /* Replace 'background-image.jpg' with your image path */
+    background-size: cover;
+    background-position: center;
+     width: 820px;
+height: 100%;
+top: -4px;
+gap: 0px;
+;
+  }
+ 
+.login-form h2 {
+    margin-bottom: -120px;
+    margin-right: 500px;
+    margin-inline-end: auto;
+    width: Fixed (720px)px;
+height: Fixed (100
+px)px;
+  }
+  .login-form {
+    border: 0px solid #ccc;
+    padding: 150px, 75px, 150px, 75px;
+    border-radius: 100px;
+    background-color: #fff;
+    position: center;
+    justify-content: center;
+    align-items: center;
+    width: Fixed (720px)px;
+height: Fixed (800px)px;
+left: 720px;
+padding: 150px 75px 150px 75px;
+gap: 53px;
+opacity: 0px;
+ 
+  }
+
+  .login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 30px;
+    border: 2px solid #ccc;
+    border-radius: 3px;
+  }
+ 
+ 
+.login-container input[type="checkbox"] {
+    margin-left: -5px;
+    width: 100%;
+ 
+}
+ 
+.login-container .remember-me {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    text-align: left;
+    margin-left:100px;
+ 
+  
+}
+  .login-form button {
+    width: 105%;
+    padding: 10px;
+    background-color: #0a2b4e;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .login-form button:hover {
+    background-color: #05182c;
+  }
+ 
+ 

@@ -20,6 +20,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { IssueComponent } from './issue/issue.component';
 import { ActionsComponent } from './actions/actions.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
+// import { RegisterationComponent } from './registeration/registeration.component';
+import { IssueFormComponent } from './components/issue-form/issue-form.component';
+import { ActionFormComponent } from './components/action-form/action-form.component';
+import { LoginComponent } from './login/login.component';
+import {MatGridListModule} from '@angular/material/grid-list'
+import { HttpClientModule } from '@angular/common/http';
+import { HomepageComponent } from './homepage/homepage.component';
 
 
 @NgModule({
@@ -29,12 +37,18 @@ import { HttpClientModule } from '@angular/common/http';
     ProjectFormComponent,
     DashboardComponent,
     IssueComponent,
-    ActionsComponent
+    ActionsComponent,
+    // RegisterationComponent,
+    IssueFormComponent,
+    ActionFormComponent,
+    LoginComponent,
+    HomepageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    CommonModule,
     MatListModule,
     MatToolbarModule,
     MatIconModule,
@@ -46,7 +60,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatSidenavModule,
     ReactiveFormsModule,
     HttpClientModule,
-    
+    MatDialogModule,
+    MatGridListModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -54,3 +70,6 @@ import { HttpClientModule } from '@angular/common/http';
 export class AppModule {
 
  }
+  
+    
+ 
