@@ -10,7 +10,7 @@ navigateURL(arg0: any) {
 throw new Error('Method not implemented.');
 }
   title = 'project';
-sidenavMenu: any;
+  sidenavMenu : Array<SIDENAV_INTERFACE> = SIDENAV_MENUS;
 }
 
 type SIDENAV_INTERFACE = {
