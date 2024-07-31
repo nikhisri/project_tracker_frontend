@@ -1,6 +1,6 @@
 <mat-card>
     <mat-card-title>Project Summary</mat-card-title>
-    <table mat-table [dataSource]="dataSource" class=" table-container">
+    <table mat-table [dataSource]="dataSource" [displayedColumns]="displayedColumns" class=" table-container">
         
         <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
           <th mat-header-cell *matHeaderCellDef class="table-header" >{{ column }}</th>

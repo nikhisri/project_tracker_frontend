@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
-export interface projectData{
-  // project_id:String;
-  project_name:String;
-  issue_desc:String;
-  issueRaiseddate:String;
-  targetDate:String;
-  action_owner:String;
+export interface actionsData{
+  project_id:String;
+  action_id:String;
   issue_id:String;
-  issue_Status:String;
+  action_desc:String;
+  action_owner:String;
+  action_status:String;
+  target_date:String;
   remarks:String;
-  
 }
 
 @Component({
@@ -19,39 +17,36 @@ export interface projectData{
 })
 export class ActionsComponent {
 
-  ISSUE_DATA:projectData[]=[
+  ACTION_DATA:actionsData[]=[
     {
-      // "project_id": "PRJ-123321",
-      "project_name": "Project Alpha",
-      "issue_desc": "Critical issue affecting the deployment",
-      "issueRaiseddate": "2024-07-10T00:00:00.000Z",
-      "targetDate": "2024-07-20T00:00:00.000Z",
+      "project_id": "P001",
+      "action_id": "A001",
+      "issue_id": "I001",
+      "action_desc": "Resolve initial setup issues",
       "action_owner": "John Doe",
-      "issue_id": "issue-001",
-      "issue_Status": "Open",
-      "remarks": "This issue needs to be resolved before the next release.",
-  },
-  {
-    // "project_id": "PRJ-123322",
-    "project_name": "Project Alpha",
-    "issue_desc": "Critical issue affecting the deployment",
-    "issueRaiseddate": "2024-07-10T00:00:00.000Z",
-    "targetDate": "2024-07-20T00:00:00.000Z",
-    "action_owner": "John Doe",
-    "issue_id": "issue-001",
-    "issue_Status": "Inprogress",
-    "remarks": "This issue needs to be resolved before the next release.",
-},
-{
-  // "project_id": "PRJ-123323",
-  "project_name": "Project Alpha",
-  "issue_desc": "Critical issue affecting the deployment",
-  "issueRaiseddate": "2024-07-10T00:00:00.000Z",
-  "targetDate": "2024-07-20T00:00:00.000Z",
-  "action_owner": "John Doe",
-  "issue_id": "issue-001",
-  "issue_Status": "Closed",
-  "remarks": "This issue needs to be resolved before the next release.",
-},]
-
+      "action_status": "In Progress",
+      "target_date": "2024-08-15",
+      "remarks": "Working on the initial setup tasks"
+    },
+    {
+      "project_id": "P002",
+      "action_id": "A002",
+      "issue_id": "I002",
+      "action_desc": "Update project documentation",
+      "action_owner": "Jane Smith",
+      "action_status": "Completed",
+      "target_date": "2024-07-30",
+      "remarks": "Documentation updated successfully"
+    },
+    {
+      "project_id": "P003",
+      "action_id": "A003",
+      "issue_id": "I003",
+      "action_desc": "Review budget allocation",
+      "action_owner": "Alice Johnson",
+      "action_status": "Pending",
+      "target_date": "2024-08-10",
+      "remarks": "Awaiting budget approval"
+    }
+  ]
 }

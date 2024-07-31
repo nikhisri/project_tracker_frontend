@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-export interface projectData{
-  // project_id:String;
+export interface issueData{
+  project_id:String;
   project_name:String;
   issue_desc:String;
   issueRaiseddate:String;
@@ -10,7 +10,7 @@ export interface projectData{
   issue_id:String;
   issue_Status:String;
   remarks:String;
-  
+ 
 }
 @Component({
   selector: 'app-issue',
@@ -19,9 +19,9 @@ export interface projectData{
 })
 export class IssueComponent {
 
-  ISSUE_DATA:projectData[]=[
+  ISSUE_DATA:issueData[]=[
     {
-      // "project_id": "PRJ-123321",
+      "project_id": "PRJ-123321",
       "project_name": "Project Alpha",
       "issue_desc": "Critical issue affecting the deployment",
       "issueRaiseddate": "2024-07-10T00:00:00.000Z",
@@ -32,7 +32,7 @@ export class IssueComponent {
       "remarks": "This issue needs to be resolved before the next release.",
   },
   {
-    // "project_id": "PRJ-123322",
+    "project_id": "PRJ-123322",
     "project_name": "Project Alpha",
     "issue_desc": "Critical issue affecting the deployment",
     "issueRaiseddate": "2024-07-10T00:00:00.000Z",
@@ -43,7 +43,7 @@ export class IssueComponent {
     "remarks": "This issue needs to be resolved before the next release.",
 },
 {
-  // "project_id": "PRJ-123323",
+  "project_id": "PRJ-123323",
   "project_name": "Project Alpha",
   "issue_desc": "Critical issue affecting the deployment",
   "issueRaiseddate": "2024-07-10T00:00:00.000Z",
@@ -52,6 +52,7 @@ export class IssueComponent {
   "issue_id": "issue-001",
   "issue_Status": "Closed",
   "remarks": "This issue needs to be resolved before the next release.",
-},]
+},
+  ]
 
 }

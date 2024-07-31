@@ -22,6 +22,7 @@ export class TableComponent {
   ngOnInit(): void {
     this.determineDisplayedColumns();
   }
+  
  allKeys:any;
   // Determine displayed columns dynamically based on the structure of the data
   determineDisplayedColumns(): void {

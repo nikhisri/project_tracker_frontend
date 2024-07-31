@@ -1,29 +1,24 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-export interface projectData{
+export interface projData{
   project_id:String;
   project_name:String;
-  issue_desc:String;
-  issueRaiseddate:String;
-  targetDate:String;
+  project_desc:String;
+  project_start_Date:String;
+  actual_start_Date:String;
+  planned_end_Date:String;
+  actual_end_Date:String;
+  revised_Completion_date_1:String;
+  revised_Completion_date_2:String;
   action_owner:String;
-  issue_id:String;
-  issue_Status:String;
+  action_Owner_dept:String;
+  project_Status:String;
+  owner_Id:String;
   remarks:String;
-  
 }
-export interface actionData{
-  project_id:String;
-  action_id: String,
-  issue_id: String,
-  action_desc: String,
-  action_owner:String;
-  action_status: String,
-  target_date: String,
-  remarks:String;
-  
-}
+
+
 
 type SIDENAV_INTERFACE = {
   label : string,
@@ -54,55 +49,57 @@ const SIDENAV_MENUS : Array<SIDENAV_INTERFACE>= [
 export class DashboardComponent {
  
     title = 'proj_track_f';
-    PROJECT_DATA:projectData[]=[
+    PROJECT_DATA:projData[]=[
       {
-        "project_id": "PRJ-123321",
+        "project_id": "P001",
         "project_name": "Project Alpha",
-        "issue_desc": "Critical issue affecting the deployment",
-        "issueRaiseddate": "2024-07-10T00:00:00.000Z",
-        "targetDate": "2024-07-20T00:00:00.000Z",
+        "project_desc": "This is a description of Project Alpha.",
+        "project_start_Date": "2024-01-15",
+        "actual_start_Date": "2024-01-20",
+        "planned_end_Date": "2024-12-31",
+        "actual_end_Date": "",
+        "revised_Completion_date_1": "2025-01-15",
+        "revised_Completion_date_2": "2025-02-15",
         "action_owner": "John Doe",
-        "issue_id": "issue-001",
-        "issue_Status": "Open",
-        "remarks": "This issue needs to be resolved before the next release.",
-    },
-    {
-      "project_id": "PRJ-123322",
-      "project_name": "Project Alpha",
-      "issue_desc": "Critical issue affecting the deployment",
-      "issueRaiseddate": "2024-07-10T00:00:00.000Z",
-      "targetDate": "2024-07-20T00:00:00.000Z",
-      "action_owner": "John Doe",
-      "issue_id": "issue-001",
-      "issue_Status": "Inprogress",
-      "remarks": "This issue needs to be resolved before the next release.",
-  },
-  {
-    "project_id": "PRJ-123323",
-    "project_name": "Project Alpha",
-    "issue_desc": "Critical issue affecting the deployment",
-    "issueRaiseddate": "2024-07-10T00:00:00.000Z",
-    "targetDate": "2024-07-20T00:00:00.000Z",
-    "action_owner": "John Doe",
-    "issue_id": "issue-001",
-    "issue_Status": "Closed",
-    "remarks": "This issue needs to be resolved before the next release.",
-  },]
-  ACTION_DATA:actionData[]=[
-    
+        "action_Owner_dept": "Development",
+        "project_Status": "In Progress",
+        "owner_Id": "E123",
+        "remarks": "Project is on track."
+      },
       {
-        "project_id": "proj123",
-        "action_id": "act456",
-        "issue_id": "iss789",
-        "action_desc": "Description of the required action.",
-        "action_owner": "John Doe",
-        "action_status": "Open",
-        "target_date": "2024-08-01T00:00:00.000Z",
-        "remarks": "This is a sample remark."
+        "project_id": "P002",
+        "project_name": "Project Beta",
+        "project_desc": "This is a description of Project Beta.",
+        "project_start_Date": "2024-02-01",
+        "actual_start_Date": "2024-02-05",
+        "planned_end_Date": "2024-11-30",
+        "actual_end_Date": "",
+        "revised_Completion_date_1": "2024-12-15",
+        "revised_Completion_date_2": "",
+        "action_owner": "Jane Smith",
+        "action_Owner_dept": "Marketing",
+        "project_Status": "Delayed",
+        "owner_Id": "E456",
+        "remarks": "Project is facing delays due to resource constraints."
+      },
+      {
+        "project_id": "P003",
+        "project_name": "Project Gamma",
+        "project_desc": "This is a description of Project Gamma.",
+        "project_start_Date": "2024-03-10",
+        "actual_start_Date": "2024-03-12",
+        "planned_end_Date": "2024-10-20",
+        "actual_end_Date": "",
+        "revised_Completion_date_1": "2024-11-15",
+        "revised_Completion_date_2": "",
+        "action_owner": "Alice Johnson",
+        "action_Owner_dept": "Finance",
+        "project_Status": "On Hold",
+        "owner_Id": "E789",
+        "remarks": "Project is on hold due to budget approval pending."
       }
-      
-
-        ]
+     
+    ]
     sidenavMenu : Array<SIDENAV_INTERFACE> = SIDENAV_MENUS;
   
     constructor(private router : Router) {}
@@ -113,24 +110,5 @@ export class DashboardComponent {
       this.router.navigate([path]);
 
     }
-    // navigateTable(table: string): void {
-    //   this.updateTable(table);
-    // }
-  
-    // private updateTable(table: string): void {
-    //   this.dataSource = this.tableData[table] || [];
-    //   this.determineDisplayedColumns();
-    // }
-  
-    // private determineDisplayedColumns(): void {
-    //   if (this.dataSource.length > 0) {
-    //     const allKeys = this.dataSource.reduce((keys, item) => {
-    //       return keys.concat(Object.keys(item));
-    //     }, [] as string[]);
-    //     this.displayedColumns = Array.from(new Set(allKeys));
-    //   } else {
-    //     this.displayedColumns = [];
-    //   }
-    // }
     
   }
