@@ -17,6 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ProjectFormComponent } from './project-form/project-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -38,8 +39,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatInputModule,
     MatCardModule,
     MatSidenavModule,
-    ReactiveFormsModule
-    
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -47,3 +48,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 export class AppModule {
 
  }
+  
+    
+ 
