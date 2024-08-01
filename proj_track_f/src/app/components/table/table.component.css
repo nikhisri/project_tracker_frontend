@@ -1,19 +1,38 @@
 
 table.mat-table {
     width: 587px;
-    height:283px;
+    height:683px;
     font-size:14px;
   }
   mat-card{
-    width:200%;
-    height:500px;
-    padding:20px;
+    /* width:200%;
+    height:200vh;
+    padding:20px; */
+    max-width: 100%;
+    margin: 20px;
   }
   th.mat-header-cell,
   td.mat-cell {
     background-color: white;
     
   }
+  .table-container {
+    max-height: 400px; /* Adjust height as needed */
+    overflow-y: auto;
+    display: block;
+}
+
+.table-header, {
+/*   
+}.data-row, .header-row { */
+    display: table;
+    width: 100%;
+    table-layout: fixed; /* Ensure columns have equal width */
+}
+
+.table-container table {
+    width: 100%;
+}
   .card-container{
     border-radius:10px;
   }
