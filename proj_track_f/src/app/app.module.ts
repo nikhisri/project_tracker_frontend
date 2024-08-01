@@ -28,6 +28,7 @@ import { LoginComponent } from './login/login.component';
 import {MatGridListModule} from '@angular/material/grid-list'
 // import { HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './homepage/homepage.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { HomepageComponent } from './homepage/homepage.component';
     HttpClientModule,
     MatDialogModule,
     MatGridListModule,
-    HttpClientModule
+    HttpClientModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

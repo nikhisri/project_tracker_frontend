@@ -33,9 +33,9 @@
   </button> -->
   <img src="assets/Digiverz.png" width="150" />
   <span class="navbar-spacer"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+  <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
     <mat-icon>notifications</mat-icon>
-  </button>
+  </button> -->
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
     <div class="profile">RS</div>
   </button>
@@ -51,9 +51,9 @@
   <!-- <router-outlet></router-outlet> -->
   <div style="display: flex;justify-content: space-between;margin: 20px;">
     <p style="font-size: 29px;font-weight: 500;">Projects</p>   
-    <button mat-raised-button (click)="openForm('3000ms', '1500ms')">+New Project</button>
+    <button style="width:250px"mat-raised-button (click)="openForm('3000ms', '1500ms')">+New Project</button>
    </div>
 
-   <app-table [dataSource]="PROJECT_DATA"></app-table>
+   <app-table [dataSource]="PROJECT_DATA" [columnMapping]="columnMapping"></app-table>
 </mat-drawer-container>
 
