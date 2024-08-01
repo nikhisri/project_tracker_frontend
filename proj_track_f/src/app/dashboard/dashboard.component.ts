@@ -10,6 +10,7 @@ import { ProjectFormComponent } from '../project-form/project-form.component';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
+  projects: any[] = [];
   
     constructor(private router : Router,   public api: ApiService ,public dialog: MatDialog ) {}
     data: any[]=[];
@@ -89,9 +90,27 @@ export class DashboardComponent {
   }
 });
 }    
+
+onDeleteProject(project_id: string): void {
+  console.log("hi",project_id);
+  this.api.post('http://localhost:5000/v1/user/deleteproj', { id:project_id }).then((data: any) => {
+    if (data) {
+      console.log('Delete successful', data);
+      if(data && data.message === "Project deleted successfully"){
+        this.get();
+      }
+    } else {
+      console.log('Delete failed');
+    }
+  }).catch((error) => {
+    console.log('Post error', error);
+  });
+}
+
+}
       
     
-  }
+  
 
   export interface projectData{
     project_id:String;

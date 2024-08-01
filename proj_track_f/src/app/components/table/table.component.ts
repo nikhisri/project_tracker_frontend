@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
 export interface DashboardElement{
@@ -19,6 +19,7 @@ export class TableComponent {
   @Input() dataSource: any[] = [];
   @Input() columnMapping: { [key: string]: string } = {};
   // dataSource1: MatTableDataSource<any> = new MatTableDataSource();
+  @Output() deleteProject: EventEmitter<string> = new EventEmitter<string>();
   displayedColumns: string[] = [];
   filteredData: any[] = [];
   displayedColumnsWithEllipsis: string[] = [];
@@ -88,8 +89,11 @@ export class TableComponent {
     console.log('Edit row with ID:', rowId);
   }
 
-  onDeleteClick(rowId: string): void {
-    // Handle delete action here
-    console.log('Delete row with ID:', rowId);
+  // onDeleteClick(rowId: string): void {
+  //   // Handle delete action here
+  //   console.log('Delete row with ID:', rowId);
+  // }
+  onDeleteClick(project_id: string): void {
+    this.deleteProject.emit(project_id);
   }
 }

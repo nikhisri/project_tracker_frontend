@@ -54,6 +54,6 @@
     <button style="width:250px"mat-raised-button (click)="openForm('3000ms', '1500ms')">+New Project</button>
    </div>
 
-   <app-table [dataSource]="PROJECT_DATA" [columnMapping]="columnMapping"></app-table>
+   <app-table [dataSource]="PROJECT_DATA" [columnMapping]="columnMapping" (deleteProject)="onDeleteProject($event)"></app-table>
 </mat-drawer-container>
 
