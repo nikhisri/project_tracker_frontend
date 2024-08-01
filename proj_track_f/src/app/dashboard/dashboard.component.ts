@@ -4,19 +4,12 @@ import { ApiService } from 'src/app/services/api.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ProjectFormComponent } from '../project-form/project-form.component';
 
-
-
-
-
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-  
-    
   
     constructor(private router : Router,   public api: ApiService ,public dialog: MatDialog ) {}
     data: any[]=[];
@@ -37,9 +30,6 @@ export class DashboardComponent {
     });
     }
     
-   
-  
-
     ngOnInit(): void {
       this.get();
     }

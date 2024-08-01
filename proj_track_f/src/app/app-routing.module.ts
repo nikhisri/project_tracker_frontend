@@ -22,7 +22,7 @@ const routes: Routes = [
     path: 'table',component:TableComponent
   },
   {
-    path: 'dashboard',component:DashboardComponent
+    path: 'project',component:DashboardComponent
   },
   {
     path: 'issue',component:IssueComponent
@@ -42,7 +42,7 @@ const routes: Routes = [
     path:'',component:LoginComponent
   },
   {
-    path:'home',component:HomepageComponent
+    path:'dashboard',component:HomepageComponent
   }
 ];
 
