@@ -110,7 +110,7 @@ table.mat-table {
     border-radius:8px;
 
 }
-.tendering-floating{
+.pending{
     background-color:rgba(230,95,43,18%);
     width:80px;
     padding-top:5px;
@@ -126,3 +126,31 @@ table.mat-table {
 .custom-column {
     width: 200px;
   }
+/* 
+  .data-text {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+   */
+  .ellipsis {
+    max-width: 100px; /* Adjust based on your needs */
+  }
+  
+  .data-text.expanded {
+    white-space: normal;
+  }
+  .desc-text {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 200px; /* Adjust based on your needs */
+  }
+  
+  .desc-text.expanded {
+    white-space: normal;
+    max-width: none;
+  }
+  

@@ -9,20 +9,45 @@
         <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
           <th mat-header-cell *matHeaderCellDef class="table-header" >{{ getDisplayName(column) }}</th>
           <td mat-cell *matCellDef="let element">
-            <ng-container *ngIf="column === 'issue_Status'|| column ==='project_Status'; else normalDisplay">
+            <ng-container *ngIf="column === 'issue_Status'|| column ==='project_Status' || column ==='action_Status'; else normalDisplay">
               <p [ngClass]="{
                 'completed': element[column] === 'Opened',
                 'in-progress': element[column] === 'In-Progress',
                 'cancelled': element[column] === 'Closed',
                 'registered': element[column] === 'registered',
-                'tendering-floating': element[column] === 'tendering' || element[column] === 'floating'
+                'pending': element[column] === 'Pending' || element[column] === 'pending'
               }" class="data-text">{{ element[column] }}</p>
             </ng-container>
+            <!-- <ng-template #normalDisplay>
+              <ng-container *ngIf="column === 'project_desc'">
+                <div class="desc-text" [ngClass]="{'expanded': element.expanded}">
+                  {{ element.project_desc | slice: 0:element.expanded ? element.project_desc.length : maxDescLength }}
+                  <span *ngIf="element.project_desc.length > maxDescLength && !element.expanded">...</span>
+                </div>
+                <button *ngIf="element.project_desc.length > maxDescLength" 
+                  mat-button (click)="toggleExpand(element)">
+                  {{ element.expanded ? 'Show Less' : 'Show More' }}
+                </button>
+              </ng-container>
+              <ng-container *ngIf="column !== 'project_desc' && column !== 'issue_Status' && column !== 'project_Status'">
+                <span *ngIf="isString(element[column])" class="data-text">{{ element[column] }}</span>
+              </ng-container>
+            </ng-template> -->
+            <!-- <ng-template #normalDisplay>
+              <span *ngIf="isString(element[column])" class="data-text">{{ element[column] }}</span>
+            </ng-template> -->
             <ng-template #normalDisplay>
               <span *ngIf="isString(element[column])" class="data-text">{{ element[column] }}</span>
             </ng-template>
           </td>
         </ng-container>
+          <!-- </td>
+        </ng-container> -->
+            <!-- <ng-template #normalDisplay>
+              <span *ngIf="isString(element[column])" class="data-text">{{ element[column] }}</span>
+            </ng-template>
+          </td>
+        </ng-container> -->
         <ng-container matColumnDef="ellipsis">
           <th mat-header-cell *matHeaderCellDef></th>
           <td mat-cell *matCellDef="let element">
