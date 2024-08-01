@@ -13,7 +13,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 
 const routes: Routes = [
   // {
-    // path:'login',component: LoginComponent, loadChildren:() =>import('../../')
+  //   path:'login',component: LoginComponent, loadChildren:() =>import('../../')
   // }
   {
     path: 'projectform',component:ProjectFormComponent

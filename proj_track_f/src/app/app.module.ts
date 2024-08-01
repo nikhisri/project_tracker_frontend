@@ -28,6 +28,8 @@ import { LoginComponent } from './login/login.component';
 import {MatGridListModule} from '@angular/material/grid-list'
 // import { HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './homepage/homepage.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core'; 
 
 
 @NgModule({
@@ -62,7 +64,9 @@ import { HomepageComponent } from './homepage/homepage.component';
     HttpClientModule,
     MatDialogModule,
     MatGridListModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSelectModule, // Add MatSelectModule
+    MatOptionModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

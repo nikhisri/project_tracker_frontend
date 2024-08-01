@@ -37,11 +37,13 @@ export class DashboardComponent {
     });
     }
     
-   
+  
   
 
     ngOnInit(): void {
       this.get();
+      const userRole = localStorage.getItem('userRole');
+      console.log("ggfh",userRole);
     }
   
     get() {
