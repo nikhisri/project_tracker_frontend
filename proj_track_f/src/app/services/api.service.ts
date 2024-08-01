@@ -22,6 +22,19 @@ export class ApiService {
       });
     });
   }
+  public getbyid(url:any,param:any): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      const header = {
+        headers: new HttpHeaders()
+          .set('Content-Type', 'application/x-www-form-urlencoded')
+      };
+      this.http.get(url, header).subscribe((data) => {
+        resolve(data);
+      }, error => {
+        resolve(error);
+      });
+    });
+  }
 
   public post(url:any, param:any): Promise<any> {
     return new Promise<any>((resolve, reject) => {

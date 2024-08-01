@@ -98,6 +98,8 @@ export class TableComponent {
   onEditClick(rowId: string): void {
     // Handle edit action here
     console.log('Edit row with ID:', rowId);
+    //getbyprojectid api call --> response
+    //
   }
 
   onDeleteClick(rowId: string): void {

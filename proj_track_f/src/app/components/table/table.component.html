@@ -18,27 +18,20 @@
                 'pending': element[column] === 'Pending' || element[column] === 'pending'
               }" class="data-text">{{ element[column] }}</p>
             </ng-container>
-            <!-- <ng-template #normalDisplay>
-              <ng-container *ngIf="column === 'project_desc'">
-                <div class="desc-text" [ngClass]="{'expanded': element.expanded}">
-                  {{ element.project_desc | slice: 0:element.expanded ? element.project_desc.length : maxDescLength }}
-                  <span *ngIf="element.project_desc.length > maxDescLength && !element.expanded">...</span>
-                </div>
-                <button *ngIf="element.project_desc.length > maxDescLength" 
-                  mat-button (click)="toggleExpand(element)">
-                  {{ element.expanded ? 'Show Less' : 'Show More' }}
-                </button>
+            <ng-template #normalDisplay>
+              <ng-container *ngIf="column === 'actual_start_Date' || column==='actual_end_Date'">
+                <span *ngIf="isString(element[column])" class="data-text">{{ element[column] | date: 'yyyy-MM-dd' }}</span>
               </ng-container>
-              <ng-container *ngIf="column !== 'project_desc' && column !== 'issue_Status' && column !== 'project_Status'">
+              <ng-container *ngIf="column !== 'actual_start_Date' && column !== 'actual_end_Date'">
                 <span *ngIf="isString(element[column])" class="data-text">{{ element[column] }}</span>
               </ng-container>
+            </ng-template>
+            <!-- <ng-template #normalDisplay>
+              <span *ngIf="isString(element[column])" class="data-text">{{ element[column] }}</span>
             </ng-template> -->
             <!-- <ng-template #normalDisplay>
               <span *ngIf="isString(element[column])" class="data-text">{{ element[column] }}</span>
             </ng-template> -->
-            <ng-template #normalDisplay>
-              <span *ngIf="isString(element[column])" class="data-text">{{ element[column] }}</span>
-            </ng-template>
           </td>
         </ng-container>
           <!-- </td>
