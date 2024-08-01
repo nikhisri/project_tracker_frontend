@@ -24,6 +24,7 @@ export class TableComponent {
   filteredData: any[] = [];
   displayedColumnsWithEllipsis: string[] = [];
   selectedElement: any = null;
+  maxDescLength: number = 100;
 
   ngOnInit(): void {
     
@@ -81,6 +82,17 @@ export class TableComponent {
     //   this.dataSource.paginator.firstPage();
     // }
   // }
+  toggleExpand(element: any) {
+    // Toggle the expanded state of the description text
+    if (!element.expanded) {
+      // If not expanded, set expanded to true
+      element.expanded = true;
+    } else {
+      // If expanded, set expanded to false
+      element.expanded = false;
+    }
+  }
+
   getDisplayName(column: string): string {
     return this.columnMapping[column] || column;
   }

@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ProjectFormComponent } from '../project-form/project-form.component';
+
 export interface actionsData{
   project_id:String;
   action_id:String;
@@ -12,6 +15,30 @@ export interface actionsData{
   target_date:String;
   remarks:String;
 }
+type SIDENAV_INTERFACE = {
+  label : string,
+  to : string
+}
+
+const SIDENAV_MENUS : Array<SIDENAV_INTERFACE>= [
+    {
+      label : "Dashboard",
+      to : "/dashboard"
+    },
+    {
+      label : "Projects",
+      to : "/project"
+    },
+    {
+      label : "Key Issues",
+      to : "/issue"
+    },
+    {
+      label : "Required Actions",
+      to : "/actions"
+    }
+]
+
 
 @Component({
   selector: 'app-actions',
@@ -19,42 +46,46 @@ export interface actionsData{
   styleUrls: ['./actions.component.css']
 })
 export class ActionsComponent {
-data: any[]=[];
+
+constructor(private router : Router,   public api: ApiService ,public dialog: MatDialog ) {}
+    data: any[]=[];
   ACTION_DATA:actionsData[]=[];
-    // {
-    //   "project_id": "P001",
-    //   "action_id": "A001",
-    //   "issue_id": "I001",
-    //   "action_desc": "Resolve initial setup issues",
-    //   "action_owner": "John Doe",
-    //   "action_status": "In Progress",
-    //   "target_date": "2024-08-15",
-    //   "remarks": "Working on the initial setup tasks"
-    // },
-    // {
-    //   "project_id": "P002",
-    //   "action_id": "A002",
-    //   "issue_id": "I002",
-    //   "action_desc": "Update project documentation",
-    //   "action_owner": "Jane Smith",
-    //   "action_status": "Completed",
-    //   "target_date": "2024-07-30",
-    //   "remarks": "Documentation updated successfully"
-    // },
-    // {
-    //   "project_id": "P003",
-    //   "action_id": "A003",
-    //   "issue_id": "I003",
-    //   "action_desc": "Review budget allocation",
-    //   "action_owner": "Alice Johnson",
-    //   "action_status": "Pending",
-    //   "target_date": "2024-08-10",
-    //   "remarks": "Awaiting budget approval"
-    // }
- 
-    constructor(private router : Router, 
-      public api: ApiService
-    ) {}
+  sidenavMenu : Array<SIDENAV_INTERFACE> = SIDENAV_MENUS;
+
+  necessaryColumns: string[] =  [
+    // 'project_id', 
+    'action_id', 
+    'issue_id', 
+    'action_desc', 
+    'action_owner',
+    'action_status', 
+    'target_date',
+    //  'remarks'
+  ];
+
+  columnMapping: { [key: string]: string } = {
+    // project_id: 'Project ID',
+    project_id: 'Project ID',
+    action_id: 'Action ID',
+    issue_id: 'Issue ID',
+    action_desc: 'Action Description',
+    action_owner: 'Action Owner',
+    action_status: 'Action Status',
+    target_date: 'Completion Date',
+    remarks: 'Remarks',
+    
+  };
+
+  navigateURL(path : string) {
+    this.router.navigate([path]);
+  }
+    openForm(enterAnimationDuration: string, exitAnimationDuration:string) : void{
+      this.dialog.open(ProjectFormComponent, {
+        width: '1100px',
+        enterAnimationDuration,
+        exitAnimationDuration,
+  });
+  }
     
     ngOnInit(): void {
       this.get();
@@ -64,10 +95,20 @@ data: any[]=[];
       this.api.get('http://localhost:5000/v1/user/getallaction').then((data: any) => {
         if (data) {
           console.log("HI",data);
-          this.ACTION_DATA = data.data;
+          // this.ACTION_DATA = data.data;
+          this.ACTION_DATA = data.data.map((project: any) => {
+            // Filter to include only necessary columns
+            return this.necessaryColumns.reduce((obj: any, key: string) => {
+              if (project[key] !== undefined) {
+                obj[key] = project[key];
+              }
+              return obj;
+            }, {});
+          });
           console.log(this.ACTION_DATA);
         } else {
           console.log('Not Found');
         }
-      });}
+      });
+      }    
 }
