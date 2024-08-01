@@ -1,3 +1,4 @@
+<div class="row">
 <mat-toolbar style="background-color:#FFFFFF;">
     <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
@@ -11,14 +12,76 @@
       <div class="profile">RS</div>
     </button>
   </mat-toolbar>
+</div>
+
+<mat-drawer-container class="sidenav-container">
+  <!-- Side Menu -->
+  <mat-drawer mode="side" opened>
+    <div *ngFor="let menu of sidenavMenu">
+        <button mat-button color="primary" style="color: white;" (click)="navigateURL(menu.to)" >{{menu.label}}</button>
+    </div>
+  </mat-drawer>
+  <!-- <div class="sidebar">
+  <a class="active" href="/dashboard" style="text-align:center;">Dashboard</a>
+  <a class="active" href="/project" style="text-align:center;">Projects</a>
+  <a class="active" href="/issues" style="text-align:center;">Key Issues</a>
+  <a class="active" href="/action" style="text-align:center;">Required Actions</a>
+  </div> -->
+
+<div class="row">
+<div class="column"> 
+  <div class="card">
+  <div class="card-header">
+    Projects
+  </div>
+  <div class="card-body">
+    <div class="left-section">
+      <img src="assets/project.png" alt="Image" padding-top="20px" height="60px" width="60px">
+    </div>
+    <div class="right-section">
+      <p>*count</p>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="column"> 
+  <div class="card">
+  <div class="card-header">
+    Key Issues
+  </div>
+  <div class="card-body">
+    <div class="left-section">
+      <img src="assets/project.png" alt="Image" padding-top="20px" height="60px" width="60px">
+    </div>
+    <div class="right-section">
+      <p>Count</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="column">
+  <div class="card" >
+  <div class="card-header">
+   Required Actions
+  </div>
+  <div class="card-body">
+    <div class="left-section">
+      <img src="assets/project.png" alt="Image" padding-top="20px" height="60px" width="60px">
+    </div>
+    <div class="right-section">
+      <p>Count</p>
+    </div>  </div>
+</div>
+</div>
+</div>
+</mat-drawer-container>
+
+
   
-  <mat-drawer-container class="sidenav-container">
-    <!-- Side Menu -->
-    <mat-drawer mode="side" opened>
-      <div *ngFor="let menu of sidenavMenu">
-          <button mat-button color="primary" style="color: white;" (click)="navigateURL(menu.to)" >{{menu.label}}</button>
-      </div>
-    </mat-drawer>
-    <router-outlet></router-outlet>
-  </mat-drawer-container>
+
+  
+
+  
   

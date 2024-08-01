@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { IssueFormComponent } from '../components/issue-form/issue-form.component';
+ 
 export interface issueData{
   project_id:String;
   project_name:String;
@@ -57,9 +60,21 @@ data: any[]=[];
  
 
 constructor(private router : Router, 
-  public api: ApiService
+  public api: ApiService,public dialog: MatDialog
 ) {}
-
+PROJECT_DATA:any[]=[];
+    sidenavMenu : Array<SIDENAV_INTERFACE> = SIDENAV_MENUS;
+  
+    navigateURL(path : string) {
+      this.router.navigate([path]);
+    }
+      openForm(enterAnimationDuration: string, exitAnimationDuration:string) : void{
+        this.dialog.open(IssueFormComponent, {
+          width: '1100px',
+          enterAnimationDuration,
+          exitAnimationDuration,
+    });
+    }
 ngOnInit(): void {
   this.get();
 }
@@ -75,3 +90,27 @@ get() {
     }
   });}
 }
+type SIDENAV_INTERFACE = {
+  label : string,
+  to : string
+}
+
+const SIDENAV_MENUS : Array<SIDENAV_INTERFACE>= [
+    {
+      label : "Dashboard",
+      to : "/dashboard"
+    },
+    {
+      label : "Projects",
+      to : "/project"
+    },
+    {
+      label : "Key Issues",
+      to : "/issue"
+    },
+    {
+      label : "Required Actions",
+      to : "/actions"
+    }
+]
+

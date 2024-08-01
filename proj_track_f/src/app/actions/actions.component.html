@@ -1,2 +1,30 @@
-<p>actions works!</p>
-<app-table [dataSource]="ACTION_DATA"></app-table>
+<mat-toolbar style="background-color:#FFFFFF;">
+    <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button> -->
+    <img src="assets/Digiverz.png" width="150" />
+    <span class="navbar-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>notifications</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <div class="profile">RS</div>
+    </button>
+  </mat-toolbar>
+  
+  <mat-drawer-container class="sidenav-container">
+  <!-- Side Menu -->
+  <mat-drawer mode="side" opened>
+    <div *ngFor="let menu of sidenavMenu">
+        <button mat-button color="primary" style="color: white;" (click)="navigateURL(menu.to)" >{{menu.label}}</button>
+    </div>
+  </mat-drawer>
+  <!-- <router-outlet></router-outlet> -->
+  <div style="display: flex;justify-content: space-between;margin: 20px;">
+    <p style="font-size: 29px;font-weight: 500;">Actions</p>   
+    <button style="width:150px"mat-raised-button (click)="openForm('3000ms', '1500ms')">+New Actions</button>
+   </div>
+   <app-table [dataSource]="ACTION_DATA"></app-table>
+   
+</mat-drawer-container>
+
