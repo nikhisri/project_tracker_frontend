@@ -32,8 +32,11 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core'; 
-
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatFormField } from '@angular/material/form-field';
+import { ProjectForm2Component } from './project-form2/project-form2.component';
+import {  } from '@angular/material/grid-list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +50,7 @@ import { MatOptionModule } from '@angular/material/core';
     ActionFormComponent,
     LoginComponent,
     HomepageComponent,
+    ProjectForm2Component,
 
   ],
   imports: [
@@ -70,7 +74,8 @@ import { MatOptionModule } from '@angular/material/core';
     HttpClientModule,
     MatMenuModule,
     MatSelectModule, // Add MatSelectModule
-    MatOptionModule 
+    MatOptionModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 
@@ -7,15 +7,13 @@ import { ApiService } from '../../services/api.service';
   templateUrl: './action-form.component.html',
   styleUrls: ['./action-form.component.css']
 })
-export class ActionFormComponent {
-  ActionForm!: FormGroup;
+export class ActionFormComponent implements OnInit {
+  actionForm!: FormGroup; // Fixed the casing to match Angular conventions
 
-  constructor(private fb: FormBuilder,
-    private api: ApiService
-  ) { }
+  constructor(private fb: FormBuilder, private api: ApiService) { }
 
   ngOnInit(): void {
-    this.ActionForm = this.fb.group({
+    this.actionForm = this.fb.group({
       project_id: ['', Validators.required],
       action_id: ['', Validators.required],
       issue_id: ['', Validators.required],
@@ -28,17 +26,20 @@ export class ActionFormComponent {
   }
 
   onSubmit(): void {
-    if (this.ActionForm?.valid) {
-      console.log('Form Submitted!', this.ActionForm.value);
-      this.api.post('http://localhost:5000/v1/user/createAction', this.ActionForm.value).then((data: any) => {
-        if (data) {
+    if (this.actionForm.valid) {
+      console.log('Form Submitted!', this.actionForm.value);
+      this.api.post('http://localhost:5000/v1/user/createAction', this.actionForm.value)
+        .then((data: any) => {
           console.log('Post successful', data);
-        } else {
-          console.log('Post failed');
-        }
-      }).catch((error) => {
-        console.log('Post error', error);
-      });
+          // Optionally, handle success feedback to the user here
+        })
+        .catch((error: any) => {
+          console.log('Post error', error);
+          // Optionally, handle error feedback to the user here
+        });
+    } else {
+      // Optionally, handle form errors feedback to the user here
+      console.log('Form is invalid');
     }
   }
 }

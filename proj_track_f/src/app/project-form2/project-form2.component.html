@@ -1,0 +1,204 @@
+<h2 mat-dialog-title>Create New Project</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+    <mat-grid-list cols="3"  rowHeight="90px" >
+   
+      <!-- First Row -->
+   <mat-grid-tile colspan="3">
+    <mat-grid-tile-header  style="background-color: #35535C;" [ariaColSpan]="3">
+        <p>Project Details</p>
+       </mat-grid-tile-header>
+   </mat-grid-tile>
+    <mat-grid-tile colspan="1">
+    
+        <mat-form-field appearance="outline">
+          <mat-label>Project ID</mat-label>
+          <input matInput id="project_id" formControlName="project_id">
+          <mat-error *ngIf="projectForm.get('project_id')?.invalid && projectForm.get('project_id')?.touched">
+            Project ID is required.
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="1">
+        <mat-form-field appearance="outline">
+            <mat-label>Status</mat-label>
+            <input matInput id="project_Status" formControlName="project_Status">
+            <mat-error *ngIf="projectForm.get('project_Status')?.invalid && projectForm.get('project_Status')?.touched">
+              Project Status is required.
+            </mat-error>
+          </mat-form-field>
+    
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="1">
+        <mat-form-field style="margin-right: 5px;" appearance="outline">
+          <mat-label>No. of Days</mat-label>
+          <input matInput id="required_No_days" type="number" formControlName="required_No_days">
+          <mat-error *ngIf="projectForm.get('required_No_days')?.invalid && projectForm.get('required_No_days')?.touched">
+            No. of Days is required.
+          </mat-error>
+        </mat-form-field>
+      <!-- </mat-grid-tile>
+
+      <mat-grid-tile colspan="1"> -->
+        <!-- <mat-form-field appearance="outline">
+          <mat-label>Status</mat-label>
+          <input matInput id="project_Status" formControlName="project_Status">
+          <mat-error *ngIf="projectForm.get('project_Status')?.invalid && projectForm.get('project_Status')?.touched">
+            Project Status is required.
+          </mat-error>
+        </mat-form-field> -->
+      </mat-grid-tile>
+      <mat-grid-tile colspan="3">
+            <mat-form-field  style="width:750px;" appearance="outline">
+          <mat-label>Project Name</mat-label>
+          <input matInput id="project_name" formControlName="project_name">
+          <mat-error *ngIf="projectForm.get('project_name')?.invalid && projectForm.get('project_name')?.touched">
+            Project Name is required.
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <!-- Second Row -->
+     
+      <mat-grid-tile  colspan="3">
+        <mat-form-field  style="width:750px;margin-top: 40px;margin-bottom: 20px;" appearance="outline" floatLabel="auto">
+          <mat-label>Project Description</mat-label>
+          <textarea matInput id="project_desc" formControlName="project_desc" ></textarea>
+          <mat-error *ngIf="projectForm.get('project_desc')?.invalid && projectForm.get('project_desc')?.touched">
+            Project Description is required.
+          </mat-error>
+        </mat-form-field>
+        
+      </mat-grid-tile>
+    
+
+      <!-- Fourth Row -->
+      <mat-grid-tile colspan="3">
+        <mat-grid-tile-header style="background-color: #35535C;" [ariaColSpan]="3">
+            <p>Project Duration</p>
+           </mat-grid-tile-header>
+       </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Actual Start Date</mat-label>
+          <input matInput id="actual_start_Date" type="date" formControlName="actual_start_Date">
+          <mat-error *ngIf="projectForm.get('actual_start_Date')?.invalid && projectForm.get('actual_start_Date')?.touched">
+            Actual Start Date is required.
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Project Start Date</mat-label>
+          <input matInput id="project_start_Date" type="date" formControlName="project_start_Date">
+          <mat-error *ngIf="projectForm.get('project_start_Date')?.invalid && projectForm.get('project_start_Date')?.touched">
+            Project Start Date is required.
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      
+      <mat-grid-tile colspan="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Revised Completion Date 1</mat-label>
+          <input matInput id="revised_Completion_date_1" type="date" formControlName="revised_Completion_date_1">
+          <mat-error *ngIf="projectForm.get('revised_Completion_date_1')?.invalid && projectForm.get('revised_Completion_date_1')?.touched">
+            Revised Completion Date 1 is required.
+          </mat-error>
+        </mat-form-field>
+        
+      </mat-grid-tile>
+  
+
+      <!-- Fifth Row -->
+      <mat-grid-tile colspan="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Actual End Date</mat-label>
+          <input matInput id="actual_end_Date" type="date" formControlName="actual_end_Date">
+          <mat-error *ngIf="projectForm.get('actual_end_Date')?.invalid && projectForm.get('actual_end_Date')?.touched">
+            Actual End Date is required.
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Planned End Date</mat-label>
+          <input matInput id="planned_end_Date" type="date" formControlName="planned_end_Date">
+          <mat-error *ngIf="projectForm.get('planned_end_Date')?.invalid && projectForm.get('planned_end_Date')?.touched">
+            Planned End Date is required.
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Revised Completion Date 2</mat-label>
+          <input matInput id="revised_Completion_date_2" type="date" formControlName="revised_Completion_date_2">
+          <mat-error *ngIf="projectForm.get('revised_Completion_date_2')?.invalid && projectForm.get('revised_Completion_date_2')?.touched">
+            Revised Completion Date 2 is required.
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <!-- Third Row -->
+      <mat-grid-tile colspan="3">
+        <mat-grid-tile-header style="background-color: #35535C;" [ariaColSpan]="3">
+            <p>Action Owner Details</p>
+           </mat-grid-tile-header>
+       </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        
+        <mat-form-field appearance="outline">
+          <mat-label>Action Owner</mat-label>
+          <input matInput id="action_owner" formControlName="action_owner">
+          <mat-error *ngIf="projectForm.get('action_owner')?.invalid && projectForm.get('action_owner')?.touched">
+            Action Owner is required.
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Owner ID</mat-label>
+          <input matInput id="owner_Id" formControlName="owner_Id">
+          <mat-error *ngIf="projectForm.get('owner_Id')?.invalid && projectForm.get('owner_Id')?.touched">
+            Owner ID is required.
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Action Owner Department</mat-label>
+          <input matInput id="action_Owner_dept" formControlName="action_Owner_dept">
+          <mat-error *ngIf="projectForm.get('action_Owner_dept')?.invalid && projectForm.get('action_Owner_dept')?.touched">
+            Action Owner Department is required.
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+
+      <!-- Last Row -->
+      <mat-grid-tile colspan="3">
+        <mat-grid-tile-header style="background-color: #35535C;"  [ariaColSpan]="3">
+            <p>Remarks</p>
+           </mat-grid-tile-header>
+       </mat-grid-tile>
+      <mat-grid-tile colspan="3">
+
+        <mat-form-field style="width:750px;margin-top: 20px;" appearance="outline" floatLabel="auto">
+          <mat-label>Remarks</mat-label>
+          <textarea matInput id="remarks" formControlName="remarks"></textarea>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <!-- Action Buttons -->
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-button (click)="onSubmit()" [mat-dialog-close]="true" [disabled]="projectForm!.invalid" cdkFocusInitial>Submit</button>
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>

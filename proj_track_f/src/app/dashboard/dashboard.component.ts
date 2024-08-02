@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ProjectFormComponent } from '../project-form/project-form.component';
-
+import { ProjectForm2Component } from '../project-form2/project-form2.component';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -51,8 +51,8 @@ export class DashboardComponent {
       this.router.navigate([path]);
     }
       openForm(enterAnimationDuration: string, exitAnimationDuration:string) : void{
-        this.dialog.open(ProjectFormComponent, {
-          width: '1100px',
+        this.dialog.open(ProjectForm2Component, {
+          width: '900px',
           enterAnimationDuration,
           exitAnimationDuration,
     });
