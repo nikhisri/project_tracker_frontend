@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-action-form',
@@ -9,7 +10,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ActionFormComponent {
   ActionForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+    private api: ApiService
+  ) { }
 
   ngOnInit(): void {
     this.ActionForm = this.fb.group({
@@ -27,6 +30,15 @@ export class ActionFormComponent {
   onSubmit(): void {
     if (this.ActionForm?.valid) {
       console.log('Form Submitted!', this.ActionForm.value);
+      this.api.post('http://localhost:5000/v1/user/createAction', this.ActionForm.value).then((data: any) => {
+        if (data) {
+          console.log('Post successful', data);
+        } else {
+          console.log('Post failed');
+        }
+      }).catch((error) => {
+        console.log('Post error', error);
+      });
     }
   }
 }

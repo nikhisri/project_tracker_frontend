@@ -29,9 +29,9 @@ import { LoginComponent } from './login/login.component';
 import {MatGridListModule} from '@angular/material/grid-list'
 // import { HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './homepage/homepage.component';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core'; 
-
 
 
 @NgModule({
@@ -68,6 +68,7 @@ import { MatOptionModule } from '@angular/material/core';
     MatDialogModule,
     MatGridListModule,
     HttpClientModule,
+    MatMenuModule,
     MatSelectModule, // Add MatSelectModule
     MatOptionModule 
   ],
