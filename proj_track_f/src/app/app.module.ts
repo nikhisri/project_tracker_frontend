@@ -31,7 +31,8 @@ import {MatGridListModule} from '@angular/material/grid-list'
 import { HomepageComponent } from './homepage/homepage.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
-import { MatOptionModule } from '@angular/material/core'; 
+import { MatOptionModule } from '@angular/material/core';
+// import { TableIssueComponent } from './components/table-issue/table-issue.component'; 
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { MatOptionModule } from '@angular/material/core';
     ActionFormComponent,
     LoginComponent,
     HomepageComponent,
+    // TableIssueComponent,
 
   ],
   imports: [
