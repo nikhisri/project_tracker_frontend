@@ -94,7 +94,22 @@ export class ActionsComponent {
           console.log('Not Found');
         }
       });
-      }    
+      }  
+      onDeleteProject(project_id: string): void {
+        console.log("hi",project_id);
+        this.api.post('http://localhost:5000/v1/user/deleteactionbyid', { id:project_id }).then((data: any) => {
+          if (data) {
+            console.log('Delete successful', data);
+            if(data && data.message === "Project deleted successfully"){
+              this.get();
+            }
+          } else {
+            console.log('Delete failed');
+          }
+        }).catch((error) => {
+          console.log('Post error', error);
+        });
+      }  
 }
 
 
