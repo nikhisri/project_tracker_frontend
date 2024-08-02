@@ -1,5 +1,9 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { ApiService } from 'src/app/services/api.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ProjectFormComponent } from 'src/app/project-form/project-form.component';
+// import { ProjectFormComponent } from '../project-form/project-form.component';
 
 export interface DashboardElement{
   trcode: string;
@@ -24,6 +28,10 @@ export class TableComponent {
   displayedColumnsWithEllipsis: string[] = [];
   selectedElement: any = null;
   maxDescLength: number = 100;
+  
+  constructor( public api: ApiService ,public dialog: MatDialog ) {}
+    data: any[]=[];
+  PROJECT_DATA:any[]=[];
 
   ngOnInit(): void {
     
@@ -81,25 +89,42 @@ export class TableComponent {
     //   this.dataSource.paginator.firstPage();
     // }
   // }
-  toggleExpand(element: any) {
-    // Toggle the expanded state of the description text
-    if (!element.expanded) {
-      // If not expanded, set expanded to true
-      element.expanded = true;
-    } else {
-      // If expanded, set expanded to false
-      element.expanded = false;
-    }
-  }
-
+ 
   getDisplayName(column: string): string {
     return this.columnMapping[column] || column;
   }
+  pid:any;
   onEditClick(rowId: string): void {
     // Handle edit action here
     console.log('Edit row with ID:', rowId);
+    this.pid=rowId;
+    this.get();
+  }
     //getbyprojectid api call --> response
-    //
+    get() {
+      this.api.get('http://localhost:5000/v1/user/projectbyid/'+ this.pid).then((data: any) => {
+        if (data) {
+          console.log(data);
+          this.PROJECT_DATA = data;
+          console.log(this.PROJECT_DATA);
+          this.openForm(this.PROJECT_DATA);
+        } else {
+          console.log('Not Found');
+        }
+      });
+  // } 
+  }
+  openForm(projectData?:any): void {
+    const dialogRef = this.dialog.open(ProjectFormComponent, {
+      width: '1100px',
+      data: projectData || {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // Handle any actions after the dialog is closed, e.g., refresh the table data
+      }
+    });
   }
 
   onDeleteClick(rowId: string): void {

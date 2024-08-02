@@ -19,7 +19,7 @@
               }" class="data-text">{{ element[column] }}</p>
             </ng-container>
             <ng-template #normalDisplay>
-              <ng-container *ngIf="column === 'actual_start_Date' || column==='actual_end_Date'">
+              <ng-container *ngIf="column === 'actual_start_Date' || column==='actual_end_Date'|| column===' revised_Completion_date_1'|| column===' revised_Completion_date_2'|| column==='project_start_Date '|| column==='planned_end_Date '">
                 <span *ngIf="isString(element[column])" class="data-text">{{ element[column] | date: 'yyyy-MM-dd' }}</span>
               </ng-container>
               <ng-container *ngIf="column !== 'actual_start_Date' && column !== 'actual_end_Date'">
