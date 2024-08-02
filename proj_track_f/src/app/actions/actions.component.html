@@ -6,7 +6,7 @@
     </mat-drawer>
     <!-- <router-outlet></router-outlet> -->
     <div style="display: flex;justify-content: space-between;margin: 20px;">
-      <p style="font-size: 29px;font-weight: 500;">Required Actions</p>   
+      <p style="font-size: 29px;font-weight: 500;"*ngIf="userRole==='developer'">REQUIRED ACTIONS</p>   
       <button style="width:150px" mat-raised-button (click)="openForm('500ms', '500ms')">+New Action</button>
      </div>
   

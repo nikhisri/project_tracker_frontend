@@ -49,6 +49,7 @@ export class ActionsComponent {
     remarks: 'Remarks',
     
   };
+userRole: any;
 
     constructor(private router : Router, 
       public api: ApiService,public dialog: MatDialog
@@ -65,8 +66,8 @@ export class ActionsComponent {
 
     ngOnInit(): void {
       this.get();
-      const userRole = localStorage.getItem('userRole');
-  if(userRole===undefined || userRole===null || userRole===""){
+      this.userRole = localStorage.getItem('userRole') || "";
+  if(this.userRole===undefined || this.userRole===null || this.userRole===""){
     this.router.navigate(['/'])
     
   } }

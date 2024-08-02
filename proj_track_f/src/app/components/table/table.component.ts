@@ -32,7 +32,7 @@ export class TableComponent {
   displayedColumnsWithEllipsis: string[] = [];
   selectedElement: any = null;
   maxDescLength: number = 100;
-  disabled: boolean=false;
+  disabled: boolean=true;
   userRole: string | undefined;
 
   constructor( public api: ApiService ,public dialog: MatDialog ) {}
@@ -42,15 +42,15 @@ export class TableComponent {
   ngOnInit(): void {
     this.userRole = localStorage.getItem('userRole') || "";
     if(this.userRole==="project manager"&& this.table==="project"){
-      this.disabled===true
+      this.disabled=false
     }
     else if
       (this.userRole==="developer"&& this.table==="issue"){
-        this.disabled===true
+        this.disabled=false
     }
     else if
     (this.userRole==="tester"&& this.table==="action"){
-      this.disabled===true
+      this.disabled=false
   }
 console.log(this.disabled)
     console.log("data in table ", this.dataSource);

@@ -33,20 +33,7 @@ export class ActionFormComponent {
     });
   }
 
-  // onSubmit(): void {
-  //   if (this.actionForm?.valid) {
-  //     console.log('Form Submitted!', this.actionForm.value);
-  //     this.api.post('http://localhost:5000/v1/user/createAction', this.actionForm.value).then((data: any) => {
-  //       if (data) {
-  //         console.log('Post successful', data);
-  //       } else {
-  //         console.log('Post failed');
-  //       }
-  //     }).catch((error) => {
-  //       console.log('Post error', error);
-  //     });
-  //   }
-  // }
+ 
   onSubmit(): void {
     if (this.actionForm.valid) {
       const projectData = this.actionForm.getRawValue(); // getRawValue to include disabled fields
