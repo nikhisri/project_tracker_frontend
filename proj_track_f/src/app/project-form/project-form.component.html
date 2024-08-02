@@ -1,0 +1,149 @@
+<h2 mat-dialog-title>Create New Project</h2>
+<mat-dialog-content class="mat-typography">
+<form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+   
+    <div class="formDiv">
+      <div>
+        <label for="project_id">Project ID <span>*</span></label>
+        <input id="project_id" type="text" formControlName="project_id">
+        <div *ngIf="projectForm.get('project_id')?.invalid && projectForm.get('project_id')?.touched">
+          Project ID is required.
+        </div>
+      </div>
+   
+      <div>
+        <label for="project_name">Project Name<span>*</span></label>
+        <input id="project_name" type="text" formControlName="project_name">
+        <div *ngIf="projectForm.get('project_name')?.invalid && projectForm.get('project_name')?.touched">
+          Project Name is required.
+        </div>
+      </div>
+    </div>
+ 
+   
+    <div>
+        <div>
+        <label for="action_owner">Action Owner<span>*</span></label>
+        <input id="action_owner" type="text" formControlName="action_owner">
+        <div *ngIf="projectForm.get('action_owner')?.invalid && projectForm.get('action_owner')?.touched">
+            Action Owner is required.
+        </div>
+    </div>
+ 
+    <div>
+      <label for="owner_Id">Owner ID<span>*</span></label>
+      <input id="owner_Id" type="text" formControlName="owner_Id">
+      <div *ngIf="projectForm.get('owner_Id')?.invalid &&
+      projectForm.get('owner_Id')?.touched">
+        Owner ID is required.
+      </div>
+    </div>
+    </div>
+ 
+    <div>
+        <div>
+        <label for="action_Owner_dept">Action Owner Department<span>*</span></label>
+        <input id="action_Owner_dept" type="text" formControlName="action_Owner_dept">
+        <div *ngIf="projectForm.get('action_Owner_dept')?.invalid && projectForm.get('action_Owner_dept')?.touched">
+            Action Owner Department is required.
+        </div>
+        </div>
+        <div class="divGrid">
+            <div>
+                <label for="required_No_days">No. of Days<span>*</span></label>
+                <input id="required_No_days" type="number" formControlName="required_No_days">
+                <div *ngIf="projectForm.get('required_No_days')?.invalid && projectForm.get('required_No_days')?.touched">
+                No. of Days is required.
+                </div>
+            </div>
+   
+            <div>
+                <label for="project_Status">Status<span>*</span></label>
+                <input id="project_Status" type="text" formControlName="project_Status">
+                <div *ngIf="projectForm.get('project_Status')?.invalid && projectForm.get('project_Status')?.touched">
+                    Project Status is required.
+                </div>
+            </div>
+        </div>
+   
+    </div>
+ 
+  <div>
+    <label for="project_desc">Project Description<span>*</span></label>
+    <textarea id="project_desc" formControlName="project_desc"></textarea>
+    <div *ngIf="projectForm.get('project_desc')?.invalid && projectForm.get('project_desc')?.touched">
+      Project Description is required.
+    </div>
+  </div>
+ 
+  <div>
+    <div>
+      <label for="actual_start_Date">Actual Start Date<span>*</span></label>
+      <input id="actual_start_Date" type="date" formControlName="actual_start_Date">
+      <div *ngIf="projectForm.get('actual_start_Date')?.invalid && projectForm.get('actual_start_Date')?.touched">
+        Actual Start Date is required.
+      </div>
+    </div>
+ 
+    <div>
+        <label for="actual_end_Date">Actual End Date<span>*</span></label>
+        <input id="actual_end_Date" type="date" formControlName="actual_end_Date">
+        <div *ngIf="projectForm.get('actual_end_Date')?.invalid && projectForm.get('actual_end_Date')?.touched">
+          Actual End Date is required.
+        </div>
+    </div>
+   
+  </div>
+ 
+  <div>
+    <div>
+        <label for="project_start_Date">Project Start Date<span>*</span></label>
+        <input id="project_start_Date" type="date" formControlName="project_start_Date">
+        <div *ngIf="projectForm.get('project_start_Date')?.invalid && projectForm.get('project_start_Date')?.touched">
+          Project Start Date is required.
+        </div>
+    </div>
+    <div>
+        <label for="planned_end_Date">Planned End Date<span>*</span></label>
+        <input id="planned_end_Date" type="date" formControlName="planned_end_Date">
+        <div *ngIf="projectForm.get('planned_end_Date')?.invalid && projectForm.get('planned_end_Date')?.touched">
+          Planned End Date is required.
+        </div>
+    </div>
+   </div>
+ 
+  <div>
+    <div>
+        <label for="revised_Completion_date_1">Revised Completion Date 1<span>*</span></label>
+        <input id="revised_Completion_date_1" type="date" formControlName="revised_Completion_date_1">
+        <div *ngIf="projectForm.get('revised_Completion_date_1')?.invalid && projectForm.get('revised_Completion_date_1')?.touched">
+          Revised Completion Date 1 is required.
+        </div>
+    </div>
+ 
+    <div>
+      <label for="revised_Completion_date_2">Revised Completion Date 2<span>*</span></label>
+      <input id="revised_Completion_date_2" type="date" formControlName="revised_Completion_date_2">
+      <div *ngIf="projectForm.get('revised_Completion_date_2')?.invalid && projectForm.get('revised_Completion_date_2')?.touched">
+        Revised Completion Date 2 is required.
+      </div>
+    </div>
+   
+  </div>
+   
+ 
+    <div>
+      <label for="remarks">Remarks:</label>
+      <textarea id="remarks"type="text" formControlName="remarks"></textarea>
+    </div>
+ 
+    <!-- <button type="submit" [disabled]="projectForm!.invalid">Submit</button> -->
+ 
+   
+</form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button  mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" [disabled]="projectForm!.invalid" cdkFocusInitial>Submit</button>
+</mat-dialog-actions>
+ 

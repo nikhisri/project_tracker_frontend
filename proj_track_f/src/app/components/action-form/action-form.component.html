@@ -1,0 +1,105 @@
+<h2 mat-dialog-title>Create New issue</h2>
+<mat-dialog-content class="mat-typography">
+<form [formGroup]="ActionForm" (ngSubmit)="onSubmit()">
+   
+    <div class="formDiv">
+      <div>
+        <label for="issue_id">Issue ID <span>*</span></label>
+        <input id="issue_id" type="text" formControlName="issue_id">
+        <div *ngIf="ActionForm.get('issue_id')?.invalid && ActionForm.get('issue_id')?.touched">
+          issue ID is required.
+        </div>
+      </div>
+   
+      <div>
+        <label for="issue_name">Issue Name<span>*</span></label>
+        <input id="issue_name" type="text" formControlName="issue_name">
+        <div *ngIf="ActionForm.get('issue_name')?.invalid && ActionForm.get('issue_name')?.touched">
+          issue Name is required.
+        </div>
+      </div>
+    </div>
+ 
+    
+    <div>
+        <div>
+        <label for="action_owner">Action Owner Name<span>*</span></label>
+        <input id="action_owner" type="text" formControlName="action_owner">
+        <div *ngIf="ActionForm.get('action_owner')?.invalid && ActionForm.get('action_owner')?.touched">
+            Action Owner is required.
+        </div>
+    </div>
+ 
+    <div>
+      <label for="owner_Id">Owner ID<span>*</span></label>
+      <input id="owner_Id" type="text" formControlName="owner_Id">
+      <div *ngIf="ActionForm.get('owner_Id')?.invalid &&
+      ActionForm.get('owner_Id')?.touched">
+        Owner ID is required.
+      </div>
+    </div>
+    </div>
+ 
+    <div>
+        <div>
+        <label for="action_Owner_dept">Action Owner Department<span>*</span></label>
+        <input id="action_Owner_dept" type="text" formControlName="action_Owner_dept">
+        <div *ngIf="ActionForm.get('action_Owner_dept')?.invalid && ActionForm.get('action_Owner_dept')?.touched">
+            Action Owner Department is required.
+        </div>
+        </div>
+        <div class="divGrid">
+   
+            <div>
+                <label for="issue_Status">Status<span>*</span></label>
+                <input id="issue_Status" type="text" formControlName="issue_Status">
+                <div *ngIf="ActionForm.get('issue_Status')?.invalid && ActionForm.get('issue_Status')?.touched">
+                    issue Status is required.
+                </div>
+            </div>
+        </div>
+   
+    </div>
+ 
+  <div>
+    <label for="issue_desc">issue Description<span>*</span></label>
+    <textarea id="issue_desc" formControlName="issue_desc"></textarea>
+    <div *ngIf="ActionForm.get('issue_desc')?.invalid && ActionForm.get('issue_desc')?.touched">
+      issue Description is required.
+    </div>
+  </div>
+ 
+  <div>
+    <div>
+      <label for="issueRaiseddate">Issue Raised Date<span>*</span></label>
+      <input id="issueRaiseddate" type="date" formControlName="issueRaiseddate">
+      <div *ngIf="ActionForm.get('issueRaiseddate')?.invalid && ActionForm.get('issueRaiseddate')?.touched">
+      </div>
+    </div>  
+  </div>
+
+  <div>
+    <div>
+      <label for="issuetargetDate">Issue Raised Date<span>*</span></label>
+      <input id="issuetargetDate" type="date" formControlName="issuetargetDate">
+      <div *ngIf="ActionForm.get('issuetargetDate')?.invalid && ActionForm.get('issuetargetDate')?.touched">
+      </div>
+    </div>  
+  </div>
+   
+ 
+    <div>
+      <label for="remarks">Remarks:</label>
+      <textarea id="remarks"type="text" formControlName="remarks"></textarea>
+    </div>
+ 
+    <!-- <button type="submit" [disabled]="ActionForm!.invalid">Submit</button> -->
+
+   
+</form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button  mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" [disabled]="ActionForm!.invalid" cdkFocusInitial>Submit</button>
+</mat-dialog-actions>
+ 

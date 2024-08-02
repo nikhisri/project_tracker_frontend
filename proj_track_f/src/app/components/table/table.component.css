@@ -1,0 +1,109 @@
+
+table.mat-table {
+    width: 587px;
+    height:283px;
+    font-size:14px;
+  }
+  mat-card{
+    width:200%;
+    height:500px;
+    padding:20px;
+  }
+  th.mat-header-cell,
+  td.mat-cell {
+    background-color: white;
+    
+  }
+  .card-container{
+    border-radius:10px;
+  }
+  table.mat-table td.mat-cell:hover {
+    background-color: #E8EEEE; 
+  }
+ 
+  /* .header-row {
+    background-color: #35535C; 
+  } */
+  
+  .data-row {
+    background-color: white;
+  }
+  
+  .table-cell {
+  color: black; 
+}
+
+.data-text {
+  color: black;
+
+}
+.mat-typography {
+    font-size:14px;
+}
+.table-header{
+    color:black;
+    background-color: #35535C;
+}
+.completed{
+    background-color:rgba(26,147,46,21%);
+    width:80px;
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-right:8px;
+    padding-left:8px;
+    text-align:center;
+    color:#1A932E;
+    border-radius:8px;
+}
+.in-progress{
+    background-color:rgba(226,177,51,18%);
+    width:80px;
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-right:8px;
+    padding-left:8px;
+    text-align:center;
+    color:#DFA510;
+    border-radius:8px;
+
+}
+.registered{
+    background-color:rgba(26,147,46,21%);
+    width:80px;
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-right:8px;
+    padding-left:8px;
+    text-align:center;
+    color:#1A932E;
+    border-radius:8px;
+
+}
+.cancelled{
+    background-color:rgba(239,32,28,18%);
+    width:80px;
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-right:8px;
+    padding-left:8px;
+    text-align:center;
+    color:#EE201C;
+    border-radius:8px;
+
+}
+.tendering-floating{
+    background-color:rgba(230,95,43,18%);
+    width:80px;
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-right:8px;
+    padding-left:8px;
+    text-align:center;
+    color:#E65F2B;
+    border-radius:8px;
+
+}
+
+.custom-column {
+    width: 200px;
+  }

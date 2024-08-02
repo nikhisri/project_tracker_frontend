@@ -1,0 +1,55 @@
+<!-- login.component.html -->
+<!-- 
+<div class="login-container"> -->
+  <mat-grid-list cols="2" >
+    <mat-grid-tile >
+      <img src="../../assets/login_blue.png" alt="Login Image" class="login-image">
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card style="width:500px;padding-bottom:20px;">
+      <div class="login-form">
+       
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <h2>Login to your account</h2>
+          
+          <div class="form-group">
+            <label for="role">Role</label>
+            <select id="role" formControlName="role" class="form-control">
+              <option value="" disabled>Select a role</option>
+              <option *ngFor="let role of roles" [value]="role.value">
+                {{ role.viewValue }}
+              </option>
+            </select>
+            <div *ngIf="loginForm.get('role')?.invalid && loginForm.get('role')?.touched" class="error">
+              Role is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input id="username" formControlName="username" type="text" class="form-control">
+            <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" class="error">
+              Username is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" formControlName="password" type="password" class="form-control">
+            <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error">
+              Password is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button mat-raised-button style="background-color: #055268;color:white;border-radius: 10px;padding: 20px;" type="submit">Login</button>
+          </div>
+        </form>
+      </div>
+      </mat-card>
+  
+    </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+<!-- </div> -->
