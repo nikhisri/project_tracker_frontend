@@ -13,13 +13,12 @@ export class DashboardComponent {
 
   projects: any[] = [];
   
-    constructor(private router : Router,   public api: ApiService ,public dialog: MatDialog ) {}
+    constructor(public api: ApiService ,public dialog: MatDialog ) {}
     data: any[]=[];
  
     title = 'proj_track_f';
     
     PROJECT_DATA:any[]=[];
-    sidenavMenu : Array<SIDENAV_INTERFACE> = SIDENAV_MENUS;
 
     necessaryColumns: string[] = [
       'project_id', 'project_name', 
@@ -47,14 +46,12 @@ export class DashboardComponent {
       remarks: 'Remarks'
     };
   
-    navigateURL(path : string) {
-      this.router.navigate([path]);
-    }
       openForm(enterAnimationDuration: string, exitAnimationDuration:string) : void{
         this.dialog.open(ProjectFormComponent, {
           width: '1100px',
           enterAnimationDuration,
           exitAnimationDuration,
+          data:{}
     });
     }
     
@@ -128,29 +125,3 @@ onDeleteProject(project_id: string): void {
     owner_Id:String;
     remarks:String;
   }
-  
-  
-  
-  type SIDENAV_INTERFACE = {
-    label : string,
-    to : string
-  }
-  
-  const SIDENAV_MENUS : Array<SIDENAV_INTERFACE>= [
-      {
-        label : "Dashboard",
-        to : "/dashboard"
-      },
-      {
-        label : "Projects",
-        to : "/project"
-      },
-      {
-        label : "Key Issues",
-        to : "/issue"
-      },
-      {
-        label : "Required Actions",
-        to : "/actions"
-      }
-  ]
