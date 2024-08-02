@@ -31,7 +31,9 @@ import {MatGridListModule} from '@angular/material/grid-list'
 import { HomepageComponent } from './homepage/homepage.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
-import { MatOptionModule } from '@angular/material/core'; 
+import { MatOptionModule } from '@angular/material/core';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { NavbarComponent } from './components/navbar/navbar.component'; 
 
 
 @NgModule({
@@ -47,6 +49,8 @@ import { MatOptionModule } from '@angular/material/core';
     ActionFormComponent,
     LoginComponent,
     HomepageComponent,
+    SidenavComponent,
+    NavbarComponent,
 
   ],
   imports: [

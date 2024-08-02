@@ -1,0 +1,3 @@
+<div *ngFor="let menu of sidenavMenu">
+    <button mat-button color="primary" style="color: white;" (click)="navigateURL(menu.to)" >{{menu.label}}</button>
+</div>
