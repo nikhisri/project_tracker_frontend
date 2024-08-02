@@ -113,3 +113,12 @@ textarea:focus {
     }
 }
  
+.form-grid {
+    /* gap: 16px; Adjust spacing between grid tiles */
+    display:flex;
+    flex-direction:column;
+  }
+  
+  mat-form-field {
+    width: 100%; /* Ensure the form fields take full width of the grid tile */
+  }
