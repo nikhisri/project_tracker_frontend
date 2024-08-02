@@ -37,6 +37,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 // import { TableIssueComponent } from './components/table-issue/table-issue.component'; 
 import { MatPaginatorModule } from '@angular/material/paginator';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ProjectForm2Component } from './project-form2/project-form2.component';
+import {  } from '@angular/material/grid-list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +56,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     SidenavComponent,
     NavbarComponent,
     // TableIssueComponent,
+    ProjectForm2Component,
 
   ],
   imports: [
@@ -77,7 +81,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatMenuModule,
     MatSelectModule, // Add MatSelectModule
     MatOptionModule,
-    MatPaginatorModule 
+    MatPaginatorModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
