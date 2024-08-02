@@ -6,14 +6,14 @@
     flex: 1 1 auto;
 }
 
-.sidenav-container {
+/* .sidenav-container {
     height: 100%;
-}
+} */
 
-.sidenav-container button {
+/* .sidenav-container button {
     width: 100%;
     margin: var(--sidenav-button-margin);
-}
+} */
 
 .profile {
     width: 100%;

@@ -69,6 +69,8 @@ export class TableComponent {
     });
   }
 
+  
+
  
   // Check if a value is a string
   isString(value: any): boolean {
