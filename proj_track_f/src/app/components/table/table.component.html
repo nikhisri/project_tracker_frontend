@@ -38,6 +38,16 @@
               <span *ngIf="isString(element[column])" class="data-text">{{ element[column] }}</span>
             </ng-template> -->
             <ng-template #normalDisplay>
+              <ng-container *ngIf="column === 'actual_start_Date' || column==='actual_end_Date'
+              || column===' revised_Completion_date_1'|| column===' revised_Completion_date_2'
+              || column==='project_start_Date '|| column==='planned__Date ' ||column ==='target_date'||column ==='targetDate' || column==='issueRaiseddate'">
+                <span *ngIf="isString(element[column])" class="data-text">{{ element[column] | date: 'yyyy-MM-dd' }}</span>
+              </ng-container>
+              <ng-container *ngIf="column !== 'actual_start_Date' && column !== 'actual_end_Date' && column !== 'target_date'&& column !== 'issueRaiseddate'&& column !== 'targetDate'">
+                <span *ngIf="isString(element[column])" class="data-text">{{ element[column] }}</span>
+              </ng-container>
+            </ng-template>
+            <ng-template #normalDisplay>
               <div *ngIf="isString(element[column])" class="data-text">{{ element[column] }}</div>
             </ng-template>
           </td>
@@ -61,8 +71,8 @@
             </mat-menu> -->
             <mat-menu #menu="matMenu">
               <!-- <button mat-menu-item (click)="openDetailDialog(element)">View Details</button> -->
-              <button mat-menu-item (click)="onEditClick(element.project_id)">Edit</button>
-              <button mat-menu-item (click)="onDeleteClick(element.project_id)">Delete</button>
+              <button mat-menu-item (click)="onEditClick(table ==='project'?element.project_id:table==='issue'?element.issue_id:element.action_id)">Edit</button>
+              <button mat-menu-item (click)="onDeleteClick(table ==='project'?element.project_id:table==='issue'?element.issue_id:element.action_id)">Delete</button>
             </mat-menu>
             <!-- </button> -->
           </td>

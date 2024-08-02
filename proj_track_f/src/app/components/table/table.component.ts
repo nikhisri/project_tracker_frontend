@@ -3,6 +3,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/services/api.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ProjectFormComponent } from 'src/app/project-form/project-form.component';
+import { IssueFormComponent } from '../issue-form/issue-form.component';
+import { ActionFormComponent } from '../action-form/action-form.component';
+import { ComponentType } from '@angular/cdk/portal';
 
 export interface DashboardElement{
   trcode: string;
@@ -20,6 +23,7 @@ export interface TableData {
 })
 export class TableComponent {
   @Input() dataSource: any[] = [];
+  @Input() table!: string;
   @Input() columnMapping: { [key: string]: string } = {};
   // dataSource1: MatTableDataSource<any> = new MatTableDataSource();
   @Output() deleteProject: EventEmitter<string> = new EventEmitter<string>();
@@ -93,24 +97,58 @@ export class TableComponent {
     // Handle edit action here
     console.log('Edit row with ID:', rowId);
     this.pid=rowId;
-    this.get();
+    console.log("hi",this.table);
+    if(this.table ==="project"){
+    this.getbyprojectid();
+  }
+  else if(this.table ==="issue"){
+    this.getbyissueid();
+  }
+  else{
+    this.getbyactionid();
+  }
   }
     //getbyprojectid api call --> response
-    get() {
+    getbyprojectid() {
       this.api.get('http://localhost:5000/v1/user/projectbyid/'+ this.pid).then((data: any) => {
         if (data) {
           console.log(data);
           this.PROJECT_DATA = data;
           console.log(this.PROJECT_DATA);
-          this.openForm(this.PROJECT_DATA);
+          this.openForm(ProjectFormComponent,this.PROJECT_DATA);
         } else {
           console.log('Not Found');
         }
       });
-  // } 
-  }
-  openForm(projectData?:any): void {
-    const dialogRef = this.dialog.open(ProjectFormComponent, {
+    }
+    getbyissueid() {
+      this.api.get('http://localhost:5000/v1/user/getissuebyid/'+ this.pid).then((data: any) => {
+        if (data) {
+          console.log(data);
+          this.PROJECT_DATA = data;
+          console.log(this.PROJECT_DATA);
+          this.openForm(IssueFormComponent,this.PROJECT_DATA);
+        } else {
+          console.log('Not Found');
+        }
+      });
+  } 
+    getbyactionid() {
+      this.api.get('http://localhost:5000/v1/user/getactionbyid/'+ this.pid).then((data: any) => {
+        if (data) {
+          console.log(data);
+          this.PROJECT_DATA = data;
+          console.log(this.PROJECT_DATA);
+          this.openForm(ActionFormComponent,this.PROJECT_DATA);
+        } else {
+          console.log('Not Found');
+        }
+      });
+  } 
+  // }
+  openForm(formcomponent:ComponentType<ProjectFormComponent | IssueFormComponent | ActionFormComponent>,projectData?:any): void {
+    console.log(formcomponent);
+    const dialogRef = this.dialog.open(formcomponent, {
       width: '1100px',
       data: projectData || {}
     });
