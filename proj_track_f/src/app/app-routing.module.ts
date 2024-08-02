@@ -16,9 +16,9 @@ const routes: Routes = [
   // {
   //   path:'login',component: LoginComponent, loadChildren:() =>import('../../')
   // }
-  {
-    path: 'projectform',component:ProjectFormComponent
-  },
+  // {
+  //   path: 'projectform',component:ProjectFormComponent
+  // },
   {
     path: 'table',component:TableComponent
   },
@@ -31,14 +31,12 @@ const routes: Routes = [
   {
     path: 'actions',component:ActionsComponent
   },
-  {
-    path: 'issueform',component:IssueFormComponent
-  },
-
-  {
-    path: 'actionform',component:ActionFormComponent
-    
-  },
+  // {
+  //   path: 'issueform',component:IssueFormComponent
+  // },
+  // {
+  //   path: 'actionform',component:ActionFormComponent    
+  // },
   {
     path:'dashboard',component:HomepageComponent
   },
