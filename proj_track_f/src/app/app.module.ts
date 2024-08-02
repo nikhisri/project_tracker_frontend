@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { TableComponent } from './components/table/table.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -32,6 +33,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core'; 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +47,7 @@ import { MatOptionModule } from '@angular/material/core';
     ActionFormComponent,
     LoginComponent,
     HomepageComponent,
+
   ],
   imports: [
     BrowserModule,
