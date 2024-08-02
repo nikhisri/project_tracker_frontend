@@ -32,10 +32,10 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { NavbarComponent } from './components/navbar/navbar.component'; 
 // import { TableIssueComponent } from './components/table-issue/table-issue.component'; 
 import { MatPaginatorModule } from '@angular/material/paginator';
-
-
 
 @NgModule({
   declarations: [
@@ -50,6 +50,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ActionFormComponent,
     LoginComponent,
     HomepageComponent,
+    SidenavComponent,
+    NavbarComponent,
     // TableIssueComponent,
 
   ],
