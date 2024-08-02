@@ -4,7 +4,7 @@
    
     <div class="formDiv">
       <div>
-        <label for="issue_id">Issue ID <span>*</span></label>
+        <label for="issue_id">Action ID <span>*</span></label>
         <input id="issue_id" type="text" formControlName="issue_id">
         <div *ngIf="ActionForm.get('issue_id')?.invalid && ActionForm.get('issue_id')?.touched">
           issue ID is required.
@@ -100,6 +100,6 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button mat-button  mat-dialog-close>Cancel</button>
-    <button mat-button [mat-dialog-close]="true" [disabled]="ActionForm!.invalid" cdkFocusInitial>Submit</button>
+    <button mat-button (click)="onSubmit()" [mat-dialog-close]="true" [disabled]="ActionForm!.invalid" cdkFocusInitial>Submit</button>
 </mat-dialog-actions>
  

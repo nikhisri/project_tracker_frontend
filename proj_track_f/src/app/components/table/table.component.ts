@@ -147,7 +147,7 @@ export class TableComponent {
   } 
   // }
   openForm(formcomponent:ComponentType<ProjectFormComponent | IssueFormComponent | ActionFormComponent>,projectData?:any): void {
-    console.log(formcomponent);
+    console.log("bye",formcomponent);
     const dialogRef = this.dialog.open(formcomponent, {
       width: '1100px',
       data: projectData || {}
