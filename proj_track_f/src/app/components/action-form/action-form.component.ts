@@ -9,7 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./action-form.component.css']
 })
 export class ActionFormComponent {
-  ActionForm!: FormGroup;
+  actionForm!: FormGroup;
   isEditMode: boolean = false;
 
 
@@ -21,7 +21,7 @@ export class ActionFormComponent {
   ngOnInit(): void {
     this.isEditMode = !!this.data.action_id;
 
-    this.ActionForm = this.fb.group({
+    this.actionForm = this.fb.group({
       project_id: [{ value: this.data.project_id || '', disabled: this.isEditMode }, Validators.required],
       action_id: [{ value: this.data.action_id || '', disabled: this.isEditMode }, Validators.required],
       issue_id: [this.data.issue_id || '', Validators.required],
@@ -34,9 +34,9 @@ export class ActionFormComponent {
   }
 
   // onSubmit(): void {
-  //   if (this.ActionForm?.valid) {
-  //     console.log('Form Submitted!', this.ActionForm.value);
-  //     this.api.post('http://localhost:5000/v1/user/createAction', this.ActionForm.value).then((data: any) => {
+  //   if (this.actionForm?.valid) {
+  //     console.log('Form Submitted!', this.actionForm.value);
+  //     this.api.post('http://localhost:5000/v1/user/createAction', this.actionForm.value).then((data: any) => {
   //       if (data) {
   //         console.log('Post successful', data);
   //       } else {
@@ -48,8 +48,8 @@ export class ActionFormComponent {
   //   }
   // }
   onSubmit(): void {
-    if (this.ActionForm.valid) {
-      const projectData = this.ActionForm.getRawValue(); // getRawValue to include disabled fields
+    if (this.actionForm.valid) {
+      const projectData = this.actionForm.getRawValue(); // getRawValue to include disabled fields
 
       if (this.isEditMode) {
         // Call update API
