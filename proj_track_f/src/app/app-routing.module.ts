@@ -39,11 +39,11 @@ const routes: Routes = [
     
   },
   {
-    path:'',component:LoginComponent
+    path:'dashboard',component:HomepageComponent
   },
   {
-    path:'dashboard',component:HomepageComponent
-  }
+    path:'',component:LoginComponent
+  },
 ];
 
 @NgModule({

@@ -4,9 +4,6 @@ import { ApiService } from 'src/app/services/api.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActionFormComponent } from '../components/action-form/action-form.component';
 
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ProjectFormComponent } from '../project-form/project-form.component';
-
 export interface actionsData{
   project_id:String;
   action_id:String;
