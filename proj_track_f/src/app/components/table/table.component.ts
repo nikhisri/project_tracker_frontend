@@ -52,6 +52,7 @@ export class TableComponent {
   }
   
   
+  
  allKeys:any;
   // Determine displayed columns dynamically based on the structure of the data
   determineDisplayedColumns(): void {
@@ -119,10 +120,13 @@ export class TableComponent {
         // Handle any actions after the dialog is closed, e.g., refresh the table data
       }
     });
-  }
-
-  onDeleteClick(rowId: string): void {
-    // Handle delete action here
-    console.log('Delete row with ID:', rowId);
-  }
+  
+  // onDeleteClick(rowId: string): void {
+  //   // Handle delete action here
+  //   console.log('Delete row with ID:', rowId);
+  // }
+}
+onDeleteClick(project_id: string): void {
+  this.deleteProject.emit(project_id);
+}
 }

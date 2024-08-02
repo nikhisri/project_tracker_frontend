@@ -18,10 +18,7 @@ export class HomepageComponent {
     this.getKeyIssueCount();
     this.getActionCount();
   }
-  logout():void {
-    localStorage.removeItem("userRole")
-    this.navigateURL('')
-  }
+
 
   getProjectCount(): void {
     this.api.get('http://localhost:5000/v1/user/countproj').then((data: any) => {
@@ -64,30 +61,7 @@ export class HomepageComponent {
 
 
 
-  navigateURL(routepath: any) {
-    this.router.navigate(["/"+routepath])
-    }
+  
       title = 'project';
     // sidenavMenu: any;
-    sidenavMenu : Array<SIDENAV_INTERFACE> = SIDENAV_MENUS;
 }
-
-type SIDENAV_INTERFACE = {
-  label : string,
-  to : string
-}
-
-const SIDENAV_MENUS : Array<SIDENAV_INTERFACE>= [
-    {
-      label : "Dashboard",
-      to : "/dash"
-    },
-    {
-      label : "Key Issues",
-      to : "/issue"
-    },
-    {
-      label : "Required Actions",
-      to : "/actions"
-    }
-]
