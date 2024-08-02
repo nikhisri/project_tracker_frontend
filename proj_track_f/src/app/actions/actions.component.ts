@@ -14,30 +14,6 @@ export interface actionsData{
   target_date:String;
   remarks:String;
 }
-type SIDENAV_INTERFACE = {
-  label : string,
-  to : string
-}
-
-const SIDENAV_MENUS : Array<SIDENAV_INTERFACE>= [
-    {
-      label : "Dashboard",
-      to : "/dashboard"
-    },
-    {
-      label : "Projects",
-      to : "/project"
-    },
-    {
-      label : "Key Issues",
-      to : "/issue"
-    },
-    {
-      label : "Required Actions",
-      to : "/actions"
-    }
-]
-
 
 @Component({
   selector: 'app-actions',
@@ -77,7 +53,6 @@ export class ActionsComponent {
       public api: ApiService,public dialog: MatDialog
     ) {}
     PROJECT_DATA:any[]=[];
-    sidenavMenu : Array<SIDENAV_INTERFACE> = SIDENAV_MENUS;
   
     openForm(enterAnimationDuration: string, exitAnimationDuration:string) : void{
       this.dialog.open(ActionFormComponent, {
