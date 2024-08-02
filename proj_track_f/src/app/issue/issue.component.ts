@@ -15,31 +15,6 @@ export interface issueData{
   remarks:String;
  
 }
-type SIDENAV_INTERFACE = {
-  label : string,
-  to : string
-}
-
-const SIDENAV_MENUS : Array<SIDENAV_INTERFACE>= [
-    {
-      label : "Dashboard",
-      to : "/dashboard"
-    },
-    {
-      label : "Projects",
-      to : "/project"
-    },
-    {
-      label : "Key Issues",
-      to : "/issue"
-    },
-    {
-      label : "Required Actions",
-      to : "/actions"
-    }
-]
-
-
 
 @Component({
   selector: 'app-issue',
@@ -50,7 +25,6 @@ export class IssueComponent {
   constructor(private router : Router,   public api: ApiService ,public dialog: MatDialog ) {}
   data: any[]=[];
   ISSUE_DATA:issueData[]=[];
-  sidenavMenu : Array<SIDENAV_INTERFACE> = SIDENAV_MENUS;
 
   necessaryColumns: string[] = [
     'project_id', 'issue_desc', 'issueRaiseddate', 'targetDate', 
