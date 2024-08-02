@@ -22,13 +22,12 @@ table.mat-table {
     display: block;
 }
 
-.table-header, {
-/*   
-}.data-row, .header-row { */
-    display: table;
+/* .table-header, { */
+
+    /* display: table;
     width: 100%;
-    table-layout: fixed; /* Ensure columns have equal width */
-}
+    table-layout: fixed; 
+} */
 
 .table-container table {
     width: 100%;
