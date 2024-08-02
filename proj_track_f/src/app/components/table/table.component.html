@@ -75,7 +75,7 @@
             </mat-menu> -->
             <mat-menu #menu="matMenu">
               <!-- <button mat-menu-item (click)="openDetailDialog(element)">View Details</button> -->
-              <button mat-menu-item (click)="onEditClick(table ==='project'?element.project_id:table==='issue'?element.issue_id:element.action_id)">Edit</button>
+              <button mat-menu-item (click)="onEditClick(table ==='project'?element.project_id:table==='issue'?element.issue_id:element.action_id)" [disabled]="disabled">Edit</button>
               <button mat-menu-item (click)="onDeleteClick(table ==='project'?element.project_id:table==='issue'?element.issue_id:element.action_id)">Delete</button>
             </mat-menu>
             <!-- </button> -->
