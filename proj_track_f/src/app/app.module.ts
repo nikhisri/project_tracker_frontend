@@ -33,6 +33,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 // import { TableIssueComponent } from './components/table-issue/table-issue.component'; 
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 
 
 @NgModule({
@@ -72,7 +74,8 @@ import { MatOptionModule } from '@angular/material/core';
     HttpClientModule,
     MatMenuModule,
     MatSelectModule, // Add MatSelectModule
-    MatOptionModule 
+    MatOptionModule,
+    MatPaginatorModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

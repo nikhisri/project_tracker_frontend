@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -11,11 +12,15 @@ export class HomepageComponent {
   projectCount: number | null = null;
   KeyIssueCount: number | null = null;
   ActionCount: number | null = null;
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService,private router:Router) { }
   ngOnInit(): void {
     this.getProjectCount();
     this.getKeyIssueCount();
     this.getActionCount();
+  }
+  logout():void {
+    localStorage.removeItem("userRole")
+    this.navigateURL('')
   }
 
   getProjectCount(): void {
@@ -59,8 +64,8 @@ export class HomepageComponent {
 
 
 
-  navigateURL(arg0: any) {
-    throw new Error('Method not implemented.');
+  navigateURL(routepath: any) {
+    this.router.navigate(["/"+routepath])
     }
       title = 'project';
     // sidenavMenu: any;
