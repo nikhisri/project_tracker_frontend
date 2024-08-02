@@ -10,7 +10,7 @@
   <div style="display: flex;justify-content: space-between;margin: 20px;">
     <p style="font-size: 29px;font-weight: 500;">Projects</p>   
 
-    <button style="width:150px" mat-raised-button (click)="openForm('250ms', '250ms')">+New Project</button>
+    <button style="width:150px" mat-raised-button (click)="openForm('250ms', '250ms')" *ngIf="userRole==='project manager'">+New Project </button>
 
    </div>
 

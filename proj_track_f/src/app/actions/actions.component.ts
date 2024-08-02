@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActionFormComponent } from '../components/action-form/action-form.component';
+import Swal from 'sweetalert2';
 
 export interface actionsData{
   project_id:String;
@@ -64,10 +65,16 @@ export class ActionsComponent {
 
     ngOnInit(): void {
       this.get();
-    }
+      const userRole = localStorage.getItem('userRole');
+  if(userRole===undefined || userRole===null || userRole===""){
+    this.router.navigate(['/'])
+    
+  } }
+  
     navigateURL(path : string) {
       this.router.navigate([path]);
     }
+    
     get() {
       this.api.get('http://localhost:5000/v1/user/getallaction').then((data: any) => {
         if (data) {

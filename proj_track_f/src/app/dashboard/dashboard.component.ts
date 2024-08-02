@@ -13,12 +13,13 @@ export class DashboardComponent {
 
   projects: any[] = [];
   
-    constructor(public api: ApiService ,public dialog: MatDialog ) {}
+    constructor(public api: ApiService ,public dialog: MatDialog,private router:Router ) {}
     data: any[]=[];
- 
+   
     title = 'proj_track_f';
     
     PROJECT_DATA:any[]=[];
+    userRole!:string;
 
     necessaryColumns: string[] = [
       'project_id', 'project_name', 
@@ -57,8 +58,11 @@ export class DashboardComponent {
     
     ngOnInit(): void {
       this.get();
-      const userRole = localStorage.getItem('userRole');
-      console.log("ggfh",userRole);
+      this.userRole = localStorage.getItem('userRole') || "";
+      if(this.userRole===undefined || this.userRole===null || this.userRole===""){
+        this.router.navigate(['/'])
+      }
+      console.log("ggfh",this.userRole);
     }
   
     get() {

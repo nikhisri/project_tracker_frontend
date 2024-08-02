@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
+import Swal from 'sweetalert2';
+ 
 @Component({
   selector: 'app-project-form2',
   templateUrl: './project-form2.component.html',
@@ -31,18 +33,44 @@ export class ProjectForm2Component {
       owner_Id: ['', Validators.required],
       remarks: ['']
     });
+  
   }
+
 
   onSubmit(): void {
     if (this.projectForm.valid) {
       this.api.post('http://localhost:5000/v1/user/project', this.projectForm.value).then((data: any) => {
         if (data) {
+          
           console.log('Post successful', data);
         } else {
           console.log('Post failed');
+            //Error
+          Swal.fire({
+            title: 'Error',
+            text: 'Project creation unsuccessful',
+            icon: 'error',//warning
+            timer:1500, 
+            showConfirmButton:false
+          })
         }
+        //Success
+        Swal.fire({
+          title: 'Success',
+          text: 'Project creation successful',
+          icon: 'success',
+          timer:1500, 
+          showConfirmButton:false
+        })
       }).catch((error) => {
         console.log('Post error', error);
+         //Error
+         Swal.fire({
+          title: 'Error',
+          text: 'Something went wrong',
+          timer:1500, 
+          showConfirmButton:false
+        })
       });
     }
   }

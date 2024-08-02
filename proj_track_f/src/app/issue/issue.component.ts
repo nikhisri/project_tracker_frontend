@@ -58,6 +58,10 @@ export class IssueComponent {
 
 ngOnInit(): void {
   this.get();
+      const userRole = localStorage.getItem('userRole');
+  if(userRole===undefined || userRole===null || userRole===""){
+    this.router.navigate(['/'])
+  }
 }
 
 get() {
