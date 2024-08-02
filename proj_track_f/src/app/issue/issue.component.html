@@ -1,10 +1,10 @@
-
 <mat-toolbar style="background-color:#FFFFFF;">
     <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button> -->
     <img src="assets/Digiverz.png" width="150" />
     <span class="navbar-spacer"></span>
+
     <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
       <mat-icon>notifications</mat-icon>
     </button> -->
@@ -23,10 +23,10 @@
     <!-- <router-outlet></router-outlet> -->
     <div style="display: flex;justify-content: space-between;margin: 20px;">
       <p style="font-size: 29px;font-weight: 500;">Key Issues</p>   
-      <button style="width:250px"mat-raised-button (click)="openForm('3000ms', '1500ms')">+New Issues</button>
+      <button style="width:150px" mat-raised-button (click)="openForm('1500ms', '750ms')">+New Issue</button>
      </div>
   
      <!-- <app-table [dataSource]="PROJECT_DATA" [columnMapping]="columnMapping"></app-table> -->
-  
+ 
 <app-table [dataSource]="ISSUE_DATA" [columnMapping]="columnMapping"></app-table>
     </mat-drawer-container>

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { TableComponent } from './components/table/table.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -29,6 +30,8 @@ import {MatGridListModule} from '@angular/material/grid-list'
 // import { HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './homepage/homepage.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core'; 
 
 
 @NgModule({
@@ -44,6 +47,7 @@ import { MatMenuModule } from '@angular/material/menu';
     ActionFormComponent,
     LoginComponent,
     HomepageComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -65,6 +69,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatGridListModule,
     HttpClientModule,
     MatMenuModule,
+    MatSelectModule, // Add MatSelectModule
+    MatOptionModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

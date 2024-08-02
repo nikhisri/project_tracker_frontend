@@ -1,76 +1,38 @@
-import { HttpClient } from '@angular/common/http';
-import {MatGridListModule} from '@angular/material/grid-list'
-import { Component } from '@angular/core';
- 
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
-
   selector: 'app-login',
-
   templateUrl: './login.component.html',
-
   styleUrls: ['./login.component.css']
-
 })
+export class LoginComponent implements OnInit {
+  loginForm!: FormGroup;
+  roles = [
+    { value: 'project manager', viewValue: 'Project Manager' },
+    { value: 'tester', viewValue: 'Tester' },
+    { value: 'developer', viewValue: 'Developer' }
+  ];
+  constructor(private fb: FormBuilder, private router: Router) {}
 
-export class LoginComponent {
-
-  username: string = '';
-
-  password: string = '';
-
-  private apiUrl = 'http://localhost:5000/v1/user/loginuser';
-
-  constructor(private http: HttpClient) { }
- 
-
-  onLogin() {
-
-    // Handle login logic here
-
-    console.log('Username:', this.username);
-
-    console.log('Password:', this.password);
-
-    try{
-
-        const credentials = {
-
-          email: this.username,
-
-          password: this.password
-
-        };
-
-        this.http.post(this.apiUrl, credentials).subscribe(response => 
-
-          {console.log('POST request successful', response);
-
-            if(response){
-
-              localStorage.setItem("userDetails",JSON.stringify(response));
-
-            }
-
-        },      
-
-        error => {console.error('Error in POST request', error); } );
-
-    }catch(err:any){
-
-      console.log(err);
-
-    }
-
+  ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+      role: ['', Validators.required]
+    });
   }
 
-//   onRegister() {
-
-//     // Handle registration navigation or logic here
-
-//     console.log('Redirect to registration page');
-
-// }
-
+  onSubmit(): void {
+    if (this.loginForm.valid) {
+      const { role } = this.loginForm.value;
+      const selectedRole = this.loginForm.get('role')?.value;
+      console.log('Selected Role:', selectedRole);
+      // Save role to local storage
+      localStorage.setItem('userRole', role);
+      // Navigate to dashboard or another page
+      this.router.navigate(['/dashboard']);
+    }
+  }
 }
- 

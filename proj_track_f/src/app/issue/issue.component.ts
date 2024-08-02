@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
-
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { IssueFormComponent } from '../components/issue-form/issue-form.component';
 export interface issueData{
@@ -70,6 +69,7 @@ export class IssueComponent {
       issue_Status: 'Issue Status',
       remarks: 'Remarks'
     };
+
   
     navigateURL(path : string) {
       this.router.navigate([path]);
@@ -107,3 +107,5 @@ get() {
   });
   }    
 }
+
+

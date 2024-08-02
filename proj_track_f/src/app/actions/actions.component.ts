@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ActionFormComponent } from '../components/action-form/action-form.component';
 
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ProjectFormComponent } from '../project-form/project-form.component';
@@ -47,10 +49,8 @@ const SIDENAV_MENUS : Array<SIDENAV_INTERFACE>= [
 })
 export class ActionsComponent {
 
-constructor(private router : Router,   public api: ApiService ,public dialog: MatDialog ) {}
     data: any[]=[];
   ACTION_DATA:actionsData[]=[];
-  sidenavMenu : Array<SIDENAV_INTERFACE> = SIDENAV_MENUS;
 
   necessaryColumns: string[] =  [
     // 'project_id', 
@@ -76,21 +76,26 @@ constructor(private router : Router,   public api: ApiService ,public dialog: Ma
     
   };
 
-  navigateURL(path : string) {
-    this.router.navigate([path]);
-  }
+    constructor(private router : Router, 
+      public api: ApiService,public dialog: MatDialog
+    ) {}
+    PROJECT_DATA:any[]=[];
+    sidenavMenu : Array<SIDENAV_INTERFACE> = SIDENAV_MENUS;
+  
     openForm(enterAnimationDuration: string, exitAnimationDuration:string) : void{
-      this.dialog.open(ProjectFormComponent, {
+      this.dialog.open(ActionFormComponent, {
         width: '1100px',
         enterAnimationDuration,
         exitAnimationDuration,
   });
   }
-    
+
     ngOnInit(): void {
       this.get();
     }
-    
+    navigateURL(path : string) {
+      this.router.navigate([path]);
+    }
     get() {
       this.api.get('http://localhost:5000/v1/user/getallaction').then((data: any) => {
         if (data) {
@@ -112,3 +117,6 @@ constructor(private router : Router,   public api: ApiService ,public dialog: Ma
       });
       }    
 }
+
+
+

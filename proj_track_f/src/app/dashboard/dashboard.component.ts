@@ -10,6 +10,7 @@ import { ProjectFormComponent } from '../project-form/project-form.component';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
+
   projects: any[] = [];
   
     constructor(private router : Router,   public api: ApiService ,public dialog: MatDialog ) {}
@@ -57,11 +58,10 @@ export class DashboardComponent {
     });
     }
     
-   
-  
-
     ngOnInit(): void {
       this.get();
+      const userRole = localStorage.getItem('userRole');
+      console.log("ggfh",userRole);
     }
   
     get() {
