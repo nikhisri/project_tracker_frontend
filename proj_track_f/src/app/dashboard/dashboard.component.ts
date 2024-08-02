@@ -51,6 +51,7 @@ export class DashboardComponent {
           width: '1100px',
           enterAnimationDuration,
           exitAnimationDuration,
+          data:{}
     });
     }
     
