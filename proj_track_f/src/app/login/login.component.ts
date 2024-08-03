@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   roles = [
-    { value: 'project manager', viewValue: 'Project Manager' },
-    { value: 'tester', viewValue: 'Tester' },
-    { value: 'developer', viewValue: 'Developer' }
+    { value: 'project manager', viewValue: 'Consultant' },
+    { value: 'tester', viewValue: 'Engineer' },
+    { value: 'developer', viewValue: 'Operator' } 
   ];
   constructor(private fb: FormBuilder, private router: Router) {}
 
