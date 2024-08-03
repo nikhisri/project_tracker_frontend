@@ -1,139 +1,509 @@
-.contract-container {
-    height: 100vh;
+/* sidebar.component.css */
+body {
+  margin: 0;
+}
+.demo-table {
+  width: 400px;
+}
+#sidebar {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #A37400;
+  padding-top: 20px;
 }
 
-.navbar-spacer {
-    flex: 1 1 auto;
+#sidebar a {
+  padding: 15px;
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+  margin-bottom: 10px;
 }
 
-.sidebar {
-    height: 100%;
-    background-color: #35535C;
+#sidebar a:hover {
+  background-color: #ffffff;
 }
 
-.sidebar button {
-    width: 25%;
-    margin: var(--sidenav-button-margin);
+.icon {
+  width: 20px; /* Adjust the width of the icons as needed */
+  height: 20px; /* Adjust the height of the icons as needed */
+  margin-right: 16px;
+}
+.logo {
+  width: 100px;
+  margin-bottom: 30px;
+}
+
+/* top-navbar.component.css */
+#navbar {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  margin-left: 200px; /* Adjust based on the sidebar width */
+  width: calc(100% - 250px); /* Adjust based on the sidebar width */
+  z-index: 1; /* Ensure the navbar appears above the sidebar */
+  /* margin-top: -30px; */
+}
+#navbar2 {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  /* padding: 15px; */
+  /* border:2px solid black; */
+  margin-left: 80%; /* Adjust based on the sidebar width */
+  width: calc(100% - 250px); /* Adjust based on the sidebar width */
+  z-index: 1; /* Ensure the navbar appears above the sidebar */
+}
+#dashboard {
+  display: flex;
+  align-items: center;
+  /* Adjust the styles for the dashboard as needed */
+}
+
+#dashboard h1 {
+  margin: 0;
+  color: #004648; /* Adjust the text color as needed */
+  font-size: 22px; /* Adjust the font size as needed */
+  font-weight: bold;
+}
+
+#user-options {
+  display: flex;
+  align-items: center;
+}
+#duration-options {
+  display: flex;
+  /* align-items: center;
+     */
+  flex: end;
+}
+#user-options a {
+  color: #004648;
+  text-decoration: none;
+  padding: 15px;
+  font-size: 16px;
+}
+
+#user-options a:hover {
+  background-color: #555;
+}
+
+/* main-content.component.css */
+.main-content {
+  padding: 20px;
+  margin-left: 200px; /* Adjust based on the sidebar width */
+}
+
+/* card.component.css */
+.card {
+  max-width: 287.75px;
+  width:200px;
+  height: 160px;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-tab {
+  max-width: 625.98px;
+  max-width: 650px;
+  height: 303px;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.card-tab-graph {
+  max-width: 625.98px;
+  height: 300px;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  /* margin-top: 10px; */
+}
+.header {
+  /* background-color: #  ;    */
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.green-circle {
+  background-color: #005759; /* Change to your desired green color */
+  width: 40px; /* Adjust the size of the circle */
+  height: 40px; /* Adjust the size of the circle */
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  margin-left: 0.5em;
+}
+
+.icon {
+  font-size: 1.5em;
+}
+
+.content {
+  padding-left: 10px;
+}
+
+.content p {
+  font-size: 14px;
+}
+
+.content h1 {
+  font-size: 28px;
+}
+
+.description {
+  display: flex;
+  align-items: center;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.description .icon {
+  margin-right: 0.5em;
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.table-container {
+  width: 50%; /* Adjust the width as needed */
+}
+.tab-container {
+  width: 60%; /* Adjust the width as needed */
+  /* margin-left:100px;  */
+  /* margin-top: 10px; */
+}
+.mat-header-cell {
+  text-align: center; /* Center align header cells */
+}
+
+.mat-cell {
+  text-align: center; /* Center align content cells */
+}
+
+.demo-table {
+  width: 100%; /* Ensure the table takes the full width of the container */
+}
+
+/* Add other styles as needed */
+.completed-status {
+  /* background-color: #b1e9ba; */
+  background: #1a932e2e;
+  color: #1a932e;
+  border-radius: 8px;
+
+  padding: 5px 8px 5px 8px;
+}
+
+.ongoing-status {
+  background: #e2b1332e;
+  color: #e65f2b;
+  border-radius: 8px;
+
+  padding: 5px 8px 5px 8px;
+}
+
+.atrisk-status {
+  background: #ee201c2e;
+  color: #ee201c;
+  border-radius: 8px;
+
+  padding: 5px 8px 5px 8px;
+}
+.delayed {
+  background: #e2b1332e;
+  color: #dfa510;
+  border-radius: 8px;
+
+  padding: 5px 8px 5px 8px;
+}
+.donut-chart {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+.donut-circle {
+  fill: none;
+  stroke: #e0e0e0;
+  stroke-width: 2;
+}
+
+.donut-progress {
+  fill: none;
+  stroke: #4caf50; /* Change color as needed */
+  stroke-width: 2;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  transition: stroke-dasharray 0.3s ease;
+}
+
+.donut-text {
+  fill: #004648; /* Change color as needed */
+  font-size: 12px;
+  font-weight: bold;
+}
+.custom-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #004648;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.tick-mark {
+  width: 80%; /* Adjust the size of the tick mark */
+  height: 80%; /* Adjust the size of the tick mark */
+  position: absolute;
+}
+
+.custom-checkbox.checked {
+  background-color: #004648; /* Green background color */
+}
+.custom-checkbox-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.custom-checkbox {
+  width: 20px;
+  height: 20px;
+  background-color: #fff; /* Set background color */
+  border: 2px solid #004648; /* Green border color */
+  border-radius: 50%; /* Circle border-radius */
+  transition: background-color 0.3s;
+}
+
+.custom-checkbox.checked {
+  background-color: #004648; /* Green background color */
+}
+
+.notify-circle {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: #004648; /* or any other color */
+  color: white;
+  text-align: center;
+  border-radius: 50%;
+  line-height: 20px;
+  font-size: 12px;
+  position: relative;
+  top: -8px; /* Adjust the positioning as needed */
+  left: 5px; /* Adjust the positioning as needed */
+}
+
+.green-btn {
+  width: 36px;
+  height: 32px;
+  background-color: #004648;
+  border-radius: 4px;
+  border: 0.5px #9ebdbf;
+  color: #ffffff;
+  padding: 10px 6px 4px 8px;
+  margin-right: 16px;
+}
+.progress-container {
+  display: flex;
+  align-items: center;
+}
+
+.main-number {
+  font-size: 2em; /* Adjust the font size as needed */
+  margin-right: 5px; /* Adjust the spacing between the main number and the suffix */
+}
+
+.suffix {
+  font-size: 1em; /* Adjust the font size as needed */
+  color: #555; /* Adjust the color of the suffix */
+}
+.percent {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 80px;
+  bottom: 0;
+}
+/* ................................................... */
+.newnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding-block: 15px;
+  padding-inline: 25px;
+  border-bottom: #e8eeee solid 2px;
+}
+
+.right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right > * {
+  margin-right: 10px;
+}
+
+input.search {
+  width: 260px;
+  border: 2px solid #e8eeee;
+  border-radius: 5px;
+  display: block;
+  padding: 9px 4px 9px 40px;
+  /* background: transparent url("../../../../assets/Search.png") no-repeat 13px; */
 }
 
 .profile {
-    width: 100%;
-    height: 100%;
-    transform: scale(1.2);
-    background-color: #35535C;
-    border-radius: 50%;
-    color: white;
-    font-size: var(--text-profile-font-size);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #004748;
+  color: white;
+  display: grid;
+  place-items: center;
+}
+/* sidebar.component.css */
+
+.newsidebar {
+  height: 150vh;
+  width: 18%;
+  background-color: rgba(163, 116, 0, 0.7);
+  margin-top: 0px;
 }
 
-.mat-drawer {
-    width: 250px;
-    padding: 10px;
-    background-color: #35535C;
+.newsidebar > ul > li {
+  margin-bottom: 1rem;
 }
-.card {
-    display:flex;
-    border: 1px solid #ddd;
-    flex-direction:column;
-    border-radius: 10px;
-    padding:10px;
-    max-width:300px;
-    max-height:250px;
-    margin: auto;
-  }
-  
-  .card-header {
-    background-color: hsl(210, 57%, 27%);
-    padding: 20px;
-    font-size: 1.5rem;
-    font-weight: 500;
-    text-align:center;
-    color: white;
-  }
-  
-  .card-body {
-    display:flex;
-    flex-direction:row;
-    justify-content:space-between;
-    margin-top:10px;
-    padding: 5px;
-    height: 150px;
-    text-align: center;
-  }
-  
-  .card-text {
-    margin-bottom: 15px;
-  }
-  
-  .btn {
-    background-color: #35535C;
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-  }
-  .row1{
-    margin-left:480px;
-    width:550px;
-  }
-  .left-section {
-    flex: 1;
-    margin-right: 10px;
-    height: 100px;
-  }
-  .right-section {
-    flex: 0 0 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .column{
-    float:left;
-    width:33%;
-    overflow:hidden;
-  }
-  .sidebar {
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    background-color: #f1f1f1;
-    position: fixed;
-    height: 1000px;
-    overflow: auto;
-  }
-  .sidebar a {
-    display: block;
-    color: black;
-    padding: 16px;
-    text-decoration: none;
-  }
-  
-  /* Active/current link */
-  .sidebar a.active {
-    background-color: #35535C;
-    color: white;
-  }
 
-  .row::after{
-    content: " ";
-    clear:both;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:space-around;
-  }
+a {
+  text-decoration: none;
+  color: white;
+  display: flex;
+}
 
-  @media(max-width:900px){
-    .row{
-        flex-direction:column;
-    }
-    .card-body{
-        flex-direction:column;
-    }
-    .left-section,.right-section{
-        margin:5px 0;
-    }
-  }
+a > svg {
+  color: white;
+}
+
+.newcontainer {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+li {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  padding-block: 3px;
+}
+
+#space {
+  margin-right: 35px;
+}
+
+img {
+  vertical-align: center;
+}
+
+.newcontainer {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.main-section {
+  width: 82%;
+  height: 100vh;
+  padding-inline: 1.5rem;
+  padding-block-start: 1rem;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.minsquares {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.squares {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.chart1 {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 7fr 3fr;
+  justify-content: space-between;
+}
+
+.chart2 {
+  display: grid;
+  grid-template-columns: 6fr 4fr;
+  grid-template-rows: 1fr;
+  justify-content: space-between;
+}
+/* Adjust the margin and padding for the entire table */
+.mat-elevation-z8.demo-table {
+  margin: 10px; /* Set your desired margin value */
+}
+
+/* Styling for the first table container */
+.table-container {
+  width: 60%; /* Set your desired width */
+  margin: 10px; /* Set your desired margin */
+}
+
+/* Styling for the second table container */
+.card-tab {
+  width: 100%; /* Set your desired width */
+  margin: 10px; /* Set your desired margin */
+}
+
+/* Additional styling for the tables inside the containers */
+.demo-table {
+  width: 50%; /* Set your desired width */
+}
+
+/* Styling for the tab group */
+.mat-tab-group {
+  width: 100%; /* Set your desired width */
+}
+
+/* Styling for tab content */
+.mat-tab-body-content {
+  padding: 10px; /* Set your desired padding */
+}

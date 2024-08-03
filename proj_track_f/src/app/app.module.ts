@@ -35,10 +35,11 @@ import { MatOptionModule } from '@angular/material/core';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { NavbarComponent } from './components/navbar/navbar.component'; 
 import { MatPaginatorModule } from '@angular/material/paginator';
-
+import {MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ProjectForm2Component } from './project-form2/project-form2.component';
 import {  } from '@angular/material/grid-list';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,7 +82,8 @@ import {  } from '@angular/material/grid-list';
     MatSelectModule, // Add MatSelectModule
     MatOptionModule,
     MatPaginatorModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

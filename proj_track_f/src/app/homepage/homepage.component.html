@@ -1,72 +1,168 @@
+<div class="main-section">
+  <div class="flex">
+    <!-- <div class="minsquares">
+      <div id="user-options">
+        <div class="green-btn">1 M</div>
+        <div class="green-btn">3 M</div>
+        <div class="green-btn">6 M</div>
+        <div class="green-btn">1 Y</div>
+        <mat-icon class="material-symbols-outlined"> more_horiz </mat-icon>
+      </div>
+    </div> -->
+    <div
+      class="squares"
+      style="display: flex; justify-content: space-between"
+    >
+      <div class="card">
+        <div class="header">
+          <!-- <i class="icon">&#x1F4B0;</i>
+        <div class="title">Total Revenue</div> -->
+          <div class="green-circle">
+            <!-- <img src="../../../../assets/icons.png" /> -->
+             <mat-icon style="color:white">article</mat-icon>
+          </div>
+        </div>
+        <div class="content">
+          <p style="font-size: 20px;">Total Projects</p>
+          <h1>765</h1>
+          <!-- <p class="description">
+            <img src="../../../../assets/arrow-up.png" />
+            12% increase from last month
+          </p> -->
+        </div>
+      </div>
+      <div class="card">
+          <div class="header">
+            <!-- <i class="icon">&#x1F4B0;</i>
+          <div class="title">Total Revenue</div> -->
+            <div class="green-circle">
+              <!-- <img src="../../../../assets/icons.png" /> -->
+              <mat-icon style="color:white">bug_report</mat-icon>
+            </div>
+          </div>
+          <div class="content">
+            <p style="font-size: 20px;">Issue Raised</p>
+            <h1>500</h1>
+            <!-- <p class="description">
+              <img src="../../../../assets/arrow-up.png" />
+              12% increase from last month
+            </p> -->
+          </div>
+        </div>
+        <div class="card">
+          <div class="header">
+            <!-- <i class="icon">&#x1F4B0;</i>
+          <div class="title">Total Revenue</div> -->
+            <div class="green-circle">
+              <!-- <img src="../../../../assets/icons.png" /> -->
+              <mat-icon style="color:white">bolt</mat-icon>
+            </div>
+          </div>
+          <div class="content">
+            <p style="font-size: 20px;">Actions</p>
+            <h1>670</h1>
+            <!-- <p class="description">
+              <img src="../../../../assets/arrow-up.png" />
+              12% increase from last month
+            </p> -->
+          </div>
+        </div>
+        <div class="card">
+          <div class="header">
+            <!-- <i class="icon">&#x1F4B0;</i>
+          <div class="title">Total Revenue</div> -->
+            <div class="green-circle">
+              <!-- <img src="../../../../assets/icons.png" /> -->
+               <mat-icon style="color:white">check_circl</mat-icon>
+            </div>
+          </div>
+          <div class="content">
+            <p style="font-size: 20px;">Projects Completed</p>
+            <h1>340</h1>
+            <!-- <p class="description">
+              <img src="../../../../assets/arrow-up.png" />
+              12% increase from last month
+            </p> -->
+          </div>
+        </div>
 
-<Navbar />
+    
+    </div>
+    <div
+      class="chart1"
+      style="display: flex; justify-content: space-around"
+    >
+      <div
+        class="card-tab-graph"
+        style="margin-right: 10px; margin-top: 15px"
+      >
+        <div class="header-container">
+          <div style="display: flex; align-items: center">
+            <h2 style="margin: 0">Overall Progress</h2>
+            <!-- <label for="projectSelect" style="margin-left: 10px;">Select a Project:</label> -->
+            <select
+              id="projectSelect"
+              (change)="onProjectSelect($event)"
+              style="
+                margin-left: 200px;
+                width: 70px;
+                height: 29px;
+                padding: 5px;
+              "
+            >
+              <option value="" disabled selected>2024</option>
+              <option *ngFor="let project of projects" [value]="project">
+                {{ project.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="chart-container">
+          <canvas id="donut">{{ chart }}</canvas>
+          <!-- <div id="chart-container">FusionCharts will render here</div> -->
+          <!-- <canvas #chartCanvas width="200" height="200"></canvas> -->
+        </div>
+      </div>
+      <div
+      class="card-tab-graph"
+      style="margin-right: 10px; margin-top: 15px"
+    >
+      <div class="header-container">
+        <div style="display: flex; align-items: center">
+          <h2 class="text-nowrap" style="margin: 0">Project Workload</h2>
+          <!-- <label for="projectSelect" style="margin-left: 10px;">Select a Project:</label> -->
+          <select
+            id="projectSelect"
+            (change)="onProjectSelect($event)"
+            style="
+              margin-left: 200px;
+              width: 70px;
+              height: 29px;
+              padding: 5px;
+            "
+          >
+            <option value="" disabled>Select a year</option>
+            <option
+              *ngFor="let project of projects"
+              [value]="project.name"
+            >
+              {{ project.name }}
+            </option>
+          </select>
+        </div>
+      </div>
 
-<mat-drawer-container class="sidenav-container">
-  <!-- Side Menu -->
-  <mat-drawer mode="side" opened>
-    <SideBar />
-  </mat-drawer>
-  <!-- <div class="sidebar">
-  <a class="active" href="/dashboard" style="text-align:center;">Dashboard</a>
-  <a class="active" href="/project" style="text-align:center;">Projects</a>
-  <a class="active" href="/issues" style="text-align:center;">Key Issues</a>
-  <a class="active" href="/action" style="text-align:center;">Required Actions</a>
-  </div> -->
+      <div class="chart-container">
+        <canvas id="MyChart">{{ chart }}</canvas>
+      </div>
+    </div>
+    </div>
+    <div
+      class="chart2"
+      style="display: flex; justify-content: space-around"
+    >
 
-<div class="row">
-<div class="column"> 
-  <div class="card">
-  <div class="card-header">
-    Projects
+
+    </div>
   </div>
-  <div class="card-body">
-    <div class="left-section">
-      <img src="assets/project.png" alt="Image" padding-top="20px" height="60px" width="60px">
-    </div>
-    <div class="right-section">
-      <p>*count</p>
-    </div>
 </div>
-</div>
-</div>
-
-<div class="column"> 
-  <div class="card">
-  <div class="card-header">
-    Key Issues
-  </div>
-  <div class="card-body">
-    <div class="left-section">
-      <img src="assets/project.png" alt="Image" padding-top="20px" height="60px" width="60px">
-    </div>
-    <div class="right-section">
-      <p>Count</p>
-    </div>
-  </div>
-</div>
-</div>
-
-<div class="column">
-  <div class="card" >
-  <div class="card-header">
-   Required Actions
-  </div>
-  <div class="card-body">
-    <div class="left-section">
-      <img src="assets/project.png" alt="Image" padding-top="20px" height="60px" width="60px">
-    </div>
-    <div class="right-section">
-      <p>Count</p>
-    </div>  </div>
-</div>
-</div>
-</div>
-</mat-drawer-container>
-
-
-  
-
-  
-
-  
-  
