@@ -9,10 +9,11 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   selector: 'app-project-form2',
   templateUrl: './project-form2.component.html',
   styleUrls: ['./project-form2.component.css']
-})
+}) 
 export class ProjectForm2Component {
   projectForm!: FormGroup;
   isEditMode: boolean = false;
+
   constructor(private fb: FormBuilder,
     private api: ApiService,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -22,7 +23,6 @@ export class ProjectForm2Component {
     this.isEditMode = !!this.data.project_id;
     this.projectForm = this.fb.group({
       // project_id: [this.data.project_id || '', Validators.required],
-      
       project_id: [{ value: this.data.project_id || '', disabled: this.isEditMode }, Validators.required],
       project_name: [this.data.project_name || '', Validators.required],
       project_desc: [this.data.project_desc || '', Validators.required],
@@ -69,6 +69,7 @@ export class ProjectForm2Component {
           timer:1500, 
           showConfirmButton:false
         })
+        
         }).catch((error) => {
           console.log('Update error', error);
            //Error
