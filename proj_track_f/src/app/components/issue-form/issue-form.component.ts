@@ -22,14 +22,16 @@ export class IssueFormComponent {
     this.isEditMode = !!this.data.issue_id;
 
     this.issueForm = this.fb.group({
-      project_id: [{ value: this.data.project_id || '', disabled: this.isEditMode }, Validators.required],
+      // project_id: [{ value: this.data.project_id || '', disabled: this.isEditMode }, Validators.required],
       project_name: [this.data.project_name || '', Validators.required],
       action_owner: [this.data.action_owner || '', Validators.required],
+      action_Owner_dept: [this.data.action_Owner_dept || '', Validators.required],
       issue_desc: [this.data.issue_desc || '', Validators.required],
       issueRaiseddate: [this.formatDate(this.data.issueRaiseddate) || '', Validators.required],
-      issuetargetDate: [this.formatDate(this.data.issuetargetDate) || '', Validators.required],
+      // issuetargetDate: [this.formatDate(this.data.issuetargetDate) || '', Validators.required],
       targetDate: [this.formatDate(this.data.targetDate) || '', Validators.required],
       issue_id: [{ value: this.data.issue_id || '', disabled: this.isEditMode }, Validators.required],
+      owner_Id: [{ value: this.data.owner_Id || '', disabled: this.isEditMode }, Validators.required],
       issue_Status: [this.data.issue_Status || '', Validators.required],
       remarks: [this.data.remarks || '']
     });
@@ -51,7 +53,7 @@ export class IssueFormComponent {
 //   }
 // }
 onSubmit(): void {
-  if (this.issueForm.valid) {
+  if (this.issueForm?.valid) {
     const projectData = this.issueForm.getRawValue(); // getRawValue to include disabled fields
 
     if (this.isEditMode) {

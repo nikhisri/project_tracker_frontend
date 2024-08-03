@@ -62,6 +62,7 @@ export class ProjectFormComponent implements OnInit {
             console.log('Post successful', data);
           } else {
             console.log('Post failed');
+            
           }
         }).catch((error) => {
           console.log('Post error', error);

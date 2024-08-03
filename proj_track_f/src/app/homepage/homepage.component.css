@@ -35,7 +35,7 @@
     padding: 10px;
     background-color: #35535C;
 }
-.card {
+/* .card {
     display:flex;
     border: 1px solid #ddd;
     flex-direction:column;
@@ -44,7 +44,7 @@
     max-width:300px;
     max-height:250px;
     margin: auto;
-  }
+  } */
   
   .card-header {
     background-color: hsl(210, 57%, 27%);
@@ -137,3 +137,47 @@
         margin:5px 0;
     }
   }
+  .card {
+    max-width: 235px;
+    height: 180px;
+    flex: 1 1 auto;
+    margin-right: 20px;
+    padding-top:23px;
+    padding-right:10px;
+    padding-left:5px;
+    padding-bottom:5px;
+  }
+  
+  .header-image {
+    background-size: cover;
+  }
+  .card-title{
+      color:#797979;
+      font-size:14px;
+  }
+  .card-value{
+      color:#060606;
+      font-size:28px;
+  }
+  .mat-mdc-card {
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    --mdc-elevated-card-container-color: #ffffff;
+  }
+  
+  .cards-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .sub-val-container {
+    display: flex;
+  }
+  
+  .sub {
+    left: 0;
+    font-size: 16px;
+    margin-top: 10px;
+    color: gray;
+  }
+  

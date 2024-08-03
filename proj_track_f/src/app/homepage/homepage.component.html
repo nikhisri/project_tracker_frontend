@@ -13,60 +13,27 @@
   <a class="active" href="/action" style="text-align:center;">Required Actions</a>
   </div> -->
 
-<div class="row">
-<div class="column"> 
-  <div class="card">
-  <div class="card-header">
-    Projects
-  </div>
-  <div class="card-body">
-    <div class="left-section">
-      <img src="assets/project.png" alt="Image" padding-top="20px" height="60px" width="60px">
-    </div>
-    <div class="right-section">
-      <p>*count</p>
-    </div>
-</div>
-</div>
-</div>
+  <div class="cards-container">
+    <mat-card class="card" >
+    <!-- *ngFor="let card of cards"> -->
+        <mat-card-header>
+            <img mat-card-avatar class="header-image" src=""/>
+            <!-- {{card.image_path}} /> -->
+        </mat-card-header>
+        <mat-card-content>
+            <div>
+                <p class="card-title">
+                    <!-- {{card.title}} -->
+                     Action
+                </p>
+                <div class="sub-val-container">
+                    <p class="card-value">
+                      <!-- {{card.value}} -->10
+                    </p>
+                    <!-- <span *ngIf="card.total_value" class="sub"> / {{card.total_value}}</span> -->
+                </div>
 
-<div class="column"> 
-  <div class="card">
-  <div class="card-header">
-    Key Issues
-  </div>
-  <div class="card-body">
-    <div class="left-section">
-      <img src="assets/project.png" alt="Image" padding-top="20px" height="60px" width="60px">
-    </div>
-    <div class="right-section">
-      <p>Count</p>
-    </div>
-  </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
 </div>
-</div>
-
-<div class="column">
-  <div class="card" >
-  <div class="card-header">
-   Required Actions
-  </div>
-  <div class="card-body">
-    <div class="left-section">
-      <img src="assets/project.png" alt="Image" padding-top="20px" height="60px" width="60px">
-    </div>
-    <div class="right-section">
-      <p>Count</p>
-    </div>  </div>
-</div>
-</div>
-</div>
-</mat-drawer-container>
-
-
-  
-
-  
-
-  
-  

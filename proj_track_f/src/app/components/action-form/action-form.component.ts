@@ -24,7 +24,8 @@ export class ActionFormComponent {
     this.actionForm = this.fb.group({
       project_id: [{ value: this.data.project_id || '', disabled: this.isEditMode }, Validators.required],
       action_id: [{ value: this.data.action_id || '', disabled: this.isEditMode }, Validators.required],
-      issue_id: [this.data.issue_id || '', Validators.required],
+      issue_id: [{ value: this.data.issue_id || '', disabled: this.isEditMode }, Validators.required],
+      // issue_id: [this.data.issue_id || '', Validators.required],
       action_desc: [this.data.action_desc || '', Validators.required],
       action_owner: [this.data.action_owner || '', Validators.required],
       action_status: [this.data.action_status || '', Validators.required],

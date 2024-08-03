@@ -13,6 +13,6 @@
 
    </div>
 
-   <app-table [dataSource]="ISSUE_DATA" [columnMapping]="columnMapping" [table]="'issue'"></app-table>
+   <app-table [dataSource]="ISSUE_DATA" [columnMapping]="columnMapping" [table]="'issue'" (deleteProject)="onDeleteProject($event)"></app-table>
   </mat-drawer-container>
 

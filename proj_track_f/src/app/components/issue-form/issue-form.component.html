@@ -26,7 +26,7 @@
           <mat-label>Project Name</mat-label>
           <input matInput id="project_name" formControlName="project_name">
           <mat-error *ngIf="issueForm.get('project_name')?.invalid && issueForm.get('project_name')?.touched">
-            Issue Name is required.
+            Project Name is required.
           </mat-error>
         </mat-form-field>
       </mat-grid-tile>
@@ -47,13 +47,19 @@
         <mat-form-field appearance="outline">
           <mat-label>Issue Raised Date</mat-label>
           <input matInput id="issueRaiseddate" type="date" formControlName="issueRaiseddate">
+          <mat-error *ngIf="issueForm.get('issueRaiseddate')?.invalid && issueForm.get('issueRaiseddate')?.touched">
+            Issue Raised Date is required.
+          </mat-error>
         </mat-form-field>
       </mat-grid-tile>
 
       <mat-grid-tile>
         <mat-form-field appearance="outline">
           <mat-label>Issue Target Date</mat-label>
-          <input matInput id="issuetargetDate" type="date" formControlName="issuetargetDate">
+          <input matInput id="targetDate" type="date" formControlName="targetDate">
+          <mat-error *ngIf="issueForm.get('targetDate')?.invalid && issueForm.get('targetDate')?.touched">
+            Target Date is required.
+          </mat-error>
         </mat-form-field>
       </mat-grid-tile>
 
@@ -70,7 +76,7 @@
       <!-- Account Owner Details Header -->
       <mat-grid-tile colspan="3">
         <mat-grid-tile-header style="background-color: #35535C; color: white;" [ariaColSpan]="3">
-          <p>Account Owner Details</p>
+          <p>Action Owner Details</p>
         </mat-grid-tile-header>
       </mat-grid-tile>
 

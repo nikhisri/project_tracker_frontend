@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from 'src/app/services/api.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ProjectFormComponent } from 'src/app/project-form/project-form.component';
+import { ProjectForm2Component } from 'src/app/project-form2/project-form2.component';
 import { IssueFormComponent } from '../issue-form/issue-form.component';
 import { ActionFormComponent } from '../action-form/action-form.component';
 import { ComponentType } from '@angular/cdk/portal';
@@ -27,6 +28,7 @@ export class TableComponent {
   @Input() columnMapping: { [key: string]: string } = {};
   // dataSource1: MatTableDataSource<any> = new MatTableDataSource();
   @Output() deleteProject: EventEmitter<string> = new EventEmitter<string>();
+  
   displayedColumns: string[] = [];
   filteredData: any[] = [];
   displayedColumnsWithEllipsis: string[] = [];
@@ -45,11 +47,11 @@ export class TableComponent {
       this.disabled=false
     }
     else if
-      (this.userRole==="developer"&& this.table==="issue"){
+      (this.userRole==="tester"&& this.table==="issue"){
         this.disabled=false
     }
     else if
-    (this.userRole==="tester"&& this.table==="action"){
+    (this.userRole==="developer"&& this.table==="action"){
       this.disabled=false
   }
 console.log(this.disabled)
@@ -129,7 +131,7 @@ console.log(this.disabled)
           console.log(data);
           this.PROJECT_DATA = data;
           console.log(this.PROJECT_DATA);
-          this.openForm(ProjectFormComponent,this.PROJECT_DATA);
+          this.openForm(ProjectForm2Component,this.PROJECT_DATA);
         } else {
           console.log('Not Found');
         }
@@ -160,7 +162,7 @@ console.log(this.disabled)
       });
   } 
   // }
-  openForm(formcomponent:ComponentType<ProjectFormComponent | IssueFormComponent | ActionFormComponent>,projectData?:any): void {
+  openForm(formcomponent:ComponentType<ProjectForm2Component | IssueFormComponent | ActionFormComponent>,projectData?:any): void {
     console.log("bye",formcomponent);
     const dialogRef = this.dialog.open(formcomponent, {
       width: '1100px',
@@ -179,6 +181,7 @@ console.log(this.disabled)
   // }
 }
 onDeleteClick(project_id: string): void {
+  console.log(project_id);
   this.deleteProject.emit(project_id);
 }
 }
