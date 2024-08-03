@@ -10,6 +10,18 @@
         </mat-grid-tile-header>
       </mat-grid-tile>
 
+      //PROJECTID
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>PROJECT ID</mat-label>
+          <input matInput id="project_id" formControlName="project_id">
+          <mat-error *ngIf="issueForm.get('project_id')?.invalid && issueForm.get('project_id')?.touched">
+            Project ID is required.
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
       <!-- Issue ID, Name, and Status Row -->
       <mat-grid-tile>
         <mat-form-field appearance="outline">

@@ -22,7 +22,7 @@ export class IssueFormComponent {
     this.isEditMode = !!this.data.issue_id;
 
     this.issueForm = this.fb.group({
-      // project_id: [{ value: this.data.project_id || '', disabled: this.isEditMode }, Validators.required],
+      project_id: [{ value: this.data.project_id || '', disabled: this.isEditMode }, Validators.required],
       project_name: [this.data.project_name || '', Validators.required],
       action_owner: [this.data.action_owner || '', Validators.required],
       action_Owner_dept: [this.data.action_Owner_dept || '', Validators.required],
