@@ -23,9 +23,9 @@
 
       <mat-grid-tile>
         <mat-form-field appearance="outline">
-          <mat-label>Issue Name</mat-label>
-          <input matInput id="issue_name" formControlName="issue_name">
-          <mat-error *ngIf="issueForm.get('issue_name')?.invalid && issueForm.get('issue_name')?.touched">
+          <mat-label>Project Name</mat-label>
+          <input matInput id="project_name" formControlName="project_name">
+          <mat-error *ngIf="issueForm.get('project_name')?.invalid && issueForm.get('project_name')?.touched">
             Issue Name is required.
           </mat-error>
         </mat-form-field>
