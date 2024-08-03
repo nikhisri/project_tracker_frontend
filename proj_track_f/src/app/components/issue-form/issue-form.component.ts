@@ -2,6 +2,7 @@ import { Component ,Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-issue-form',
@@ -20,7 +21,6 @@ export class IssueFormComponent {
 
   ngOnInit(): void {
     this.isEditMode = !!this.data.issue_id;
-
     this.issueForm = this.fb.group({
       project_id: [{ value: this.data.project_id || '', disabled: this.isEditMode }, Validators.required],
       project_name: [this.data.project_name || '', Validators.required],
@@ -63,9 +63,34 @@ onSubmit(): void {
           console.log('Update successful', data);
         } else {
           console.log('Update failed');
+          //Error
+        Swal.fire({
+          title: 'Error',
+          text: 'Update unsuccessful',
+          icon: 'error',//warning
+          timer:1500, 
+          showConfirmButton:false
+        })
         }
+      //Success
+
+      Swal.fire({
+        title: 'Success',
+        text: 'Update successful',
+        icon: 'success',
+        timer:1500, 
+        showConfirmButton:false
+      })
+
       }).catch((error) => {
         console.log('Update error', error);
+         //Error
+         Swal.fire({
+          title: 'Error',
+          text: 'Something went wrong',
+          timer:1500, 
+          showConfirmButton:false
+        })
       });
     } else {
       // Call create API
@@ -74,9 +99,36 @@ onSubmit(): void {
           console.log('Post successful', data);
         } else {
           console.log('Post failed');
+          Swal.fire({
+            title: 'Error',
+            text: 'Issue creation unsuccessful',
+            icon: 'error',//warning
+            timer:1500, 
+            showConfirmButton:false
+          })
+          
         }
+
+         //Success
+         Swal.fire({
+          title: 'Success',
+          text: 'Issue creation successful',
+          icon: 'success',
+          timer:1500, 
+          showConfirmButton:false
+        })
+
       }).catch((error) => {
         console.log('Post error', error);
+        //error
+        console.log('Post error', error);
+        //Error
+       Swal.fire({
+        title: 'Error',
+        text: 'Something went wrong',
+        timer:1500, 
+        showConfirmButton:false
+      })
       });
     }
   }
