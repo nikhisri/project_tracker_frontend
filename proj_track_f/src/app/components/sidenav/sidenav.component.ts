@@ -4,25 +4,30 @@ import { Router } from '@angular/router';
 
 type SIDENAV_INTERFACE = {
   label : string,
-  to : string
+  to : string,
+  icon : string
 }
 
 const SIDENAV_MENUS : Array<SIDENAV_INTERFACE>= [
     {
       label : "Dashboard",
-      to : "/dashboard"
+      to : "/dashboard",
+      icon: "dashboard"
     },
     {
       label : "Projects",
-      to : "/project"
+      to : "/project",
+      icon: "assignment"
     },
     {
       label : "Key Issues",
-      to : "/issue"
+      to : "/issue",
+      icon: "bug_report"
     },
     {
       label : "Required Actions",
-      to : "/actions"
+      to : "/actions",
+      icon: "bolt"
     }
 ]
 
@@ -38,6 +43,13 @@ export class SidenavComponent {
   constructor(private router : Router ) {}
 
   sidenavMenu : Array<SIDENAV_INTERFACE> = SIDENAV_MENUS;
+
+  activeUrl !: string;
+
+  ngOnInit() {
+    this.activeUrl = this.router.url;
+    
+  }
 
   navigateURL(path : string) {
 

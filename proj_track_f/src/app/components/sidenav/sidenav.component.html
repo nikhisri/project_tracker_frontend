@@ -1,3 +1,6 @@
 <div *ngFor="let menu of sidenavMenu">
-    <button mat-button color="primary" style="color: white;" (click)="navigateURL(menu.to)" >{{menu.label}}</button>
+    <button mat-button [ngClass]="{'sidenav-active' : activeUrl.includes(menu.to)}" (click)="navigateURL(menu.to)" >
+        <mat-icon>{{menu.icon}}</mat-icon>
+        
+        {{menu.label}}</button>
 </div>

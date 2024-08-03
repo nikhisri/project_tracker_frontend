@@ -1,0 +1,15 @@
+.mdc-button {
+    justify-content: start;
+    padding-left: 2rem;
+    margin-bottom: 10px;
+    color: white !important;
+}
+
+.mat-mdc-button>.mat-icon {
+    margin-right: 20px;
+}
+
+.sidenav-active {
+    background-color: white;
+    color: #35535C !important;
+}

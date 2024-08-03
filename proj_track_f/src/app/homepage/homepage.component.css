@@ -576,7 +576,7 @@ img {
 }
 
 .main-section {
-  width: 82%;
+  /* width: 82%; */
   height: 100vh;
   padding-inline: 1.5rem;
   padding-block-start: 1rem;

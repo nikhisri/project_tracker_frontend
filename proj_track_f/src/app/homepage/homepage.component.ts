@@ -225,7 +225,6 @@ export class HomepageComponent {
   supervisorFlag:boolean=false;
   userFlag:boolean=false;
   ngOnInit() {
-    this.createChart();
     
       const storedUser = localStorage.getItem('user');
       this.user = storedUser ? JSON.parse(storedUser) : null;
@@ -245,6 +244,10 @@ export class HomepageComponent {
       this.getActionCount();
     
     // this.createGaugeChart()
+  }
+
+  ngAfterViewInit() {
+    this.createChart();
   }
   // createGaugeChart(): void {
   //   const ctx = this.chartCanvas.nativeElement.getContext('2d');

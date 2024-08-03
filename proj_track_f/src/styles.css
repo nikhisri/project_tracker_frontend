@@ -10,3 +10,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     width: 100%;
     margin: var(--sidenav-button-margin); 
 }
+
+.mat-drawer {
+    width: 250px;
+    padding: 10px;
+    background-color: #35535C;
+}
