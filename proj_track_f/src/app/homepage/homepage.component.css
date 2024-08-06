@@ -69,7 +69,7 @@ body {
 
 #dashboard h1 {
   margin: 0;
-  color: #004648; /* Adjust the text color as needed */
+  color: black; /* Adjust the text color as needed */
   font-size: 22px; /* Adjust the font size as needed */
   font-weight: bold;
 }
@@ -577,7 +577,7 @@ img {
 
 .main-section {
   /* width: 82%; */
-  height: 100vh;
+  /* height: 100vh; */
   padding-inline: 1.5rem;
   padding-block-start: 1rem;
 }

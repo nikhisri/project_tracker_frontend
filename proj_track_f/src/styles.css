@@ -14,5 +14,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-drawer {
     width: 250px;
     padding: 10px;
-    background-color: #35535C;
-}
+    background: linear-gradient(to bottom, #A02334, #FEB47B)}
+
+    .mat-drawer-content{
+        overflow:hidden !important;
+      }
+      .mat-drawer-container {
+        display: unset !important;
+      }
