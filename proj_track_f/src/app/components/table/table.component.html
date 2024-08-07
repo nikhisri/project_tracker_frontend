@@ -8,7 +8,7 @@
     <mat-card>
     <!-- <table mat-table [dataSource]="dataSource"  class=" table-container"> -->
       <div class="table-container">
-    <table mat-table [dataSource]="filteredData"  class=" table-container">
+    <table mat-table [dataSource]="filteredData"  class=" table-container" *ngIf="filteredData.length > 0; else noDataTemplate">
         
         <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
           <th mat-header-cell *matHeaderCellDef class="table-header" >{{ getDisplayName(column) }}</th>
@@ -88,7 +88,10 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumnsWithEllipsis" class="header-row"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumnsWithEllipsis" class="data-row"></tr>
   </table>
-      </div>
+  <ng-template #noDataTemplate>
+    <div class="no-data">No data found</div>
+  </ng-template>
+</div>
 </mat-card>
 
 
