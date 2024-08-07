@@ -65,7 +65,10 @@ table.mat-table {
 }
 .table-header{
     color:black;
-    background-color: #35535C;
+    background-color:white;
+    position: sticky;   /* Make the header sticky */
+    top: 0;             /* Stick to the top of the container */
+    z-index: 1; 
 }
 .completed{
     background-color:rgba(26,147,46,21%);

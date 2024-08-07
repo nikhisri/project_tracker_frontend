@@ -12,6 +12,9 @@ import Swal from 'sweetalert2';
 export class ActionFormComponent {
   actionForm!: FormGroup;
   isEditMode: boolean = false;
+  projectIds:string[]=[];
+  issueIds:string[]=[];
+  actionstatus:string[]=["Opened", "In-Progress", "Closed"];
 
   constructor(private fb: FormBuilder,
     private api: ApiService,
@@ -31,6 +34,9 @@ export class ActionFormComponent {
       target_date: [this.formatDate(this.data.target_date) || '', Validators.required],
       remarks: [this.data.remarks || '']
     });
+    this.getproject();
+    this.getissue();
+
   }
 
  
@@ -41,8 +47,16 @@ export class ActionFormComponent {
       if (this.isEditMode) {
         // Call update API
         this.api.post(`http://localhost:5000/v1/user/updateactionbyid`, projectData).then((data: any) => {
-          if (data) {
+          if (data && data.status === 'success') {
             console.log('Update successful', data);
+               //Success
+        Swal.fire({
+          title: 'Success',
+          text: 'Update successful',
+          icon: 'success',
+          timer:1500, 
+          showConfirmButton:false
+        })
           } else {
             console.log('Update failed');
             //Error
@@ -55,14 +69,7 @@ export class ActionFormComponent {
           })
 
           }
-           //Success
-        Swal.fire({
-          title: 'Success',
-          text: 'Update successful',
-          icon: 'success',
-          timer:1500, 
-          showConfirmButton:false
-        })
+        
 
         }).catch((error) => {
           console.log('Update error', error);
@@ -77,8 +84,16 @@ export class ActionFormComponent {
       } else {
         // Call create API
         this.api.post('http://localhost:5000/v1/user/createAction', projectData).then((data: any) => {
-          if (data) {
+          if (data && data.status === 'success') {
             console.log('Post successful', data);
+            //Success
+        Swal.fire({
+          title: 'Success',
+          text: 'Action creation successful',
+          icon: 'success',
+          timer:1500, 
+          showConfirmButton:false
+        })
           } else {
             console.log('Post failed');
             //warning
@@ -91,14 +106,7 @@ export class ActionFormComponent {
             })
 
           }
-          //Success
-        Swal.fire({
-          title: 'Success',
-          text: 'Action creation successful',
-          icon: 'success',
-          timer:1500, 
-          showConfirmButton:false
-        })
+          
           
         }).catch((error) => {
           console.log('Post error', error);
@@ -118,4 +126,33 @@ export class ActionFormComponent {
   formatDate(date: string): string {
     return date ? new Date(date).toISOString().split('T')[0] : '';
   }
+
+  getproject() {
+    this.api.get('http://localhost:5000/v1/user/allprojectids').then((data: any) => {
+      if (data) {
+        console.log(data);
+        this.projectIds = data.data;
+      
+      } else {
+        console.log('Not Found');
+  
+      }
+    }).catch((error) => {
+        console.log('Error getting ids', error);
+    });
+  }  
+  getissue() {
+    this.api.get('http://localhost:5000/v1/user/allissueids').then((data: any) => {
+      if (data) {
+        console.log(data);
+        this.issueIds = data.data;
+      
+      } else {
+        console.log('Not Found');
+  
+      }
+    }).catch((error) => {
+        console.log('Error getting ids', error);
+    });
+  }  
 }
