@@ -13,11 +13,18 @@ export class IssueFormComponent {
 
   issueForm!: FormGroup;
   isEditMode: boolean = false;
+  minDate: Date;
+
 
   constructor(private fb: FormBuilder,
     private api: ApiService,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
+    
+  ) { 
+    this.minDate = new Date();
+
+  }
+
 
   ngOnInit(): void {
     this.isEditMode = !!this.data.issue_id;

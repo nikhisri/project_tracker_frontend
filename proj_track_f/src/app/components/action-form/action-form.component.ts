@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-action-form',
@@ -12,11 +13,17 @@ import Swal from 'sweetalert2';
 export class ActionFormComponent {
   actionForm!: FormGroup;
   isEditMode: boolean = false;
+  minDate: Date;
 
   constructor(private fb: FormBuilder,
     private api: ApiService,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
+  ) { 
+    { 
+      this.minDate = new Date();
+  
+    }
+  }
 
   ngOnInit(): void {
     this.isEditMode = !!this.data.action_id;

@@ -17,7 +17,8 @@ table .mat-table {
   td.mat-cell {
     background-color: white;
     font-family: Arial, Helvetica, sans-serif;
-    /* width: 50px; */
+    font-weight: bold;
+    width: 50px;
     
   }
   
@@ -75,6 +76,7 @@ white-space: nowrap;
 .table-header{
     color:white;
     background-color: #A02334 !important;
+    
 }
 .completed{
     background-color:rgba(26,147,46,21%);

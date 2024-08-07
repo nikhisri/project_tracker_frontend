@@ -29,4 +29,12 @@
         flex-direction:column;
     }
 
+    /* your-component.component.css */
+
+.mat-icon {
+  font-size: 36px; /* Adjust size as needed */
+  color: #424242; /* Change color to fit your theme */
+}
+
+
 }

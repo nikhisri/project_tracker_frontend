@@ -13,11 +13,15 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class ProjectForm2Component {
   projectForm!: FormGroup;
   isEditMode: boolean = false;
+  minDate: Date;
 
   constructor(private fb: FormBuilder,
     private api: ApiService,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
+  )  { 
+    this.minDate = new Date();
+
+  }
 
   ngOnInit(): void {
     this.isEditMode = !!this.data.project_id;

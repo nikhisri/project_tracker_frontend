@@ -6,8 +6,10 @@
     </mat-drawer>
     <!-- <router-outlet></router-outlet> -->
     <div style="display: flex;justify-content: space-between;margin: 20px;">
-      <p style="font-size: 29px;font-weight: 500;">REQUIRED ACTIONS</p>   
-      <button style="width:150px" mat-raised-button (click)="openForm('500ms', '500ms')" *ngIf="userRole==='developer'">+New Action</button>
+      <p style="font-size:35px; font-family: Arial, Helvetica, sans-serif;text-wrap: nowrap;font-weight:bold;margin: 20px; color: #b61f33">Actions</p>   
+
+      <button style="width:150px" mat-raised-button class="new" (click)="openForm('250ms', '250ms')" *ngIf="userRole==='developer'">
+        <mat-icon>add</mat-icon>  New Action </button>
      </div>
   
      <!-- <app-table [dataSource]="PROJECT_DATA" [columnMapping]="columnMapping"></app-table> -->

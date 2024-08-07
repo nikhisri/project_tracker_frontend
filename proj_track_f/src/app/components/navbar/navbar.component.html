@@ -1,19 +1,19 @@
 <div class="row">
-    <mat-toolbar style="background-color:#FFFFFF;">
-      <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon>menu</mat-icon>
-      </button> -->
-      <img src="assets/pelog.png" width="160" style="padding-left: 25px;">
-      <span class="navbar-spacer"></span>
-      <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>notifications</mat-icon>
-      </button> -->
-      <button [matMenuTriggerFor]="menu" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <div class="profile">RS</div>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>Profile</button>
-        <button mat-menu-item (click)="logout()">Logout</button>
-      </mat-menu>
-    </mat-toolbar>
+  <mat-toolbar style="background-color: #FFFFFF;">
+    <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button> -->
+    <img src="assets/pelog.png" width="160" style="padding-left: 60px;">
+    <span class="navbar-spacer"></span>
+    <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>notifications</mat-icon>
+    </button> -->
+    <button [matMenuTriggerFor]="menu" mat-icon-button class="example-icon" aria-label="Example icon-button with profile icon">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <!-- <button mat-menu-item>Profile</button> -->
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+  </mat-toolbar>
 </div>
