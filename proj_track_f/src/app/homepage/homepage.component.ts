@@ -373,7 +373,7 @@ export class HomepageComponent {
           {
             label: 'Projects',
             data: [95, 26, 35, 35],
-            backgroundColor: ['#005759', '#238488', '#31AAB0', '#44D4DB'],
+            backgroundColor: ['#b7283c', '#f0bac1', '#fec395', '#f9e4e7'],
           }
         ]
       },
