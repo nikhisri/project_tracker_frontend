@@ -14,8 +14,14 @@
 
       <mat-grid-tile>
         <mat-form-field appearance="outline">
-          <mat-label>PROJECT ID</mat-label>
-          <input matInput id="project_id" formControlName="project_id">
+          <!-- <mat-label>PROJECT ID</mat-label> -->
+          <!-- <input matInput id="project_id" formControlName="project_id"> -->
+          <mat-label>Project ID</mat-label>
+          <mat-select formControlName="project_id">
+            <mat-option *ngFor="let id of projectIds" [value]="id">
+              {{ id }}
+            </mat-option>
+          </mat-select>
           <mat-error *ngIf="issueForm.get('project_id')?.invalid && issueForm.get('project_id')?.touched">
             Project ID is required.
           </mat-error>
@@ -47,7 +53,12 @@
         
         <mat-form-field appearance="outline">
           <mat-label>Status</mat-label>
-          <input matInput id="issue_Status" formControlName="issue_Status">
+          <!-- <input matInput id="issue_Status" formControlName="issue_Status"> -->
+          <mat-select formControlName="issue_Status">
+            <mat-option *ngFor="let id of issueStat" [value]="id">
+              {{ id }}
+            </mat-option>
+          </mat-select>
           <mat-error *ngIf="issueForm.get('issue_Status')?.invalid && issueForm.get('issue_Status')?.touched">
             Issue Status is required.
           </mat-error>

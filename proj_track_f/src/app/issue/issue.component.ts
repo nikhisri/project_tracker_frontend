@@ -28,8 +28,8 @@ userRole: any;
   ISSUE_DATA:issueData[]=[];
 
   necessaryColumns: string[] = [
-    'project_id', 'issue_desc', 'issueRaiseddate', 'targetDate', 
-    'issue_id', 'issue_Status'
+    'issue_id', 'project_id', 'issue_desc', 'issueRaiseddate', 'targetDate', 
+    'issue_Status'
   ];
   
     columnMapping: { [key: string]: string } = {

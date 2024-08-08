@@ -99,17 +99,19 @@ const tabdata: tabelement[] = [
 export class HomepageComponent {
     
   @ViewChild('chartCanvas', { static: true }) chartCanvas: ElementRef |any;
-  projectCount: number | null = null;
-  KeyIssueCount: number | null = null;
-  ActionCount: number | null = null;
+  public projectCount: number | null = null;
+  public KeyIssueCount: number | null = null;
+  public ActionCount: number | null = null;
   // private chart: Chart | undefined;
   constructor(private api: ApiService,private router:Router,private http: HttpClient) { }
 
   getProjectCount(): void {
     this.api.get('http://localhost:5000/v1/user/countproj').then((data: any) => {
       if (data && data.status === 'success') {
-        this.projectCount = data.count;
-        console.log('Number of projects:', this.projectCount);
+        this.projectCount = data.procount;
+        this.KeyIssueCount = data.issuecount;
+        this.ActionCount = data.actioncount;
+        console.log('Number of projects:', this.KeyIssueCount);
       } else {
         console.log('Failed to retrieve project count');
       }
@@ -228,8 +230,11 @@ export class HomepageComponent {
   ngOnInit() {
     
       const storedUser = localStorage.getItem('user');
+      this.getProjectCount();
+      console.log("huii",this.projectCount);
       this.user = storedUser ? JSON.parse(storedUser) : null;
       console.log('user......', this.user);
+
       if (this.user.role === 'admin') {
         this.adminFlag = true;
       }
@@ -241,6 +246,7 @@ export class HomepageComponent {
         this.userFlag = true;
       }
       this.getProjectCount();
+      console.log("huii",this.projectCount);
       this.getKeyIssueCount();
       this.getActionCount();
     
@@ -249,6 +255,8 @@ export class HomepageComponent {
 
   ngAfterViewInit() {
     this.createChart();
+    // this.getProjectCount();
+    console.log(this.KeyIssueCount);
   }
   // createGaugeChart(): void {
   //   const ctx = this.chartCanvas.nativeElement.getContext('2d');

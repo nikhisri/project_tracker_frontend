@@ -22,12 +22,17 @@
 
       <mat-grid-tile colspan="1">
         <mat-form-field appearance="outline">
-          <mat-label>Status</mat-label>
-          <input matInput id="project_Status" formControlName="project_Status">
-          <mat-error *ngIf="projectForm.get('project_Status')?.invalid && projectForm.get('project_Status')?.touched">
-            Project Status is required.
-          </mat-error>
-        </mat-form-field>
+            <mat-label>Status</mat-label>
+            <!-- <input matInput id="project_Status" formControlName="project_Status"> -->
+            <mat-select formControlName="project_Status">
+              <mat-option *ngFor="let id of projectStat" [value]="id">
+                {{ id }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="projectForm.get('project_Status')?.invalid && projectForm.get('project_Status')?.touched">
+              Project Status is required.
+            </mat-error>
+          </mat-form-field>
       </mat-grid-tile>
 
       <mat-grid-tile colspan="1">

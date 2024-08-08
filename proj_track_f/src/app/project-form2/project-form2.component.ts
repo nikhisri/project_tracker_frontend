@@ -13,8 +13,8 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class ProjectForm2Component {
   projectForm!: FormGroup;
   isEditMode: boolean = false;
+  projectStat:string[]=["Opened", "In-Progress", "Completed","Late"];
   minDate: Date;
-
   constructor(private fb: FormBuilder,
     private api: ApiService,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -43,17 +43,27 @@ export class ProjectForm2Component {
       owner_Id: [{value:this.data.owner_Id || '',disabled: this.isEditMode}, Validators.required],
       remarks: [this.data.remarks || '']
     });
+    
+
   }
 
   onSubmit(): void {
     if (this.projectForm.valid) {
       const projectData = this.projectForm.getRawValue(); // getRawValue to include disabled fields
-
+      // console.log(projectData);
       if (this.isEditMode) {
         // Call update API
         this.api.post(`http://localhost:5000/v1/user/updateproj`, projectData).then((data: any) => {
-          if (data) {
+          if (data && data.status === 'success') {
             console.log('Update successful', data);
+             //Success
+        Swal.fire({
+          title: 'Success',
+          text: 'Update successful',
+          icon: 'success',
+          timer:1500, 
+          showConfirmButton:false
+        })
           } else {
             console.log('Update failed');
               //Error
@@ -65,14 +75,7 @@ export class ProjectForm2Component {
             showConfirmButton:false
           })
           }
-          //Success
-        Swal.fire({
-          title: 'Success',
-          text: 'Update successful',
-          icon: 'success',
-          timer:1500, 
-          showConfirmButton:false
-        })
+         
         
         }).catch((error) => {
           console.log('Update error', error);
@@ -87,8 +90,16 @@ export class ProjectForm2Component {
       } else {
         // Call create API
         this.api.post('http://localhost:5000/v1/user/project', projectData).then((data: any) => {
-          if (data) {
+          console.log(data);
+          if (data && data.status === 'success') {
             console.log('Post successful', data);
+            Swal.fire({
+              title: 'Success',
+              text: 'Project creation successful',
+              icon: 'success',
+              timer:1500, 
+              showConfirmButton:false
+            })
           } else {
             console.log('Post failed');
             Swal.fire({
@@ -99,14 +110,8 @@ export class ProjectForm2Component {
               showConfirmButton:false
             })
           }
-          //Success
-        Swal.fire({
-          title: 'Success',
-          text: 'Project creation successful',
-          icon: 'success',
-          timer:1500, 
-          showConfirmButton:false
-        })
+          
+       
         }).catch((error) => {
           console.log('Post error', error);
           //Error
@@ -124,4 +129,7 @@ export class ProjectForm2Component {
   formatDate(date: string): string {
     return date ? new Date(date).toISOString().split('T')[0] : '';
   }
+
+
+  
 }
