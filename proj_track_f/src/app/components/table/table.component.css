@@ -171,3 +171,9 @@ white-space: nowrap;
     max-width: none;
   }
   
+  .no-data {
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    color: #A02334;
+  }
