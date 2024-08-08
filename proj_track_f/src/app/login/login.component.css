@@ -1,5 +1,5 @@
 /* login.component.css */
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 .login-container {
   width: 100%;
   max-width: 800px;
@@ -26,10 +26,15 @@ margin-left: 70px;
   width: 400px;
   margin-bottom:10px;
 }
-h2 {
+h3 {
   text-align: center;
-  margin: 20px;
+  margin: 50px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  color: #b61f33
 }
+
+  
 
 .form-group {
   margin-bottom: 15px;

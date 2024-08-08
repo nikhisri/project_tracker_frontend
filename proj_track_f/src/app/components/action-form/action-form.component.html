@@ -5,8 +5,8 @@
 
       <!-- Header Row -->
       <mat-grid-tile colspan="3">
-        <mat-grid-tile-header style="background-color: #35535C; color: white;" [ariaColSpan]="3">
-          <p>Action Details</p>
+        <mat-grid-tile-header  style="background: linear-gradient(to right, #A02334, #FEB47B);"
+        [ariaColSpan]="3" >          <p>Action Details</p>
         </mat-grid-tile-header>
       </mat-grid-tile>
 
@@ -77,8 +77,11 @@
       <mat-grid-tile colspan="1">
         <mat-form-field appearance="outline">
           <mat-label>Target Date</mat-label>
-          <input matInput id="target_date" type="date" formControlName="target_date">
-          <mat-error *ngIf="actionForm.get('target_date')?.invalid && actionForm.get('target_date')?.touched">
+          <input matInput [matDatepicker]="picker"[min]="minDate"
+          id="target_date" formControlName="target_date">
+          <mat-datepicker-toggle matSuffix [for]="picker " ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>         
+           <mat-error *ngIf="actionForm.get('target_date')?.invalid && actionForm.get('target_date')?.touched">
             Target Date is required.
           </mat-error>
         </mat-form-field>
@@ -99,8 +102,8 @@
 
       <!-- Target Date and Remarks Row -->
       <mat-grid-tile colspan="3">
-        <mat-grid-tile-header style="background-color: #35535C; color: white;" [ariaColSpan]="3">
-          <p>Remarks</p>
+        <mat-grid-tile-header  style="background: linear-gradient(to right, #A02334, #FEB47B);"
+        [ariaColSpan]="3" >          <p>Remarks</p>
         </mat-grid-tile-header>
       </mat-grid-tile>
 
@@ -115,8 +118,8 @@
 
     <!-- Action Buttons -->
     <mat-dialog-actions align="end">
-      <button mat-button mat-dialog-close>Cancel</button>
-      <button mat-button (click)="onSubmit()" [mat-dialog-close]="true" [disabled]="actionForm!.invalid" cdkFocusInitial>Submit</button>
+      <button mat-button class="cancl" mat-dialog-close>Cancel</button>
+      <button mat-button class="subbtn" (click)="onSubmit()" [mat-dialog-close]="true" [disabled]="actionForm!.invalid" cdkFocusInitial>Submit</button>
     </mat-dialog-actions>
   </form>
 </mat-dialog-content>

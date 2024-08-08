@@ -497,4 +497,3 @@ export class HomepageComponent {
 function piedata(value: Object): void {
   throw new Error('Function not implemented.');
 }
-

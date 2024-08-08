@@ -14,11 +14,14 @@ export class ProjectForm2Component {
   projectForm!: FormGroup;
   isEditMode: boolean = false;
   projectStat:string[]=["Opened", "In-Progress", "Completed","Late"];
-
+  minDate: Date;
   constructor(private fb: FormBuilder,
     private api: ApiService,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
+  )  { 
+    this.minDate = new Date();
+
+  }
 
   ngOnInit(): void {
     this.isEditMode = !!this.data.project_id;

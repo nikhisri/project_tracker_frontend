@@ -5,8 +5,8 @@
 
       <!-- Header Row -->
       <mat-grid-tile colspan="3">
-        <mat-grid-tile-header style="background-color: #35535C; color: white;" [ariaColSpan]="3">
-          <p>Issue Details</p>
+        <mat-grid-tile-header  style="background: linear-gradient(to right, #A02334, #FEB47B);"
+        [ariaColSpan]="3" >          <p>Issue Details</p>
         </mat-grid-tile-header>
       </mat-grid-tile>
 
@@ -69,7 +69,9 @@
       <mat-grid-tile>
         <mat-form-field appearance="outline">
           <mat-label>Issue Raised Date</mat-label>
-          <input matInput id="issueRaiseddate" type="date" formControlName="issueRaiseddate">
+          <input matInput [matDatepicker]="picker2"  [min]="minDate" id="issueRaiseddate" formControlName="issueRaiseddate">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
           <mat-error *ngIf="issueForm.get('issueRaiseddate')?.invalid && issueForm.get('issueRaiseddate')?.touched">
             Issue Raised Date is required.
           </mat-error>
@@ -79,7 +81,9 @@
       <mat-grid-tile>
         <mat-form-field appearance="outline">
           <mat-label>Issue Target Date</mat-label>
-          <input matInput id="targetDate" type="date" formControlName="targetDate">
+          <input matInput [matDatepicker]="picker1"   [min]="minDate" id="targetDate" formControlName="targetDate">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
           <mat-error *ngIf="issueForm.get('targetDate')?.invalid && issueForm.get('targetDate')?.touched">
             Target Date is required.
           </mat-error>
@@ -98,8 +102,8 @@
 
       <!-- Account Owner Details Header -->
       <mat-grid-tile colspan="3">
-        <mat-grid-tile-header style="background-color: #35535C; color: white;" [ariaColSpan]="3">
-          <p>Action Owner Details</p>
+        <mat-grid-tile-header  style="background: linear-gradient(to right, #A02334, #FEB47B);"
+        [ariaColSpan]="3" >          <p>Action Owner Details</p>
         </mat-grid-tile-header>
       </mat-grid-tile>
 
@@ -136,8 +140,8 @@
 
       <!-- Remarks Header -->
       <mat-grid-tile colspan="3">
-        <mat-grid-tile-header style="background-color: #35535C; color: white;" [ariaColSpan]="3">
-          <p>Remarks</p>
+        <mat-grid-tile-header  style="background: linear-gradient(to right, #A02334, #FEB47B);"
+        [ariaColSpan]="3" >          <p>Remarks</p>
         </mat-grid-tile-header>
       </mat-grid-tile>
 
@@ -152,8 +156,8 @@
 
     <!-- Action Buttons -->
     <mat-dialog-actions align="end">
-      <button mat-button mat-dialog-close>Cancel</button>
-      <button mat-button (click)="onSubmit()" [mat-dialog-close]="true" [disabled]="issueForm!.invalid" cdkFocusInitial>Submit</button>
+      <button mat-button class="cancl" mat-dialog-close>Cancel</button>
+      <button mat-button class="subbtn" (click)="onSubmit()" [mat-dialog-close]="true" [disabled]="issueForm!.invalid" cdkFocusInitial>Submit</button>
     </mat-dialog-actions>
   </form>
 </mat-dialog-content>
