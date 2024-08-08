@@ -14,7 +14,12 @@
       <mat-grid-tile  colspan="1">
         <mat-form-field appearance="outline">
           <mat-label>Project ID</mat-label>
-          <input matInput id="project_id" formControlName="project_id">
+          <!-- <input matInput id="project_id" formControlName="project_id"> -->
+          <mat-select formControlName="project_id">
+            <mat-option *ngFor="let id of projectIds" [value]="id">
+              {{ id }}
+            </mat-option>
+          </mat-select>
           <mat-error *ngIf="actionForm.get('project_id')?.invalid && actionForm.get('project_id')?.touched">
             Project ID is required.
           </mat-error>
@@ -34,7 +39,12 @@
       <mat-grid-tile  colspan="1">
         <mat-form-field appearance="outline">
           <mat-label>Issue ID</mat-label>
-          <input matInput id="issue_id" formControlName="issue_id">
+          <!-- <input matInput id="issue_id" formControlName="issue_id"> -->
+          <mat-select formControlName="issue_id">
+            <mat-option *ngFor="let id of issueIds" [value]="id">
+              {{ id }}
+            </mat-option>
+          </mat-select>
           <mat-error *ngIf="actionForm.get('issue_id')?.invalid && actionForm.get('issue_id')?.touched">
             Issue ID is required.
           </mat-error>
@@ -53,7 +63,12 @@
       <mat-grid-tile  colspan="1">
         <mat-form-field appearance="outline">
           <mat-label>Action Status</mat-label>
-          <input matInput id="action_status" formControlName="action_status">
+          <!-- <input matInput id="action_status" formControlName="action_status"> -->
+          <mat-select formControlName="action_status">
+            <mat-option *ngFor="let id of actionstatus" [value]="id">
+              {{ id }}
+            </mat-option>
+          </mat-select>
           <mat-error *ngIf="actionForm.get('action_status')?.invalid && actionForm.get('action_status')?.touched">
             Action Status is required.
           </mat-error>
@@ -62,8 +77,11 @@
       <mat-grid-tile colspan="1">
         <mat-form-field appearance="outline">
           <mat-label>Target Date</mat-label>
-          <input matInput id="target_date" type="date" formControlName="target_date">
-          <mat-error *ngIf="actionForm.get('target_date')?.invalid && actionForm.get('target_date')?.touched">
+          <input matInput [matDatepicker]="picker"[min]="minDate"
+          id="target_date" formControlName="target_date">
+          <mat-datepicker-toggle matSuffix [for]="picker " ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>         
+           <mat-error *ngIf="actionForm.get('target_date')?.invalid && actionForm.get('target_date')?.touched">
             Target Date is required.
           </mat-error>
         </mat-form-field>
@@ -100,8 +118,8 @@
 
     <!-- Action Buttons -->
     <mat-dialog-actions align="end">
-      <button mat-button mat-dialog-close>Cancel</button>
-      <button mat-button (click)="onSubmit()" [mat-dialog-close]="true" [disabled]="actionForm!.invalid" cdkFocusInitial>Submit</button>
+      <button mat-button class="cancl" mat-dialog-close>Cancel</button>
+      <button mat-button class="subbtn" (click)="onSubmit()" [mat-dialog-close]="true" [disabled]="actionForm!.invalid" cdkFocusInitial>Submit</button>
     </mat-dialog-actions>
   </form>
 </mat-dialog-content>

@@ -1,17 +1,16 @@
 <h2 mat-dialog-title>Create New Project</h2>
 <mat-dialog-content class="mat-typography">
   <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
-    <mat-grid-list cols="3"  rowHeight="90px" >
-   
+    <mat-grid-list cols="3" rowHeight="90px">
+      
       <!-- First Row -->
-   <mat-grid-tile colspan="3">
-    <mat-grid-tile-header  style="background: linear-gradient(to right, #A02334, #FEB47B);"
-    [ariaColSpan]="3" >
-        <p>Project Details</p>
-       </mat-grid-tile-header>
-   </mat-grid-tile>
-    <mat-grid-tile colspan="1">
-    
+      <mat-grid-tile colspan="3">
+        <mat-grid-tile-header style="background: linear-gradient(to right, #A02334, #FEB47B);" [ariaColSpan]="3">
+          <p>Project Details</p>
+        </mat-grid-tile-header>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="1">
         <mat-form-field appearance="outline">
           <mat-label>Project ID</mat-label>
           <input matInput id="project_id" formControlName="project_id">
@@ -24,12 +23,16 @@
       <mat-grid-tile colspan="1">
         <mat-form-field appearance="outline">
             <mat-label>Status</mat-label>
-            <input matInput id="project_Status" formControlName="project_Status">
+            <!-- <input matInput id="project_Status" formControlName="project_Status"> -->
+            <mat-select formControlName="project_Status">
+              <mat-option *ngFor="let id of projectStat" [value]="id">
+                {{ id }}
+              </mat-option>
+            </mat-select>
             <mat-error *ngIf="projectForm.get('project_Status')?.invalid && projectForm.get('project_Status')?.touched">
               Project Status is required.
             </mat-error>
           </mat-form-field>
-    
       </mat-grid-tile>
 
       <mat-grid-tile colspan="1">
@@ -40,19 +43,10 @@
             No. of Days is required.
           </mat-error>
         </mat-form-field>
-      <!-- </mat-grid-tile>
-
-      <mat-grid-tile colspan="1"> -->
-        <!-- <mat-form-field appearance="outline">
-          <mat-label>Status</mat-label>
-          <input matInput id="project_Status" formControlName="project_Status">
-          <mat-error *ngIf="projectForm.get('project_Status')?.invalid && projectForm.get('project_Status')?.touched">
-            Project Status is required.
-          </mat-error>
-        </mat-form-field> -->
       </mat-grid-tile>
+
       <mat-grid-tile colspan="3">
-            <mat-form-field  style="width:750px;" appearance="outline">
+        <mat-form-field style="width:750px;" appearance="outline">
           <mat-label>Project Name</mat-label>
           <input matInput id="project_name" formControlName="project_name">
           <mat-error *ngIf="projectForm.get('project_name')?.invalid && projectForm.get('project_name')?.touched">
@@ -60,31 +54,32 @@
           </mat-error>
         </mat-form-field>
       </mat-grid-tile>
+
       <!-- Second Row -->
-     
-      <mat-grid-tile  colspan="3">
-        <mat-form-field  style="width:750px;margin-top: 40px;margin-bottom: 20px;" appearance="outline" floatLabel="auto">
+      <mat-grid-tile colspan="3">
+        <mat-form-field style="width:750px;margin-top: 40px;margin-bottom: 20px;" appearance="outline" floatLabel="auto">
           <mat-label>Project Description</mat-label>
-          <textarea matInput id="project_desc" formControlName="project_desc" ></textarea>
+          <textarea matInput id="project_desc" formControlName="project_desc"></textarea>
           <mat-error *ngIf="projectForm.get('project_desc')?.invalid && projectForm.get('project_desc')?.touched">
             Project Description is required.
           </mat-error>
         </mat-form-field>
-        
       </mat-grid-tile>
-    
 
       <!-- Fourth Row -->
       <mat-grid-tile colspan="3">
-        <mat-grid-tile-header  style="background: linear-gradient(to right, #A02334, #FEB47B);"
-        [ariaColSpan]="3" >            <p>Project Duration</p>
-           </mat-grid-tile-header>
-       </mat-grid-tile>
-      <mat-grid-tile colspan="1">
+        <mat-grid-tile-header style="background: linear-gradient(to right, #A02334, #FEB47B);" [ariaColSpan]="3">
+          <p>Project Duration</p>
+        </mat-grid-tile-header>
+      </mat-grid-tile>
 
+      <mat-grid-tile colspan="1">
         <mat-form-field appearance="outline">
           <mat-label>Actual Start Date</mat-label>
-          <input matInput id="actual_start_Date" type="date" formControlName="actual_start_Date">
+          <input matInput [matDatepicker]="picker1"            [min]="minDate"
+          id="actual_start_Date" formControlName="actual_start_Date">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
           <mat-error *ngIf="projectForm.get('actual_start_Date')?.invalid && projectForm.get('actual_start_Date')?.touched">
             Actual Start Date is required.
           </mat-error>
@@ -94,9 +89,25 @@
       <mat-grid-tile colspan="1">
         <mat-form-field appearance="outline">
           <mat-label>Project Start Date</mat-label>
-          <input matInput id="project_start_Date" type="date" formControlName="project_start_Date">
+          <input matInput [matDatepicker]="picker2"            [min]="minDate"
+          id="project_start_Date" formControlName="project_start_Date">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
           <mat-error *ngIf="projectForm.get('project_start_Date')?.invalid && projectForm.get('project_start_Date')?.touched">
             Project Start Date is required.
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="1">
+        <mat-form-field appearance="outline">
+          <mat-label>Revised Completion Date 1</mat-label>
+          <input matInput [matDatepicker]="picker3"            [min]="minDate"
+          id="revised_Completion_date_1" formControlName="revised_Completion_date_1">
+          <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+          <mat-datepicker #picker3></mat-datepicker>
+          <mat-error *ngIf="projectForm.get('revised_Completion_date_1')?.invalid && projectForm.get('revised_Completion_date_1')?.touched">
+            Revised Completion Date 1 is required.
           </mat-error>
         </mat-form-field>
       </mat-grid-tile>
@@ -104,22 +115,12 @@
       <mat-grid-tile colspan="1">
         <mat-form-field appearance="outline">
           <mat-label>Revised Completion Date 1</mat-label>
-          <input matInput id="revised_Completion_date_1" type="date" formControlName="revised_Completion_date_1">
-          <mat-error *ngIf="projectForm.get('revised_Completion_date_1')?.invalid && projectForm.get('revised_Completion_date_1')?.touched">
-            Revised Completion Date 1 is required.
-          </mat-error>
-        </mat-form-field>
-        
-      </mat-grid-tile>
-  
-
-      <!-- Fifth Row -->
-      <mat-grid-tile colspan="1">
-        <mat-form-field appearance="outline">
-          <mat-label>Actual End Date</mat-label>
-          <input matInput id="actual_end_Date" type="date" formControlName="actual_end_Date">
-          <mat-error *ngIf="projectForm.get('actual_end_Date')?.invalid && projectForm.get('actual_end_Date')?.touched">
-            Actual End Date is required.
+          <input matInput [matDatepicker]="picker4"             [min]="minDate"
+          id="revised_Completion_date_2" formControlName="revised_Completion_date_2">
+          <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+          <mat-datepicker #picker4></mat-datepicker>
+          <mat-error *ngIf="projectForm.get('revised_Completion_date_2')?.invalid && projectForm.get('revised_Completion_date_2')?.touched">
+            Revised Completion Date 2 is required.
           </mat-error>
         </mat-form-field>
       </mat-grid-tile>
@@ -127,30 +128,42 @@
       <mat-grid-tile colspan="1">
         <mat-form-field appearance="outline">
           <mat-label>Planned End Date</mat-label>
-          <input matInput id="planned_end_Date" type="date" formControlName="planned_end_Date">
+          <input matInput [matDatepicker]="picker5"             [min]="minDate"
+          id="planned_end_Date" formControlName="planned_end_Date">
+          <mat-datepicker-toggle matSuffix [for]="picker5"></mat-datepicker-toggle>
+          <mat-datepicker #picker5></mat-datepicker>
           <mat-error *ngIf="projectForm.get('planned_end_Date')?.invalid && projectForm.get('planned_end_Date')?.touched">
             Planned End Date is required.
           </mat-error>
         </mat-form-field>
       </mat-grid-tile>
 
+      <!-- Fifth Row -->
       <mat-grid-tile colspan="1">
         <mat-form-field appearance="outline">
-          <mat-label>Revised Completion Date 2</mat-label>
-          <input matInput id="revised_Completion_date_2" type="date" formControlName="revised_Completion_date_2">
-          <mat-error *ngIf="projectForm.get('revised_Completion_date_2')?.invalid && projectForm.get('revised_Completion_date_2')?.touched">
-            Revised Completion Date 2 is required.
+          <mat-label>Actual End Date</mat-label>
+          <input matInput [matDatepicker]="picker6"             [min]="minDate"
+          id="actual_end_Date" formControlName="actual_end_Date">
+          <mat-datepicker-toggle matSuffix [for]="picker6"></mat-datepicker-toggle>
+          <mat-datepicker #picker6></mat-datepicker>
+          <mat-error *ngIf="projectForm.get('actual_end_Date')?.invalid && projectForm.get('actual_end_Date')?.touched">
+            Actual End Date is required.
           </mat-error>
         </mat-form-field>
       </mat-grid-tile>
+
+   
+
+
+
       <!-- Third Row -->
       <mat-grid-tile colspan="3">
-        <mat-grid-tile-header  style="background: linear-gradient(to right, #A02334, #FEB47B);"
-        [ariaColSpan]="3" >            <p>Action Owner Details</p>
-           </mat-grid-tile-header>
-       </mat-grid-tile>
+        <mat-grid-tile-header style="background: linear-gradient(to right, #A02334, #FEB47B);" [ariaColSpan]="3">
+          <p>Action Owner Details</p>
+        </mat-grid-tile-header>
+      </mat-grid-tile>
+
       <mat-grid-tile colspan="1">
-        
         <mat-form-field appearance="outline">
           <mat-label>Action Owner</mat-label>
           <input matInput id="action_owner" formControlName="action_owner">
@@ -180,15 +193,14 @@
         </mat-form-field>
       </mat-grid-tile>
 
-
       <!-- Last Row -->
       <mat-grid-tile colspan="3">
-        <mat-grid-tile-header  style="background: linear-gradient(to right, #A02334, #FEB47B);"
-        [ariaColSpan]="3" >            <p>Remarks</p>
-           </mat-grid-tile-header>
-       </mat-grid-tile>
-      <mat-grid-tile colspan="3">
+        <mat-grid-tile-header style="background: linear-gradient(to right, #A02334, #FEB47B);" [ariaColSpan]="3">
+          <p>Remarks</p>
+        </mat-grid-tile-header>
+      </mat-grid-tile>
 
+      <mat-grid-tile colspan="3">
         <mat-form-field style="width:750px;margin-top: 20px;" appearance="outline" floatLabel="auto">
           <mat-label>Remarks</mat-label>
           <textarea matInput id="remarks" formControlName="remarks"></textarea>
@@ -198,8 +210,8 @@
 
     <!-- Action Buttons -->
     <mat-dialog-actions align="end">
-      <button mat-button mat-dialog-close>Cancel</button>
-      <button mat-button (click)="onSubmit()" [mat-dialog-close]="true" [disabled]="projectForm!.invalid" cdkFocusInitial>Submit</button>
+      <button mat-button class="subbtn" mat-dialog-close>Cancel</button>
+      <button mat-button class="cancl" (click)="onSubmit()" [mat-dialog-close]="true" [disabled]="projectForm!.invalid" cdkFocusInitial>Submit</button>
     </mat-dialog-actions>
   </form>
 </mat-dialog-content>

@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+
+
+:host {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+}
+
+mat-grid-tile-header p, /* Apply to headers */
+mat-form-field label,   /* Apply to form field labels */
+mat-grid-tile input,    /* Apply to inputs */
+mat-grid-tile textarea, /* Apply to textareas */
+mat-dialog-title,       /* Apply to dialog titles */
+mat-dialog-content {    /* Apply to dialog content */
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+}
+
+/* your-component.component.css */
+
+.mat-button.custom-hover {
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.subbtn:hover {
+  background-color: #c83a4c !important; /* Change background color on hover */
+  color: white !important; /* Change text color on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow effect on hover */
+  transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+.cANC:hover {
+  background-color: #c83a4c !important; /* Change background color on hover */
+  color: white !important; /* Change text color on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow effect on hover */
+  transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+

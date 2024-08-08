@@ -33,3 +33,10 @@
 .button{
     width: 60px;
 }
+
+.new:hover {
+    background-color: #c83a4c !important; /* Change background color on hover */
+    color: white !important; /* Change text color on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow effect on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
+  }

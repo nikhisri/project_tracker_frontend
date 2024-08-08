@@ -43,7 +43,7 @@ export class TableComponent {
 
   ngOnInit(): void {
     this.userRole = localStorage.getItem('userRole') || "";
-    if(this.userRole==="project manager"&& this.table==="project"){
+    if(this.userRole==="project manager"&& this.table==="project" ){
       this.disabled=false
     }
     else if

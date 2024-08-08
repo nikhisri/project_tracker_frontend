@@ -13,11 +13,20 @@ export class IssueFormComponent {
 
   issueForm!: FormGroup;
   isEditMode: boolean = false;
+  projectIds: string[] = [];
+  issueStat:string[]=["Opened", "In-Progress", "Closed"];
+  minDate: Date;
+
 
   constructor(private fb: FormBuilder,
     private api: ApiService,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
+    
+  ) { 
+    this.minDate = new Date();
+
+  }
+
 
   ngOnInit(): void {
     this.isEditMode = !!this.data.issue_id;
@@ -35,6 +44,7 @@ export class IssueFormComponent {
       issue_Status: [this.data.issue_Status || '', Validators.required],
       remarks: [this.data.remarks || '']
     });
+    this.get();
   }
 
 //   onSubmit(): void {
@@ -59,8 +69,17 @@ onSubmit(): void {
     if (this.isEditMode) {
       // Call update API
       this.api.post(`http://localhost:5000/v1/user/updateissue`, projectData).then((data: any) => {
-        if (data) {
+        if (data && data.status === 'success') {
           console.log('Update successful', data);
+          //Success
+
+      Swal.fire({
+        title: 'Success',
+        text: 'Update successful',
+        icon: 'success',
+        timer:1500, 
+        showConfirmButton:false
+      })
         } else {
           console.log('Update failed');
           //Error
@@ -72,15 +91,7 @@ onSubmit(): void {
           showConfirmButton:false
         })
         }
-      //Success
-
-      Swal.fire({
-        title: 'Success',
-        text: 'Update successful',
-        icon: 'success',
-        timer:1500, 
-        showConfirmButton:false
-      })
+      
 
       }).catch((error) => {
         console.log('Update error', error);
@@ -95,8 +106,16 @@ onSubmit(): void {
     } else {
       // Call create API
       this.api.post('http://localhost:5000/v1/user/createissue', projectData).then((data: any) => {
-        if (data) {
+        if (data && data.status === 'success') {
           console.log('Post successful', data);
+           //Success
+         Swal.fire({
+          title: 'Success',
+          text: 'Issue creation successful',
+          icon: 'success',
+          timer:1500, 
+          showConfirmButton:false
+        })
         } else {
           console.log('Post failed');
           Swal.fire({
@@ -109,14 +128,7 @@ onSubmit(): void {
           
         }
 
-         //Success
-         Swal.fire({
-          title: 'Success',
-          text: 'Issue creation successful',
-          icon: 'success',
-          timer:1500, 
-          showConfirmButton:false
-        })
+        
 
       }).catch((error) => {
         console.log('Post error', error);
@@ -137,5 +149,20 @@ onSubmit(): void {
 formatDate(date: string): string {
   return date ? new Date(date).toISOString().split('T')[0] : '';
 }
+
+get() {
+  this.api.get('http://localhost:5000/v1/user/allprojectids').then((data: any) => {
+    if (data) {
+      console.log(data);
+      this.projectIds = data.data;
+    
+    } else {
+      console.log('Not Found');
+
+    }
+  }).catch((error) => {
+      console.log('Error getting ids', error);
+  });
+}  
 }
 

@@ -5,6 +5,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .sidenav-container{
     height: 91%;
 }
+body{
+  overflow-y:hidden;
+}
 
 .sidenav-container button {
     width: 100%;

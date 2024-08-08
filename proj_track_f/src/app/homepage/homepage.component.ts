@@ -11,6 +11,7 @@ import { MatTableDataSource } from '@angular/material/table';
 
 import { registerables } from 'chart.js';
 import Chart from 'chart.js/auto';
+import { HttpClient } from '@angular/common/http';
 
 export interface PeriodicElement {
   name: string;
@@ -98,17 +99,19 @@ const tabdata: tabelement[] = [
 export class HomepageComponent {
     
   @ViewChild('chartCanvas', { static: true }) chartCanvas: ElementRef |any;
-  projectCount: number | null = null;
-  KeyIssueCount: number | null = null;
-  ActionCount: number | null = null;
+  public projectCount: number | null = null;
+  public KeyIssueCount: number | null = null;
+  public ActionCount: number | null = null;
   // private chart: Chart | undefined;
-  constructor(private api: ApiService,private router:Router) { }
+  constructor(private api: ApiService,private router:Router,private http: HttpClient) { }
 
   getProjectCount(): void {
     this.api.get('http://localhost:5000/v1/user/countproj').then((data: any) => {
       if (data && data.status === 'success') {
-        this.projectCount = data.count;
-        console.log('Number of projects:', this.projectCount);
+        this.projectCount = data.procount;
+        this.KeyIssueCount = data.issuecount;
+        this.ActionCount = data.actioncount;
+        console.log('Number of projects:', this.KeyIssueCount);
       } else {
         console.log('Failed to retrieve project count');
       }
@@ -227,8 +230,11 @@ export class HomepageComponent {
   ngOnInit() {
     
       const storedUser = localStorage.getItem('user');
+      this.getProjectCount();
+      console.log("huii",this.projectCount);
       this.user = storedUser ? JSON.parse(storedUser) : null;
       console.log('user......', this.user);
+
       if (this.user.role === 'admin') {
         this.adminFlag = true;
       }
@@ -240,6 +246,7 @@ export class HomepageComponent {
         this.userFlag = true;
       }
       this.getProjectCount();
+      console.log("huii",this.projectCount);
       this.getKeyIssueCount();
       this.getActionCount();
     
@@ -248,6 +255,8 @@ export class HomepageComponent {
 
   ngAfterViewInit() {
     this.createChart();
+    // this.getProjectCount();
+    console.log(this.KeyIssueCount);
   }
   // createGaugeChart(): void {
   //   const ctx = this.chartCanvas.nativeElement.getContext('2d');
@@ -304,85 +313,97 @@ export class HomepageComponent {
       'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
     ];
 
-    const issuesData = [5, 7, 8, 6, 9, 10, 5, 8, 6, 7, 8, 9]; // Data for Issues
-    const actionsData = [3, 5, 6, 4, 7, 8, 3, 5, 4, 6, 7, 8]; // Data for Actions
-    const projectsData = [10, 15, 20, 18, 22, 24, 20, 25, 22, 24, 27, 30]; // Data for Projects
+    // Fetch issues data from the API
+    this.http.get<number[]>('http://localhost:5000/v1/user/getcountmonth/2024').subscribe(issuesData => {
+      // const actionsData = [3, 5, 6, 4, 7, 8, 3, 5, 4, 6, 7, 8]; // Hardcoded data for Actions
+      // const projectsData = [10, 15, 20, 18, 22, 24, 20, 25, 22, 24, 27, 30]; // Hardcoded data for Projects
 
-    if (this.chart) {
-      this.chart.destroy(); // Destroy any existing chart instance before creating a new one
-    }
+      if (this.chart) {
+        this.chart.destroy(); // Destroy any existing chart instance before creating a new one
+      }
 
-    this.chart = new Chart('MyChart', {
-      type: 'line',
-      data: {
-        labels: months,
-        datasets: [
-          {
-            label: 'Issues',
-            data: issuesData,
-            backgroundColor: '#005759',
-            stack: 'stack1'
-          },
-          {
-            label: 'Actions',
-            data: actionsData,
-            backgroundColor: '#238488',
-            stack: 'stack1'
-          },
-          {
-            label: 'Projects',
-            data: projectsData,
-            backgroundColor: '#31AAB0',
-            stack: 'stack1'
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-          tooltip: {
-            callbacks: {
-              label: function (tooltipItem) {
-                const label = tooltipItem.dataset.label || '';
-                return `${label}: ${tooltipItem.raw}`;
+      this.chart = new Chart('MyChart', {
+        type: 'bar',
+        data: {
+          labels: months,
+          datasets: [
+            {
+              label: 'Issues',
+              data: issuesData,
+              borderColor: '#005759',
+              backgroundColor: 'rgb(0, 87, 89,0.2)', // Semi-transparent background color
+              //fill: true // Fill the area under the line
+            },
+            // {
+            //   label: 'Actions',
+            //   data: actionsData,
+            //   borderColor: '#33FF57',
+            //   backgroundColor: 'rgba(51, 255, 87, 0.2)', // Semi-transparent background color
+            //   fill: true // Fill the area under the line
+            // },
+            // {
+            //   label: 'Projects',
+            //   data: projectsData,
+            //   borderColor: '#1E90FF',
+            //   backgroundColor: 'rgba(30, 144, 255, 0.2)', // Semi-transparent background color
+            //   fill: true // Fill the area under the line
+            // }
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            tooltip: {
+              callbacks: {
+                label: function (tooltipItem) {
+                  const label = tooltipItem.dataset.label || '';
+                  return `${label}: ${tooltipItem.raw}`;
+                }
               }
             }
-          }
-        },
-        scales: {
-          x: {
-            stacked: true
           },
-          y: {
-            stacked: true
-          }
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: 'Month'
+              }
+            },
+            y: {
+              title: {
+                display: true,
+                text: 'Count'
+              }
+            }
+          },
+          aspectRatio: 1.5
+        }
+      });
+    });
+      this.http.get<any>('http://localhost:5000/v1/user/actionstatus/2024').subscribe(piedata=>{
+                  // Code for the second chart remains unchanged
+      new Chart('donut', {
+        type: 'doughnut',
+        data: {
+          labels: ['Paid', 'Pending', 'Draft', 'OverDue'],
+          datasets: [
+            {
+              label: 'Projects',
+              data:piedata.counts,
+              backgroundColor: ['#005759', '#238488', '#31AAB0', '#44D4DB'],
+            }
+          ]
         },
-        aspectRatio: 1.5
-      }
-    });
-
-    // Code for the second chart remains unchanged
-    new Chart('donut', {
-      type: 'doughnut',
-      data: {
-        labels: ['Paid', 'Pending', 'Draft', 'OverDue'],
-        datasets: [
-          {
-            label: 'Projects',
-            data: [95, 26, 35, 35],
-            backgroundColor: ['#005759', '#238488', '#31AAB0', '#44D4DB'],
-          }
-        ]
-      },
-      options: {
-        aspectRatio: 1.5,
-      },
-    });
+        options: {
+          aspectRatio: 1.5,
+        },
+      });    
+      });
+    
   }
-
 
   renderHorizontalDoughnutChart(): void {
     const ctx = (
@@ -472,4 +493,7 @@ export class HomepageComponent {
   
       title = 'project';
     // sidenavMenu: any;
+}
+function piedata(value: Object): void {
+  throw new Error('Function not implemented.');
 }

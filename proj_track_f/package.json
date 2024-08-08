@@ -20,6 +20,7 @@
     "@angular/platform-browser": "^15.0.0",
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
+    "angular-gantt": "^2.0.0-rc.1",
     "chart.js": "^4.4.3",
     "rxjs": "~7.5.0",
     "sweetalert2": "^11.12.4",

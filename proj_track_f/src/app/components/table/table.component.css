@@ -17,7 +17,8 @@ table .mat-table {
   td.mat-cell {
     background-color: white;
     font-family: Arial, Helvetica, sans-serif;
-    /* width: 50px; */
+    font-weight: bold;
+    width: 50px;
     
   }
   
@@ -73,6 +74,9 @@ white-space: nowrap;
     font-size:14px;
 }
 .table-header{
+    position: sticky;   /* Make the header sticky */
+    top: 0;             /* Stick to the top of the container */
+    z-index: 1; 
     color:white;
     background-color: #A02334 !important;
 }
