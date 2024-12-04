@@ -39,7 +39,8 @@ import {MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ProjectForm2Component } from './project-form2/project-form2.component';
 import {  } from '@angular/material/grid-list';
-
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,7 +84,10 @@ import {  } from '@angular/material/grid-list';
     MatOptionModule,
     MatPaginatorModule,
     MatFormFieldModule,
-    MatTabsModule
+    MatTabsModule,
+    MatNativeDateModule,
+    MatDatepickerModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

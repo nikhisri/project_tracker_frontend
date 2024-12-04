@@ -14,7 +14,7 @@
     width: 100%;
     height: 100%;
     transform: scale(1.2);
-    background-color: #35535C;
+    background-color: #e63d4e;
     border-radius: 50%;
     color: white;
     font-size: var(--text-profile-font-size);
@@ -28,5 +28,13 @@
     .row{
         flex-direction:column;
     }
+
+    /* your-component.component.css */
+
+.mat-icon {
+  font-size: 36px; /* Adjust size as needed */
+  color: #424242; /* Change color to fit your theme */
+}
+
 
 }

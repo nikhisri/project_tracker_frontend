@@ -32,8 +32,9 @@ export class ActionsComponent {
     'issue_id', 
     'action_desc', 
     'action_owner',
-    'action_status', 
     'target_date',
+    'action_status'
+    
     //  'remarks'
   ];
 

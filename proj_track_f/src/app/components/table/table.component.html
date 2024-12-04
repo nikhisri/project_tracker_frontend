@@ -3,12 +3,12 @@
     <mat-form-field style="width:600px;margin-left:20px;" appearance="outline" >
       <!-- <mat-label>Search</mat-label> -->
       <input matInput (keyup)="applyFilter($event)" placeholder="Search Projects..." >
-      <mat-icon matSuffix style="color:35535C">search</mat-icon>
+      <mat-icon matSuffix style="color:#A02334">search</mat-icon>
     </mat-form-field>
     <mat-card>
     <!-- <table mat-table [dataSource]="dataSource"  class=" table-container"> -->
       <div class="table-container">
-    <table mat-table [dataSource]="filteredData"  class=" table-container">
+    <table mat-table [dataSource]="filteredData"  class=" table-container" *ngIf="filteredData.length > 0; else noDataTemplate">
         
         <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
           <th mat-header-cell *matHeaderCellDef class="table-header" >{{ getDisplayName(column) }}</th>
@@ -45,10 +45,10 @@
               <ng-container *ngIf="column === 'actual_start_Date' || column==='actual_end_Date'
               || column===' revised_Completion_date_1'|| column===' revised_Completion_date_2'
               || column==='project_start_Date '|| column==='planned__Date ' ||column ==='target_date'||column ==='targetDate' || column==='issueRaiseddate'">
-                <span *ngIf="isString(element[column])" class="data-text">{{ element[column] | date: 'yyyy-MM-dd' }}</span>
+                <div *ngIf="isString(element[column])" class="data-text">{{ element[column] | date: 'yyyy-MM-dd' }}</div>
               </ng-container>
               <ng-container *ngIf="column !== 'actual_start_Date' && column !== 'actual_end_Date' && column !== 'target_date'&& column !== 'issueRaiseddate'&& column !== 'targetDate'">
-                <span *ngIf="isString(element[column])" class="data-text">{{ element[column] }}</span>
+                <div *ngIf="isString(element[column])" class="data-text">{{ element[column] }}</div>
               </ng-container>
             </ng-template>
             <ng-template #normalDisplay>
@@ -63,8 +63,9 @@
             </ng-template>
           </td>
         </ng-container> -->
+
         <ng-container matColumnDef="ellipsis">
-          <th mat-header-cell *matHeaderCellDef></th>
+          <th mat-header-cell class="table-header" *matHeaderCellDef></th>
           <td mat-cell *matCellDef="let element">
             <button mat-icon-button [matMenuTriggerFor]="menu" (click)="selectedElement = element">
               <mat-icon>more_vert</mat-icon>
@@ -75,7 +76,7 @@
             </mat-menu> -->
             <mat-menu #menu="matMenu">
               <!-- <button mat-menu-item (click)="openDetailDialog(element)">View Details</button> -->
-              <button mat-menu-item (click)="onEditClick(table ==='project'?element.project_id:table==='issue'?element.issue_id:element.action_id)" [disabled]="disabled">Edit</button>
+              <button mat-menu-item (click)="onEditClick(table ==='project'?element.project_id:table==='issue'?element.issue_id:element.action_id)" [disabled]="disabled || element.project_Status === 'Completed'|| element.issue_Status === 'Closed' || element.action_status === 'Closed'">Edit</button>
               <button mat-menu-item (click)="onDeleteClick(table ==='project'?element.project_id:table==='issue'?element.issue_id:element.action_id)"[disabled]="disabled">Delete</button>
             </mat-menu>
             <!-- </button> -->
@@ -88,7 +89,10 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumnsWithEllipsis" class="header-row"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumnsWithEllipsis" class="data-row"></tr>
   </table>
-      </div>
+  <ng-template #noDataTemplate>
+    <div class="no-data">No data found</div>
+  </ng-template>
+</div>
 </mat-card>
 
 
